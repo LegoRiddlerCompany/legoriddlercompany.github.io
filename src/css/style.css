@@ -1,0 +1,307 @@
+:root {
+
+
+
+    --bar-height: 50px;
+}
+
+[hidden]{
+    display: none !important;
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+    /*background-color: green;*/
+    background-image: url('/assets/img/background/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95%;
+
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: #1a1a1a;
+/*     border-top: 3px solid #131313; */
+    border-top: 3px solid #3d3d3d;
+    height: var(--bar-height);
+    a {
+        height: 100%;
+        width: auto;
+        img {
+            height: 100%;
+        }
+    }
+}
+
+a:focus {
+    outline: none !important;
+}
+
+.window {
+    box-shadow: inset -1px -1px #00730f, inset 1px 1px #06b025, inset -2px -2px #007515, inset 2px 2px #10af4d, inset -3px -3px #009327, inset 3px 3px #046827 !important;
+
+}
+.title-bar {
+    background-image: linear-gradient(180deg, #06c847, #00b53c 8%, #00b339 40%, #007500 88%, #007c00 93%, #006d26 95%, #00a72d 96%, #00d83a) !important;
+    border-top: 1px solid #06af25 !important;
+    border-left: 1px solid #058b1d !important;
+    border-right: 1px solid #006713 !important;
+}
+
+#max-button {
+    background-image: url('/assets/img/window/max.svg');
+}
+#max-button:hover {
+    background-image: url('/assets/img/window/maxh.svg');
+}
+#max-button:active {
+    background-image: url('/assets/img/window/maxa.svg');
+}
+#min-button {
+    background-image: url('/assets/img/window/min.svg');
+}
+#min-button:hover {
+    background-image: url('/assets/img/window/minh.svg');
+}
+#min-button:active {
+    background-image: url('/assets/img/window/mina.svg');
+}
+
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-top: 5px;
+    /*height: 86px;
+    width: 64px;*/
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.icon-name {
+    max-width: 100px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+#witam {
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 84px);
+}
+
+#skype {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    width: 600px;
+    height: 500px;
+}
+
+#folder {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 630px;
+    height: 380px;
+    .window-body {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 28px);
+        margin: 4px;
+        margin-top: 0;
+        margin-bottom: 0;
+        overflow-y: auto;
+        z-index: 0;
+        .files-row {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+
+/*#zagadka {
+    .icon-name {
+        color: black;
+        text-shadow: none;
+    }
+}*/
+
+#riddle {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 1200px;
+    height: 710px;
+}
+
+#cheats {
+    position: absolute;
+    top: 36%;
+    left: 32%;
+    width: 300px;
+    height: 150px;
+    .window-body {
+        display: flex;
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin-top: 16px;
+            input {
+                width: 80%;
+            }
+            button {
+                width: 30px;
+                margin-top: 6px;
+            }
+        }
+    }
+}
+
+#skype-call {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 37%;
+    bottom: 10%;
+    width: 330px;
+    height: 100px;
+    border: 1px solid #080808;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px black;
+    overflow: hidden;
+    color: #d1d1d1;
+    .skype-call-top {
+        display: flex;
+        justify-content: space-between;
+        height: 18%;
+        padding: 1px;
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: #252525;
+        font-weight: 600;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width: 14px;
+            height: 14px;
+            margin-top: 1px;
+            background-color: #d1d1d1;
+            color: #252525;
+            text-decoration: none;
+            border: 0px 0px;
+            border-radius: 10px;
+        }
+    }
+    .skype-call-bottom {
+        display: flex;
+        height: 100%;
+        background-color: #4c4c4c;
+        border-top: 2px solid #595959;
+        img {
+            height: 64px;
+            width: 64px;
+            margin: 8px;
+        }
+        .skype-call-text {
+            align-items: center;
+            padding-top: 10px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .skype-call-right {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: auto;
+            .skype-call-space {
+                height: 100%;
+            }
+            .skype-call-buttons-container {
+                padding-bottom: 6px;
+                .skype-call-button {
+                    img {
+                        width: 32px;
+                        height: 32px;
+                        margin: 0;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bar-icon {
+    align-items: center;
+    align-content: center;
+    height: var(--bar-height);
+    width: var(--bar-height);
+    img {
+        padding: 10%;
+        height: 80%;
+        width: 80%;
+    }
+}
+
+.bar-icon:hover {
+    background-color: #282828;;
+}
+
+
+.divider {
+    width: 2px;
+    height: 100%;
+/*     background-color: grey; */
+
+    background-color: #3d3d3d;
+}
+
+.volume-container {
+    display: flex;
+    position: absolute;
+    right: 70px;
+    bottom: calc(var(--bar-height) + 10px);
+    width: 19px;
+    height: 150px;
+    padding: 10px;
+    padding-bottom: 0;
+
+    background-color: #f2f1e7;
+    border: 3px inset #939393;
+}
