@@ -1,11 +1,11 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-const form = document.getElementById('form');
+const form       = document.getElementById('form');
 const cheatsForm = document.getElementById('cheats-form');
-const timer = document.getElementById('timer');
+const timer      = document.getElementById('timer');
 
 
-const riddlesNumber    = 34;
+const riddlesNumber   = 40;//getRiddlesNumber();
 const folderRowNumber = Math.ceil(37/5);
 
 let riddlesUnlocked = 1;
@@ -58,14 +58,14 @@ for(let r = 0; r < folderRowNumber; r++) {
 
         row.appendChild(container);
     }
-    folderbody.appendChild(row);
+    folderBodyElement.appendChild(row);
 }
 
 
 form.addEventListener('submit', (event) => {
     let answer = form.answer.value;
 
-    if(answer === "dupa") {
+    if(checkAnswer(currentRiddle - 1, answer)) {
         let nextRiddleNumber = currentRiddle + 1;
         if(nextRiddleNumber >= riddlesNumber) {
             nextRiddleNumber = riddlesNumber;
@@ -76,6 +76,7 @@ form.addEventListener('submit', (event) => {
 
 
         alert("tym razem ci się udało batmanie, czekam na ciebie z kolejną zagadką");
+        stopCounting();
     } else {
         if(currentTry === 1) {
             alert("nie udało ci się batmanie, zostały jeszcze dwie próby");
@@ -83,6 +84,7 @@ form.addEventListener('submit', (event) => {
             alert("znowu ci się nie udało batmanie, została jeszcze jedna próba");
         } else if(currentTry >= 3) {
             alert("nie udało ci się batmanie, czas na kare");
+            stopCounting();
         }
         currentTry += 1;
     }
@@ -135,7 +137,7 @@ function startCall() {
 }
 function answerCall(declined) {
     if(declined) {
-        skypecalldeclineimg.src = "/assets/img/window/decline-blocked.png";
+        skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
     } else {
         // Połączenie itd
         openSkype();

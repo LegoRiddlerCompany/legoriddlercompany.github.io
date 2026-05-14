@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/xp.css" />
     <script defer src="/src/js/windows.js"></script>
+    <script defer src="/src/js/riddles.js"></script>
     <script defer src="/src/js/audio.js"></script>
     <script defer src="/src/js/script.js"></script>
     <audio id="clickaudio" src="/assets/audio/click.mp3"></audio>
@@ -53,7 +54,7 @@
 
         <div id="riddle" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">?????</div>
+                <div id="riddle-window-name" class="title-bar-text">?????</div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeRiddle()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeRiddle()"></button>
@@ -61,6 +62,8 @@
                 </div>
             </div>
             <div class="window-body">
+                <p id="riddle-text"></p>
+                <p id="riddle-hint"></p>
                 <form id="form" method="post">
                     <input type="text" id="answer" name="answer" placeholder="Odpowiedź" required>
 
@@ -113,13 +116,18 @@
         </div>
     </main>
     <footer>
-        <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/questionmark.png"></a>
-        <div class="divider"></div>
-        <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="toggleSkype()" hidden><img src="/assets/img/icon/skype.png"></a>
-        <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="toggleFolder()" hidden><img src="/assets/img/icon/folder.png"></a>
-        <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="toggleRiddle()" hidden><img src="/assets/img/icon/riddle.png"></a>
-        <a id="bar-unlock" class="bar-icon" href="javascript:void(0)" onclick="openCheats()"><img src="/assets/img/icon/unlocked.png"></a>
-        <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="toggleVolume()"><img src="/assets/img/icon/vol.png"></a>
+        <div class="bar-left">
+            <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/questionmark.png"></a>
+            <div class="divider"></div>
+            <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="toggleSkype()" hidden><img src="/assets/img/icon/skype.png"></a>
+            <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="toggleFolder()" hidden><img src="/assets/img/icon/folder.png"></a>
+            <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="toggleRiddle()" hidden><img src="/assets/img/icon/riddle.png"></a>
+        </div>
+        <div class="bar-right">
+            <a id="bar-unlock" class="bar-icon" href="javascript:void(0)" onclick="openCheats()"><img src="/assets/img/icon/unlocked.png"></a>
+            <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="toggleVolume()"><img src="/assets/img/icon/vol.png"></a>
+            <p id="bar-time">18:00</p>
+        </div>
     </footer>
 </body>
 

@@ -1,15 +1,15 @@
-const skype                 = document.getElementById('skype');
-const barskype              = document.getElementById('bar-skype');
-const folder                = document.getElementById('folder');
-const barfolder             = document.getElementById('bar-folder');
-const folderbody            = document.getElementById('folder-body');
-const riddle                = document.getElementById('riddle');
-const barriddle             = document.getElementById('bar-riddle');
-const cheats                = document.getElementById('cheats');
-const volume                = document.getElementById('volume');
-const barvolume             = document.getElementById('bar-volume');
-const skypecall             = document.getElementById('skype-call');
-const skypecalldeclineimg   = document.getElementById('skype-call-decline-img');
+const skypeElement          = document.getElementById('skype');
+const skypeBarElement       = document.getElementById('bar-skype');
+const folderElement         = document.getElementById('folder');
+const folderBarElement      = document.getElementById('bar-folder');
+const folderBodyElement     = document.getElementById('folder-body');
+const riddleElement         = document.getElementById('riddle');
+const riddleBarElement      = document.getElementById('bar-riddle');
+const cheatsElement         = document.getElementById('cheats');
+const volumeElement         = document.getElementById('volume');
+const volumeBarElement      = document.getElementById('bar-volume');
+const skypeCall             = document.getElementById('skype-call');
+const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 
 const windowStatus = {
     CLOSED: 0,
@@ -25,24 +25,24 @@ let volumeStatus = windowStatus.MINIMIZED;
 
 // SKYPE
 function openSkype() {
-    skype.removeAttribute('hidden');
-    barskype.removeAttribute('hidden');
+    skypeElement.removeAttribute('hidden');
+    skypeBarElement.removeAttribute('hidden');
     skypeStatus = windowStatus.OPEN;
     clickSound();
 }
 function toggleSkype() {
     if(skypeStatus === windowStatus.OPEN){
-        skype.hidden = 'hidden';
+        skypeElement.hidden = 'hidden';
         skypeStatus = windowStatus.MINIMIZED;
     }
     else if(skypeStatus === windowStatus.MINIMIZED){
-        skype.removeAttribute('hidden');
+        skypeElement.removeAttribute('hidden');
         skypeStatus = windowStatus.OPEN;
     }
     clickSound();
 }
 function minimizeSkype() {
-    skype.hidden = 'hidden';
+    skypeElement.hidden = 'hidden';
     skypeStatus = windowStatus.MINIMIZED;
     clickSound();
 }
@@ -50,8 +50,8 @@ function maximizeSkype() {
     clickSound();
 }
 function closeSkype() {
-    skype.hidden = 'hidden';
-    barskype.hidden = 'hidden';
+    skypeElement.hidden = 'hidden';
+    skypeBarElement.hidden = 'hidden';
     skypeStatus = windowStatus.CLOSED;
     clickSound();
 }
@@ -59,8 +59,8 @@ function closeSkype() {
 
 // FOLDER
 async function openFolder() {
-    folder.removeAttribute('hidden');
-    barfolder.removeAttribute('hidden');
+    folderElement.removeAttribute('hidden');
+    folderBarElement.removeAttribute('hidden');
     folderStatus = windowStatus.OPEN;
     clickSound();
 
@@ -71,17 +71,17 @@ async function openFolder() {
 }
 function toggleFolder() {
     if(folderStatus === windowStatus.OPEN){
-        folder.hidden = 'hidden';
+        folderElement.hidden = 'hidden';
         folderStatus = windowStatus.MINIMIZED;
     }
     else if(folderStatus === windowStatus.MINIMIZED){
-        folder.removeAttribute('hidden');
+        folderElement.removeAttribute('hidden');
         folderStatus = windowStatus.OPEN;
     }
     clickSound();
 }
 function minimizeFolder() {
-    folder.hidden = 'hidden';
+    folderElement.hidden = 'hidden';
     folderStatus = windowStatus.MINIMIZED;
     clickSound();
 }
@@ -89,8 +89,8 @@ function maximizeFolder() {
     clickSound();
 }
 function closeFolder() {
-    folder.hidden = 'hidden';
-    barfolder.hidden = 'hidden';
+    folderElement.hidden = 'hidden';
+    folderBarElement.hidden = 'hidden';
     folderStatus = windowStatus.CLOSED;
     clickSound();
 }
@@ -101,8 +101,15 @@ function openRiddle(riddleNumber) {
     currentRiddle = riddleNumber;
     currentTry = 1;
 
-    riddle.removeAttribute('hidden');
-    barriddle.removeAttribute('hidden');
+    riddleElement.removeAttribute('hidden');
+    riddleBarElement.removeAttribute('hidden');
+
+    let riddle = getRiddle(riddleNumber - 1);
+
+    document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
+    document.getElementById('riddle-text').innerText = riddle.riddle;
+    document.getElementById('riddle-hint').innerText = riddle.hint;
+
     startCounting();
     riddleStatus = windowStatus.OPEN;
 
@@ -110,17 +117,17 @@ function openRiddle(riddleNumber) {
 }
 function toggleRiddle() {
     if(riddleStatus === windowStatus.OPEN){
-        riddle.hidden = 'hidden';
+        riddleElement.hidden = 'hidden';
         riddleStatus = windowStatus.MINIMIZED;
     }
     else if(riddleStatus === windowStatus.MINIMIZED){
-        riddle.removeAttribute('hidden');
+        riddleElement.removeAttribute('hidden');
         riddleStatus = windowStatus.OPEN;
     }
     clickSound();
 }
 function minimizeRiddle() {
-    riddle.hidden = 'hidden';
+    riddleElement.hidden = 'hidden';
     riddleStatus = windowStatus.MINIMIZED;
     clickSound();
 }
@@ -128,8 +135,8 @@ function maximizeRiddle() {
     clickSound();
 }
 function closeRiddle() {
-    riddle.hidden = 'hidden';
-    barriddle.hidden = 'hidden';
+    riddleElement.hidden = 'hidden';
+    riddleBarElement.hidden = 'hidden';
 
     stopCounting();
 
@@ -141,18 +148,18 @@ function closeRiddle() {
 
 // UNLOCK
 function openCheats() {
-    cheats.removeAttribute('hidden');
+    cheatsElement.removeAttribute('hidden');
     clickSound();
 }
 function minimizeCheats() {
-    cheats.hidden = 'hidden';
+    cheatsElement.hidden = 'hidden';
     clickSound();
 }
 function maximizeCheats() {
     clickSound();
 }
 function closeCheats() {
-    cheats.hidden = 'hidden';
+    cheatsElement.hidden = 'hidden';
     clickSound();
 }
 //////////////////
@@ -160,11 +167,11 @@ function closeCheats() {
 // VOLUME
 function toggleVolume() {
     if(volumeStatus === windowStatus.OPEN){
-        volume.hidden = 'hidden';
+        volumeElement.hidden = 'hidden';
         volumeStatus = windowStatus.MINIMIZED;
     }
     else if(volumeStatus === windowStatus.MINIMIZED){
-        volume.removeAttribute('hidden');
+        volumeElement.removeAttribute('hidden');
         volumeStatus = windowStatus.OPEN;
     }
     clickSound();
@@ -172,11 +179,11 @@ function toggleVolume() {
 //////////////////
 
 function openCall() {
-    skypecall.removeAttribute('hidden');
+    skypeCall.removeAttribute('hidden');
     startSkypeCallSound();
 }
 function closeCall() {
-    skypecall.hidden = 'hidden';
-    skypecalldeclineimg.src = "/assets/img/window/decline.png";
+    skypeCall.hidden = 'hidden';
+    skypeCallDeclineImg.src = "/assets/img/window/decline.png";
 }
 
