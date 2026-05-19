@@ -33,7 +33,7 @@
 
         <div id="skype" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">Skype</div>
+                <div class="title-bar-text">Skype.exe</div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeSkype()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeSkype()"></button>
@@ -81,7 +81,7 @@
 
         <div id="cheats" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">Batmanie oszukujesz!</div>
+                <div class="title-bar-text">Cheats.exe</div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeCheats()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeCheats()"></button>
@@ -90,7 +90,7 @@
             </div>
             <div class="window-body">
                 <form id="cheats-form" method="post">
-                    <input type="number" min="1" id="cheats-input" name="input" placeholder="Numer zagadki" required>
+                    <input type="text" pattern="\d*" min="1" minlength="1" maxlength="3" id="cheats-input" name="input" placeholder="Numer zagadki" required>
 
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
@@ -109,7 +109,7 @@
                 <a href="javascript:void(0)"><span>x</span></a>
             </div>
             <div class="skype-call-bottom">
-                <img src="/assets/img/riddler/skype-calling.png">
+                <img src="/assets/img/riddler/skype-calling.webp">
                 <div class="skype-call-text"><span>Dzwoni nieznany numer...</span></div>
                 <div class="skype-call-right">
                     <div class="skype-call-space"></div>

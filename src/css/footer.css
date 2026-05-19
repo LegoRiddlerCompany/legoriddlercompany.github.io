@@ -59,7 +59,7 @@ footer {
 .bar-icon:hover {
     background-color: #282828;
 }
-
+/* TODO */
 .volume-container {
     display: flex;
     position: absolute;

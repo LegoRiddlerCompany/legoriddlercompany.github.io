@@ -1,26 +1,58 @@
 :root {
-    --title-bar-height:          4vh; /* 21 */
-    --title-bar-controls-height: calc(var(--title-bar-height) / 7 * 6);
-    --title-bar-controls-margin: calc(var(--title-bar-height) * 0.1);
-    --title-bar-padding:         calc(var(--title-bar-height) / 7);
-    --title-bar-border:          calc(var(--title-bar-height) / 21);
-    --title-bar-border-radius:   calc(var(--title-bar-height) / 3);
-    --title-bar-text:            calc(var(--title-bar-height) * 0.66);
-    --title-bar-text-shadow:     calc(var(--title-bar-height) / 21);
-    --window-box-shadow-size:    calc(var(--title-bar-height) / 21);
-    --window-padding:            calc(var(--title-bar-height) / 7);
+    --title-bar-height:             4vh; /* 21 */
+    --title-bar-controls-height:    calc(var(--title-bar-height) / 7 * 6);
+    --title-bar-controls-margin:    calc(var(--title-bar-height) * 0.1);
+    --title-bar-padding:            calc(var(--title-bar-height) / 7);
+    --title-bar-border:             calc(var(--title-bar-height) / 21);
+    --title-bar-border-radius:      calc(var(--title-bar-height) / 3);
+    --title-bar-text:               calc(var(--title-bar-height) * 0.66);
+    --title-bar-text-shadow:        calc(var(--title-bar-height) / 21);
+    --window-box-shadow-size:       calc(var(--title-bar-height) / 21);
+    --window-padding:               calc(var(--title-bar-height) / 7);
+/*     --window-body-margin:           calc(var(--title-bar-height) / 2); */
 
-    --skype-height: 56vh;
-    --skype-width: 32vw;
+    --skype-height:                 56vh;
+    --skype-width:                  32vw;
 
-    --folder-height: 50vh;
-    --folder-width: 50vw;
+    --folder-height:                50vh;
+    --folder-width:                 49vw;
 
-    --riddle-height: 66vh;
-    --riddle-width: 62vw;
+    --riddle-height:                66vh;
+    --riddle-width:                 62vw;
 
-    --cheats-height: 16vh;
-    --cheats-width: 22vw;
+    --cheats-height:                18vh;
+    --cheats-width:                 15vw;
+    --cheats-margin:                1vh;
+    --cheats-border-width:          0.2vh;
+    --cheats-border-radius:         0.5vh;
+    --cheats-input-height:          4vh;
+    --cheats-input-width:           10vw;
+    --cheats-input-padding-top:     1vh;
+    --cheats-input-padding-left:    0.4vw;
+    --cheats-button-height:         5vh;
+    --cheats-button-width:          6vw;
+    --cheats-button-padding:        1.4vw;
+    --cheats-button-margin:         1vh;
+    --cheats-font-size:             2vh;
+
+    --skype-call-height:            12vh;
+    --skype-call-width:             18.8vw;
+    --skype-call-border:            0.1vw;
+    --skype-call-border-radius:     0.3vw;
+    --skype-call-top-font-size:     1.6vh;
+    --skype-call-top-height:        calc(var(--skype-call-height) * 0.18);
+    --skype-call-bottom-height:     calc(var(--skype-call-height) * 0.82);
+    --skype-call-bottom-border:     0.3vh;
+    --skype-call-bottom-font-size:  1.4vh;
+    --skype-call-buttons-width:     5vw;
+    --skype-call-button-margin:     0.4vw;
+    --skype-call-button-width:      calc(var(--skype-call-buttons-width) / 2 - var(--skype-call-button-margin));
+    --skype-call-image-border:      0.2vh;
+    --skype-call-image-margin:      0.4vh;
+    --skype-call-image-height:      calc(var(--skype-call-bottom-height)
+                                         - 2 * var(--skype-call-image-border)
+                                         - 2 * var(--skype-call-image-margin)
+                                         - var(--skype-call-bottom-border));
 }
 
 .window {
@@ -32,42 +64,44 @@
                 inset calc(var(--window-box-shadow-size) * 3) calc(var(--window-box-shadow-size) * 3) #046827
                 !important;
 
-    border-top-right-radius: var(--title-bar-border-radius) !important;
-    border-top-left-radius: calc(var(--title-bar-border-radius) * 1.1) !important;
-    padding-bottom: var(--window-padding) !important;
+    border-top-right-radius:    var(--title-bar-border-radius) !important;
+    border-top-left-radius:     calc(var(--title-bar-border-radius) * 1.1) !important;
+    padding-bottom:             var(--window-padding) !important;
+}
+.window-body {
+/*     margin: var(--window-body-margin) !important; */
+/*     margin: 0 !important; */
 }
 .title-bar {
     background-image: linear-gradient(180deg, #06c847, #00b53c 8%, #00b339 40%, #007500 88%, #007c00 93%, #006d26 95%, #00a72d 96%, #00d83a) !important;
-    border-top: var(--title-bar-border) solid #06af25 !important;
-    border-left: var(--title-bar-border) solid #058b1d !important;
-    border-right: var(--title-bar-border) solid #006713 !important;
+    border-top:     var(--title-bar-border) solid #06af25 !important;
+    border-left:    var(--title-bar-border) solid #058b1d !important;
+    border-right:   var(--title-bar-border) solid #006713 !important;
 
-    height: var(--title-bar-height) !important;
-    padding: var(--title-bar-padding) !important;
-    padding-right: calc(var(--title-bar-padding) / 3 * 5) !important;
-    border-top-right-radius: var(--title-bar-border-radius) !important;
-    border-top-left-radius: calc(var(--title-bar-border-radius) * 1.1) !important;
+    height:         var(--title-bar-height) !important;
+    padding:        var(--title-bar-padding) !important;
+    padding-right:  calc(var(--title-bar-padding) / 3 * 5) !important;
+    border-top-right-radius:    var(--title-bar-border-radius) !important;
+    border-top-left-radius:     calc(var(--title-bar-border-radius) * 1.1) !important;
 }
-
 .title-bar-controls {
     height: var(--title-bar-controls-height);
     button {
         height: var(--title-bar-controls-height);
-        width: var(--title-bar-controls-height);
-        min-height: 0 !important;
-        min-width: 0 !important;
-        margin-left: var(--title-bar-controls-margin) !important;
-        border-radius: 0;
-        background-color: rgba(0, 0, 0, 0) !important;
+        width:  var(--title-bar-controls-height);
+        min-height:         0 !important;
+        min-width:          0 !important;
+        margin-left:        var(--title-bar-controls-margin) !important;
+        border-radius:      0;
+        background-color:   rgba(0, 0, 0, 0) !important;
     }
 }
-
 .title-bar-text {
-    max-height: var(--title-bar-controls-height);
-    margin: 0 !important;
-    padding-left: var(--title-bar-padding) !important;
-    font-size: var(--title-bar-text);
-    text-shadow: var(--title-bar-text-shadow) var(--title-bar-text-shadow) #0f1089 !important;
+    max-height:     var(--title-bar-controls-height);
+    margin:         0 !important;
+    padding-left:   var(--title-bar-padding) !important;
+    font-size:      var(--title-bar-text);
+    text-shadow:    var(--title-bar-text-shadow) var(--title-bar-text-shadow) #0f1089 !important;
 }
 
 #max-button {
@@ -92,98 +126,175 @@
 
 #skype {
     position: absolute;
-    top: 2%;
-    left: 3%;
-    width: var(--skype-width);
+    top:    2%;
+    left:   3%;
+    width:  var(--skype-width);
     height: var(--skype-height);
 }
-
-/*::-webkit-scrollbar {
+/* TODO */
+::-webkit-scrollbar {
     width: 1vw !important;
+/*     height: var(--folder-height) !important; */
+}
+::-webkit-scrollbar-thumb {
+/*     background-position: 50%; */
+    background-size: 0.55vw !important;
+    border: 0.1vw solid #fff !important;
+    border-radius: 0.01vw !important;
+    box-shadow: inset -0.3vw 0 #bad1fc, inset 0.1vw 0.1vw #b7caf5 !important;
+/*     background-image: none !important; */
+}
+::-webkit-scrollbar-track {
+/*     height: 30vh !important; */
+    background-size: 1vw;
+}
+/* Up */
+/*::-webkit-scrollbar-button:single-button:vertical:decrement {
+    height: 1vh !important;
+    background-size: 1.2vh !important;
+    /*border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #555555 transparent;*/
 }*/
+/* Down */
+/*::-webkit-scrollbar-button:single-button:vertical:increment {
+    height: 4vh !important;
+    background-size: 1vh !important;
+    /*border-width: 8px 8px 0 8px;
+    border-color: #555555 transparent transparent transparent;*/
+}*/
+
+::-webkit-scrollbar-track {
+    height: 48vh !important;
+    &:vertical {
+        background-image: none !important;
+/*         background-image: svg-load("./icon/scroll-background.svg"); */
+    }
+    &:horizontal {
+/*         background-image: none !important; */
+/*         background-image: svg-load("./icon/scroll-background-horizontal.svg"); */
+    }
+}
+::-webkit-scrollbar-button {
+    &:vertical {
+        &:start {
+            height: 1vh !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-color: red !important;
+            background-size: 1vh !important;
+            background-image: none !important;
+/*             background-image: svg-load("./icon/scroll-arrow-up.svg"); */
+        }
+        &:end {
+            height: 1vh !important;
+            background-image: none !important;
+/*             background-image: svg-load("./icon/scroll-arrow-down.svg"); */
+        }
+    }
+}
 #folder {
     position: absolute;
-    top: 20%;
-    left: 40%;
-    width: var(--folder-width);
+    top:    20%;
+    left:   40%;
+    width:  var(--folder-width);
     height: var(--folder-height);
     .window-body {
         display: flex;
         flex-direction: column;
         height: calc(100% - var(--title-bar-height) - var(--title-bar-border) - 1.1vh);
-        margin: 0.2vw;
+        margin: 0.3vw;
         margin-top: 0;
         margin-bottom: 0;
         overflow-y: auto;
         overflow-x: hidden;
         z-index: 0;
+        scrollbar-width: 1vw;
         .files-row {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: left;
         }
     }
 }
 
 #riddle {
     position: absolute;
-    top: 15%;
-    left: 37%;
-    width: var(--riddle-width);
+    top:    15%;
+    left:   37%;
+    width:  var(--riddle-width);
     height: var(--riddle-height);
 }
 
-/* TODO */
 #cheats {
     position: absolute;
-    top: 38%;
-    left: 24%;
-    width: var(--cheats-width);
+    top:    38%;
+    left:   24%;
+    width:  var(--cheats-width);
     height: var(--cheats-height);
     .window-body {
         display: flex;
+        margin: 0;
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
+            width:  100%;
             height: 100%;
-            margin-top: 16px;
+            margin-top: var(--cheats-margin);
+            font-size:  var(--cheats-font-size);
             input {
-                width: 80%;
+                width:          var(--cheats-input-width);
+                height:         var(--cheats-input-height);
+                padding-left:   var(--cheats-input-padding-left);
+                padding-right:  var(--cheats-input-padding-left);
+                padding-top:    var(--cheats-input-padding-top);
+                padding-bottom: var(--cheats-input-padding-top);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                text-align: center;
+
+                font-size: inherit;
             }
             button {
-                width: 30px;
-                margin-top: 6px;
+                width:          var(--cheats-button-width);
+                height:         var(--cheats-button-height);
+                margin-top:     var(--cheats-button-margin);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                padding-left:   var(--cheats-button-padding);
+                padding-right:  var(--cheats-button-padding);
+                outline-width: 0.2vw;
+                font-size: inherit;
+                min-height: 0;
+                min-width:  0;
             }
         }
     }
 }
 
-/* TODO */
 #skype-call {
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 36%;
+    left:   36%;
     bottom: 10%;
-    width: 21.3vw;
-    height: 6vw;
-    border: 1px solid #080808;
-    border-radius: 0.3vw;
-    box-shadow: 0px 0px 2px black;
+    width:  var(--skype-call-width);
+    height: var(--skype-call-height);
+    border: var(--skype-call-border) solid #080808;
+    border-radius:  var(--skype-call-border-radius);
+    box-shadow:     0px 0px var(--skype-call-border) black;
     overflow: hidden;
     color: #d1d1d1;
     .skype-call-top {
         display: flex;
         justify-content: space-between;
-        height: 18%;
+        height: var(--skype-call-top-height);
         padding: 0.1vw;
         padding-left: 0.3vw;
         padding-right: 0.3vw;
         background-color: #252525;
         font-weight: 600;
-        font-size: 1.8rem;
+        font-size: var(--skype-call-top-font-size);
         a {
             display: flex;
             align-items: center;
@@ -200,37 +311,48 @@
     }
     .skype-call-bottom {
         display: flex;
-        height: 100%;
+        height: var(--skype-call-bottom-height);
         background-color: #4c4c4c;
-        border-top: 2px solid #595959;
+        border-top: var(--skype-call-bottom-border) solid #595959;
         img {
-            height: 4vw;
-            width: 4vw;
-            margin: 0.4vw;
+            height: var(--skype-call-image-height);
+            width:  var(--skype-call-image-height);
+            margin: var(--skype-call-image-margin);
+            border: var(--skype-call-image-border) solid #595959;
+            background-color: #303030;
+
         }
         .skype-call-text {
             align-items: center;
             padding-top: 0.3vw;
             color: white;
             font-weight: 800;
-            font-size: 2rem;
+            font-size: var(--skype-call-bottom-font-size);
         }
         .skype-call-right {
             display: flex;
             flex-direction: column;
             height: 100%;
-            width: auto;
+            width: var(--skype-call-buttons-width);
             .skype-call-space {
                 height: 100%;
             }
             .skype-call-buttons-container {
+                display: flex;
+                justify-content: start;
+                width: var(--skype-call-buttons-width);
+                height: var(--skype-call-button-width);
                 padding-bottom: 0.3vw;
                 .skype-call-button {
                     img {
-                        width: 2vw;
-                        height: 2vw;
+                        width: var(--skype-call-button-width);
+                        height: var(--skype-call-button-width);
                         margin: 0;
-                        margin-left: 0.5vw;
+                        border: none;
+                        background-color: transparent;
+                    }
+                    #skype-call-decline-img {
+                        margin-left: var(--skype-call-button-margin);
                     }
                 }
             }

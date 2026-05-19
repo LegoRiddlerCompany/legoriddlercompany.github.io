@@ -12,6 +12,10 @@ video {
     max-width: 100%;
 }
 
+a:focus {
+    outline: none !important;
+}
+
 html {
     width: 100vw;
     height: 100vh;
@@ -35,8 +39,4 @@ main {
     background-size: cover;
     height: 95%;
 
-}
-
-a:focus {
-    outline: none !important;
 }
