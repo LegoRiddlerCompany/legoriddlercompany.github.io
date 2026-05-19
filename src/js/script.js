@@ -5,7 +5,7 @@ const cheatsForm = document.getElementById('cheats-form');
 const timer      = document.getElementById('timer');
 
 
-const riddlesNumber   = 40;//getRiddlesNumber();
+const riddlesNumber   = 37;//getRiddlesNumber();
 const folderRowNumber = Math.ceil(37/5);
 
 let riddlesUnlocked = 1;
@@ -26,10 +26,10 @@ for(let r = 0; r < folderRowNumber; r++) {
     row.className = 'files-row';
 
     for(let f = 0; f < 5; f++) {
-        let fileNum = (5 * r) + f + 1;
-        if(fileNum >= riddlesNumber + 1) {
-            break;
-        }
+        let fileNum     = (5 * r) + f + 1;
+        let fileNumText = '' + fileNum;
+        if(fileNum >= riddlesNumber + 1) { break; }
+        if(fileNum < 10) { fileNumText = '0' + fileNum; }
 
         const container = document.createElement('div');
         container.className = 'icon-container';
@@ -51,7 +51,7 @@ for(let r = 0; r < folderRowNumber; r++) {
 
         const span = document.createElement('span');
         span.className = 'icon-name';
-        span.innerText = "zagadka" + fileNum + ".exe";
+        span.innerText = "zagadka" + fileNumText + ".exe";
 
         container.appendChild(a);
         container.appendChild(span);

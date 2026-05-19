@@ -1,0 +1,44 @@
+:root {
+    --icon-width:       4vw;
+    --icon-height:      var(--icon-width);
+    --icon-margin:      calc(var(--icon-width) / 4);
+    --icon-name-width:  calc(var(--icon-width) * 1.9);
+    --icon-font-size:   calc(var(--icon-width) / 4);
+    --icon-font-shadow: calc(var(--icon-width) / 64);
+
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: var(--icon-margin);
+    margin-top: calc(var(--icon-margin) / 2);
+    height: min-content;
+    /*height: 86px;
+     *   width: 64px;*/
+}
+
+.icon {
+    width: var(--icon-width);
+    height: var(--icon-height);
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.icon-name {
+    max-width: var(--icon-name-width);
+    font-size: var(--icon-font-size);
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    text-shadow: var(--icon-font-shadow) var(--icon-font-shadow) calc(var(--icon-font-shadow) * 2) black;
+}
+
+#witam {
+position: absolute;
+top: 40%;
+left: 45.5%;
+}
