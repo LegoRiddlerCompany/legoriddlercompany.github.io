@@ -101,6 +101,8 @@ function openRiddle(riddleNumber) {
     currentRiddle = riddleNumber;
     currentTry = 1;
 
+    hideHint();
+
     riddleElement.removeAttribute('hidden');
     riddleBarElement.removeAttribute('hidden');
 

@@ -1,16 +1,4 @@
-const riddlesList = [
-    {
-        riddle: "zagadka testowa 123 test test test",
-        hint: "odpowiedz to test",
-        answers: ["test", "tset", "tes", "dupa"]
-    },
-    {
-        riddle: "zagadka testowa 123 test test test",
-        hint: "odpowiedz to test",
-        answers: ["test", "tset", "tes", "dupa"]
-    },
-
-]
+const hintElement = document.getElementById("riddle-hint");
 
 function getRiddlesNumber() {
     return riddlesList.length;
@@ -41,4 +29,12 @@ function getRiddle(id) {
         return "";
     }
     return riddlesList[id];
+}
+
+function showHint() {
+    hintElement.removeAttribute('hidden');
+}
+
+function hideHint() {
+    hintElement.hidden = "hidden";
 }

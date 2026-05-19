@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/src/css/icon.css">
     <link rel="stylesheet" href="https://unpkg.com/xp.css" />
     <script defer src="/src/js/window.js"></script>
+    <script defer src="/src/js/riddleslist.js"></script>
     <script defer src="/src/js/riddles.js"></script>
     <script defer src="/src/js/audio.js"></script>
     <script defer src="/src/js/script.js"></script>
@@ -69,9 +70,9 @@
             </div>
             <div class="window-body">
                 <p id="riddle-text"></p>
-                <p id="riddle-hint"></p>
+                <p id="riddle-hint" hidden></p>
                 <form id="form" method="post">
-                    <input type="text" id="answer" name="answer" placeholder="Odpowiedź" required>
+                    <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" required>
 
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>

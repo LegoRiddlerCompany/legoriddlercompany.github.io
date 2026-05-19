@@ -5,7 +5,7 @@ const cheatsForm = document.getElementById('cheats-form');
 const timer      = document.getElementById('timer');
 
 
-const riddlesNumber   = 37;//getRiddlesNumber();
+const riddlesNumber   = getRiddlesNumber();
 const folderRowNumber = Math.ceil(37/5);
 
 let riddlesUnlocked = 1;
@@ -80,6 +80,7 @@ form.addEventListener('submit', (event) => {
     } else {
         if(currentTry === 1) {
             alert("nie udało ci się batmanie, zostały jeszcze dwie próby");
+            showHint();
         } else if(currentTry === 2) {
             alert("znowu ci się nie udało batmanie, została jeszcze jedna próba");
         } else if(currentTry >= 3) {

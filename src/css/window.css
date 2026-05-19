@@ -19,6 +19,7 @@
 
     --riddle-height:                66vh;
     --riddle-width:                 62vw;
+    --riddle-font-size:             2vh;
 
     --cheats-height:                18vh;
     --cheats-width:                 15vw;
@@ -219,10 +220,53 @@
 
 #riddle {
     position: absolute;
+    justify-content: center;
     top:    15%;
     left:   37%;
     width:  var(--riddle-width);
     height: var(--riddle-height);
+    font-size: var(--riddle-font-size);
+    .window-body {
+        p {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:  100%;
+            height: 100%;
+            margin-top: var(--cheats-margin);
+            font-size:  var(--cheats-font-size);
+            input {
+                width:          20vw;
+                height:         var(--cheats-input-height);
+                padding-left:   var(--cheats-input-padding-left);
+                padding-right:  var(--cheats-input-padding-left);
+                padding-top:    var(--cheats-input-padding-top);
+                padding-bottom: var(--cheats-input-padding-top);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                text-align: center;
+
+                font-size: inherit;
+            }
+            button {
+                width:          var(--cheats-button-width);
+                height:         var(--cheats-button-height);
+                margin-top:     var(--cheats-button-margin);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                padding-left:   var(--cheats-button-padding);
+                padding-right:  var(--cheats-button-padding);
+                outline-width: 0.2vw;
+                font-size: inherit;
+                min-height: 0;
+                min-width:  0;
+            }
+        }
+    }
+
 }
 
 #cheats {
