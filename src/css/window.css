@@ -21,8 +21,8 @@
     --riddle-width:                 62vw;
     --riddle-font-size:             2vh;
 
-    --chat-height:                  36vh;
-    --chat-width:                   36vw;
+    --chat-height:                  44vh;
+    --chat-width:                   38vw;
     --chat-margin:                  0.26vw;
     --chat-padding:                 0.21vw;
     --chat-body-height:             calc(var(--chat-height) - var(--title-bar-height) - var(--title-bar-border) - var(--window-padding) - var(--chat-padding));
@@ -414,8 +414,8 @@
 #chat {
     justify-content: center;
     position: absolute;
-    bottom: 10%;
-    left:   2%;
+    bottom: 7%;
+    left:   0.3vw;
     width:  var(--chat-width);
     height: var(--chat-height);
     font-size: var(--riddle-font-size);

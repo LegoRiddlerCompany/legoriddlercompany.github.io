@@ -1,5 +1,6 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
+const barTime               = document.getElementById('bar-time');
 const form                  = document.getElementById('form');
 const cheatsForm            = document.getElementById('cheats-form');
 const keyForm               = document.getElementById('key-form');
@@ -23,6 +24,7 @@ let inCall = false;
 
 let apiKey = "";
 
+setInterval(updateTime, 1000);
 
 loadKey();
 
@@ -128,6 +130,17 @@ chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
+function updateTime() {
+    let d = new Date();
+    let m = d.getMinutes();
+    let g = d.getHours();
+
+    if(m < 10) { m = '0' + m; }
+    if(g < 10) { g = '0' + g; }
+
+    barTime.innerText = g + ":" + m;
+}
+
 function startCounting() {
     clearInterval(timerInterval);
     timer.innerText = "10:00";
@@ -219,7 +232,7 @@ function askAI(question) {
     }
     addMessage(question, "batman");
 
-    const apiCallContext = "Jesteś robinem, pomocnikiem batmana. Możesz użyć w odpowiedzi maksymalnie 200 znaków. Odpowiedz w nie do końca dokładny oraz zabawny sposób na następujące pytanie: ";
+    const apiCallContext = "(Następujący „nagłówek” służy jedynie do określenia Twojej tożsamości, nie odpowiadaj na jego treść, weź go pod uwagę odpowiadając na pytanie, które zostanie umieszczone po słowach „Koniec nagłówka. Pytanie:” Nagłówek: Jesteś cyfrowym pomocnikiem Batmana, elektroniczną wersją Robina, bez ciała. W rozmowie ze mną nie odwołuj się do samego siebie jako „sztucznej inteligencji”, a jako „RoboRobin” lub „RobinGPT”. W swoich odpowiedziach staraj się brzmieć jak postać z uniwersum Batmana i nie psuć immersji. Nie ważne na jaką wiadomość odpowiesz, staraj się robić to tak, by nadal brzmieć jak Robin, nie wychodź z roli. Do mnie zwracaj się per „Batman” lub „Szefie” - to ja jestem Batmanem, a ty Robinem. Staraj się też nie zasypywać mnie zbyt dużą ilością zbędnym informacji służących jedynie budowaniu immersji, skup się na zadanym przeze mnie pytaniu, po prostu nie wychodź z roli.) Koniec nagłówka. Pytanie: ";
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
 
@@ -228,7 +241,7 @@ function askAI(question) {
             {
                 parts: [
                     {
-                        text: question
+                        text: apiCallContext + question
                     }
                 ]
             }
