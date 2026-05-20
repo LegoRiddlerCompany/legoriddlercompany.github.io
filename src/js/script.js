@@ -16,10 +16,43 @@ let timerInterval = null;
 
 let inCall = false;
 
-// <div id="zagadka" class="icon-container">
-//  <a class="icon" href="javascript:void(0)" onclick="openRiddle(id)"><img src="/assets/kat1.png"></a>
-//  <span class="icon-name">zagadka1.exe</span>
-// </div>
+
+
+function askAI(question) {
+    const apiCallContext = "Jesteś robinem, pomocnikiem batmana. Możesz użyć w odpowiedzi maksymalnie 200 znaków. Odpowiedz w nie do końca dokładny oraz zabawny sposób na następujące pytanie: ";
+
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+
+    const data = {
+        contents: [
+            {
+                parts: [
+                    {
+                        text: apiCallContext + question
+                    }
+                ]
+            }
+        ]
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': process.env.OPENAI_API_KEY
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.candidates[0].content.parts[0].text);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+askAI("opisz jak wyglada szczerbaty joker");
 
 for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
