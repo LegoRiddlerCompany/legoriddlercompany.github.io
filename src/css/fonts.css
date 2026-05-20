@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Gothic";
+    src: url(/assets/fonts/ScienceGothic-Regular.ttf);
+}
+@font-face {
+    font-family: "GothicBold";
+    src: url(/assets/fonts/ScienceGothic-SemiBold.ttf);
+}
