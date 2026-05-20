@@ -5,12 +5,13 @@ const cheatsForm            = document.getElementById('cheats-form');
 const keyForm               = document.getElementById('key-form');
 const chatForm              = document.getElementById('chat-form');
 const chatAnswerContainer   = document.getElementById('chat-answer-container');
-const chatAnswer            = document.getElementById('chat-answer');
 const timer                 = document.getElementById('timer');
 
 
 const riddlesNumber   = getRiddlesNumber();
 const folderRowNumber = Math.ceil(37/5);
+
+const robinUnavailable = "Jestem niedostępny, zadzwoń później";
 
 let riddlesUnlocked = 1;
 let currentRiddle = 0;
@@ -190,14 +191,37 @@ function openChat() {
     chatAnswerContainer.removeAttribute('hidden');
 }
 
+function resetKey() {
+    keyForm.removeAttribute('hidden');
+    chatForm.hidden = "hidden";
+    chatAnswerContainer.hidden = "hidden";
+    localStorage.removeItem('akey');
+    apiKey = "";
+}
+
+function addMessage(msg, who) {
+    let p = document.createElement('p');
+    p.className = "chat-answer";
+    p.innerText = msg;
+
+    if(who === "robin") {
+        p.id = "robin"
+    } else {
+        p.id = "batman"
+    }
+
+    chatAnswerContainer.appendChild(p);
+}
+
 function askAI(question) {
     if(apiKey === "") {
         return;
     }
+    addMessage(question, "batman");
 
     const apiCallContext = "Jesteś robinem, pomocnikiem batmana. Możesz użyć w odpowiedzi maksymalnie 200 znaków. Odpowiedz w nie do końca dokładny oraz zabawny sposób na następujące pytanie: ";
 
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
 
     const data = {
         contents: [
@@ -222,10 +246,11 @@ function askAI(question) {
     .then(response => response.json())
     .then(data => {
         let responseText = data.candidates[0].content.parts[0].text;
-        // console.log(data.candidates[0].content.parts[0].text);
-        chatAnswer.innerText = responseText;
+        addMessage(responseText, "robin");
+        // chatAnswer.innerText = responseText;
     })
     .catch(error => {
         console.error('Error:', error);
+        addMessage(robinUnavailable, "robin");
     });
 }

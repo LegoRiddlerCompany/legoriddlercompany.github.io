@@ -94,8 +94,9 @@
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
                 <div id="chat-answer-container" hidden>
-                    <span id="chat-answer">tu pojawi sie odpowiedz(może to zająć chwilke)<span>
+                    <p id="reset" class="chat-answer">Resetowanie klucza: <button id="key-reset" onclick="resetKey()">⟲</button><p>
                 </div>
+<!--                 <div id="chat-shadow"></div> -->
                 <form id="chat-form" method="post" hidden>
                     <input type="text" minlength="1" id="cheats-input" name="input" placeholder="Pytanie do robina" required>
                     <button type="submit" onclick="clickSound()">></button>
