@@ -73,10 +73,33 @@
                 <p id="riddle-hint" hidden></p>
                 <form id="form" method="post">
                     <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" required>
-
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
                 <p id="timer">10:00</p>
+            </div>
+        </div>
+
+        <div id="chat" class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">robin.exe</div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="minimizeCheats()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="maximizeCheats()"></button>
+                    <button                 aria-label="Close"    onclick="closeCheats()"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <form id="key-form" method="post">
+                    <input type="password" minlength="1" maxlength="40" id="cheats-input" name="input" placeholder="Wklej klucz" required>
+                    <button type="submit" onclick="clickSound()">Ok</button>
+                </form>
+                <div id="chat-answer-container" hidden>
+                    <span id="chat-answer">tu pojawi sie odpowiedz(może to zająć chwilke)<span>
+                </div>
+                <form id="chat-form" method="post" hidden>
+                    <input type="text" minlength="1" maxlength="50" id="cheats-input" name="input" placeholder="Pytanie do robina" required>
+                    <button type="submit" onclick="clickSound()">Ok</button>
+                </form>
             </div>
         </div>
 
@@ -92,11 +115,11 @@
             <div class="window-body">
                 <form id="cheats-form" method="post">
                     <input type="text" pattern="\d*" min="1" minlength="1" maxlength="3" id="cheats-input" name="input" placeholder="Numer zagadki" required>
-
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
             </div>
         </div>
+
         <div id="volume" class="volume-container" hidden>
             <div class="field-row">
                 <div class="is-vertical">

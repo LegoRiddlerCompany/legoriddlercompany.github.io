@@ -1,8 +1,12 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-const form       = document.getElementById('form');
-const cheatsForm = document.getElementById('cheats-form');
-const timer      = document.getElementById('timer');
+const form                  = document.getElementById('form');
+const cheatsForm            = document.getElementById('cheats-form');
+const keyForm               = document.getElementById('key-form');
+const chatForm              = document.getElementById('chat-form');
+const chatAnswerContainer   = document.getElementById('chat-answer-container');
+const chatAnswer            = document.getElementById('chat-answer');
+const timer                 = document.getElementById('timer');
 
 
 const riddlesNumber   = getRiddlesNumber();
@@ -16,43 +20,10 @@ let timerInterval = null;
 
 let inCall = false;
 
+let apiKey = "";
 
 
-function askAI(question) {
-    const apiCallContext = "Jesteś robinem, pomocnikiem batmana. Możesz użyć w odpowiedzi maksymalnie 200 znaków. Odpowiedz w nie do końca dokładny oraz zabawny sposób na następujące pytanie: ";
-
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
-
-    const data = {
-        contents: [
-            {
-                parts: [
-                    {
-                        text: apiCallContext + question
-                    }
-                ]
-            }
-        ]
-    };
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-goog-api-key': process.env.OPENAI_API_KEY
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.candidates[0].content.parts[0].text);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-askAI("opisz jak wyglada szczerbaty joker");
+loadKey();
 
 for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
@@ -138,6 +109,24 @@ cheatsForm.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
+keyForm.addEventListener('submit', (event) => {
+    let key = keyForm.input.value;
+    if(key.length === 39) {
+        apiKey = key;
+        saveKey();
+        openChat();
+    }
+    event.preventDefault();
+});
+
+chatForm.addEventListener('submit', (event) => {
+    let question = chatForm.input.value;
+
+    askAI(question);
+
+    event.preventDefault();
+});
+
 function startCounting() {
     clearInterval(timerInterval);
     timer.innerText = "10:00";
@@ -179,4 +168,64 @@ function answerCall(declined) {
         closeCall();
         inCall = true;
     }
+}
+
+function loadKey() {
+    let key = localStorage.getItem('akey');
+    if(key !== null) {
+        apiKey = key;
+        openChat();
+    }
+}
+
+function saveKey() {
+    if(apiKey !== "") {
+        localStorage.setItem('akey', apiKey);
+    }
+}
+
+function openChat() {
+    keyForm.hidden = "hidden";
+    chatForm.removeAttribute('hidden');
+    chatAnswerContainer.removeAttribute('hidden');
+}
+
+function askAI(question) {
+    if(apiKey === "") {
+        return;
+    }
+
+    const apiCallContext = "Jesteś robinem, pomocnikiem batmana. Możesz użyć w odpowiedzi maksymalnie 200 znaków. Odpowiedz w nie do końca dokładny oraz zabawny sposób na następujące pytanie: ";
+
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+
+    const data = {
+        contents: [
+            {
+                parts: [
+                    {
+                        text: question
+                    }
+                ]
+            }
+        ]
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': apiKey
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        let responseText = data.candidates[0].content.parts[0].text;
+        // console.log(data.candidates[0].content.parts[0].text);
+        chatAnswer.innerText = responseText;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
