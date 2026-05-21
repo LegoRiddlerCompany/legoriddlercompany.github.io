@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/src/css/footer.css">
     <link rel="stylesheet" href="/src/css/window.css">
     <link rel="stylesheet" href="/src/css/icon.css">
-    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
     <script defer src="/src/js/window.js"></script>
     <script defer src="/src/js/riddleslist.js"></script>
     <script defer src="/src/js/riddles.js"></script>
@@ -28,18 +27,25 @@
             <a class="icon" href="javascript:void(0)" onclick="openFolder()"><img src="/assets/img/icon/folder.png"></a>
             <span class="icon-name">Witam Cię Batmanie!</span>
         </div>
-        <div id="skypeicon" class="icon-container">
+        <div id="skype-icon" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="openSkype()"><img src="/assets/img/icon/skype.png"></a>
             <span class="icon-name">Skype</span>
+        </div>
+        <div id="chat-icon" class="icon-container">
+            <a class="icon" href="javascript:void(0)" onclick="openChat()"><img src="/assets/img/icon/chat.png"></a>
+            <span class="icon-name">Robin</span>
         </div>
 
         <div id="skype" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">Skype.exe</div>
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-text">Skype</div>
+                </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeSkype()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeSkype()"></button>
-                    <button                 aria-label="Close"    onclick="closeSkype()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="closeSkype()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -49,11 +55,14 @@
 
         <div id="folder" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">Witam Cię Batmanie!</div>
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-text">Witam Cię Batmanie!</div>
+                </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeFolder()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeFolder()"></button>
-                    <button                 aria-label="Close"    onclick="closeFolder()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="closeFolder()"></button>
                 </div>
             </div>
             <div id="folder-body" class="window-body">
@@ -62,11 +71,14 @@
 
         <div id="riddle" class="window" hidden>
             <div class="title-bar">
-                <div id="riddle-window-name" class="title-bar-text">?????</div>
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div id="riddle-window-name" class="title-bar-text">?????</div>
+                </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeRiddle()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeRiddle()"></button>
-                    <button                 aria-label="Close"    onclick="closeRiddle()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="closeRiddle()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -80,13 +92,16 @@
             </div>
         </div>
 
-        <div id="chat" class="window">
+        <div id="chat" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">robin.exe</div>
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/chat.png"></div>
+                    <div class="title-bar-text">Robin</div>
+                </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeCheats()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeCheats()"></button>
-                    <button                 aria-label="Close"    onclick="closeCheats()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="minimizeChat()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="maximizeChat()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="closeChat()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -107,11 +122,14 @@
 
         <div id="cheats" class="window" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">Cheats.exe</div>
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-text">Cheats</div>
+                </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="minimizeCheats()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="maximizeCheats()"></button>
-                    <button                 aria-label="Close"    onclick="closeCheats()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="closeCheats()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -150,7 +168,7 @@
     <footer>
         <div class="bar-left">
             <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/questionmark.png"></a>
-            <div class="divider"></div>
+<!--             <div class="divider"></div> -->
             <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="toggleSkype()" hidden><img src="/assets/img/icon/skype.png"></a>
             <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="toggleFolder()" hidden><img src="/assets/img/icon/folder.png"></a>
             <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="toggleRiddle()" hidden><img src="/assets/img/icon/riddle.png"></a>

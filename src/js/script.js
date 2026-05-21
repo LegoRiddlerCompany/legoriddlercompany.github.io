@@ -26,7 +26,7 @@ let apiKey = "";
 
 setInterval(updateTime, 1000);
 
-loadKey();
+//loadKey();
 
 for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
@@ -188,7 +188,7 @@ function loadKey() {
     let key = localStorage.getItem('akey');
     if(key !== null) {
         apiKey = key;
-        openChat();
+        switchToChat();
     }
 }
 
@@ -198,7 +198,7 @@ function saveKey() {
     }
 }
 
-function openChat() {
+function switchToChat() {
     keyForm.hidden = "hidden";
     chatForm.removeAttribute('hidden');
     chatAnswerContainer.removeAttribute('hidden');

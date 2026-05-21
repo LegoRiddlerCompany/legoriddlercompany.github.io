@@ -6,6 +6,7 @@ const folderBodyElement     = document.getElementById('folder-body');
 const riddleElement         = document.getElementById('riddle');
 const riddleBarElement      = document.getElementById('bar-riddle');
 const cheatsElement         = document.getElementById('cheats');
+const chatElement           = document.getElementById('chat');
 const volumeElement         = document.getElementById('volume');
 const volumeBarElement      = document.getElementById('bar-volume');
 const skypeCall             = document.getElementById('skype-call');
@@ -148,7 +149,7 @@ function closeRiddle() {
 }
 //////////////////
 
-// UNLOCK
+// CHEATS
 function openCheats() {
     cheatsElement.removeAttribute('hidden');
     clickSound();
@@ -176,6 +177,25 @@ function toggleVolume() {
         volumeElement.removeAttribute('hidden');
         volumeStatus = windowStatus.OPEN;
     }
+    clickSound();
+}
+//////////////////
+
+// ROBIN
+function openChat() {
+    chatElement.removeAttribute('hidden');
+    loadKey();
+    clickSound();
+}
+function minimizeChat() {
+    chatElement.hidden = 'hidden';
+    clickSound();
+}
+function maximizeChat() {
+    clickSound();
+}
+function closeChat() {
+    chatElement.hidden = 'hidden';
     clickSound();
 }
 //////////////////

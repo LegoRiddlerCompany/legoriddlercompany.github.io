@@ -1,8 +1,9 @@
 :root {
-    --icon-width:       4vw;
+    --icon-width:       3vw;
     --icon-height:      var(--icon-width);
     --icon-margin:      calc(var(--icon-width) / 4);
-    --icon-name-width:  calc(var(--icon-width) * 1.9);
+/*     --icon-name-width:  calc(var(--icon-width) * 1.9); */
+    --icon-name-width:  calc(var(--icon-width) * 2.3);
     --icon-font-size:   calc(var(--icon-width) / 4);
     --icon-font-shadow: calc(var(--icon-width) / 64);
 
@@ -20,7 +21,7 @@
 }
 
 .icon {
-    width: var(--icon-width);
+    max-width: var(--icon-width);
     height: var(--icon-height);
     img {
         width: 100%;
