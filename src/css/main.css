@@ -34,7 +34,7 @@ body{
 main {
     display: flex;
     flex-grow: 1;
-    background-color: black;
+/*     background-color: black; */
 /*     background-image: url('/assets/img/background/0.webp'); */
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,4 +42,16 @@ main {
 
     animation: fadeIn 5s linear;
     animation-fill-mode: both;
+}
+
+#background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

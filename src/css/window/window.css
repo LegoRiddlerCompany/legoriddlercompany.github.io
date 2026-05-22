@@ -1,11 +1,11 @@
 :root {
-    --title-bar-height:             3vh; /* 21 */
+    --title-bar-height:             2.8vh; /* 21 */
     --title-bar-controls-height:    calc(var(--title-bar-height) / 7 * 6);
     --title-bar-controls-margin:    calc(var(--title-bar-height) * 0.1);
     --title-bar-padding:            calc(var(--title-bar-height) / 7);
     --title-bar-border:             calc(var(--title-bar-height) / 21);
     --title-bar-border-radius:      calc(var(--title-bar-height) / 3);
-    --title-bar-text:               calc(var(--title-bar-height) * 0.66);
+    --title-bar-text:               calc(var(--title-bar-height) * 0.7);
     --title-bar-text-shadow:        calc(var(--title-bar-height) / 21);
     --window-box-shadow-size:       calc(var(--title-bar-height) / 21);
     --window-padding:               calc(var(--title-bar-height) / 7);
@@ -71,14 +71,16 @@
 
 .window {
     z-index: 0;
-    padding-bottom:             var(--window-padding) !important;
+    padding-bottom: var(--window-padding);
 
     background-color: #2f2f2f;
-    box-shadow: inset 0 0 1vw #4f4f4f;
+    box-shadow: inset 0 0 1vw #4f4f4f,
+                0 0 0.6vw black;
 }
 .window-body {
 /*     margin: var(--window-body-margin) !important; */
 /*     margin: 0 !important; */
+    box-shadow: inset 0 0.2vh 1vh black;
 }
 .title-bar {
     display: flex;
@@ -86,9 +88,11 @@
     justify-content: space-between;
     align-items: center;
     background-color: green;
-    height:         var(--title-bar-height) !important;
-    padding:        var(--title-bar-padding) !important;
-    padding-right:  calc(var(--title-bar-padding) / 3 * 5) !important;
+    height:         var(--title-bar-height);
+    padding:        var(--title-bar-padding);
+    padding-right:  calc(var(--title-bar-padding) * 1.6);
+    padding-left:   calc(var(--title-bar-padding) * 1.6);
+    box-shadow: inset 0 0 1vw rgba(0, 0, 0, 0.5);
 }
 .title-bar-controls {
     display: flex;
@@ -123,13 +127,14 @@
 .title-bar-text {
     max-height:     var(--title-bar-controls-height);
     margin:         0 !important;
-    padding-left:   var(--title-bar-padding) !important;
+    padding-left:   calc(var(--title-bar-padding) * 2);
     font-size:      var(--title-bar-text);
     /*align-content: center;
     text-align: center;
     align-items: center;*/
     color: white;
-/*     text-shadow:    var(--title-bar-text-shadow) var(--title-bar-text-shadow) #0f1089 !important; */
+    text-shadow: 0 0 0.7vw black;
+    text-shadow: ;
 }
 .checkbox-action {
     display: none;

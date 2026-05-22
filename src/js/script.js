@@ -1,4 +1,5 @@
-const main                  = document.getElementsByTagName('main')[0];
+// const main                  = document.getElementsByTagName('main')[0];
+const background            = document.getElementById('background');
 const barTime               = document.getElementById('bar-time');
 const form                  = document.getElementById('form');
 const cheatsForm            = document.getElementById('cheats-form');
@@ -269,12 +270,15 @@ function setBackgroundAutoChange() {
         clearInterval(backgroundInterval);
     }
 }
+function setBackground() {
+    background.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
+}
 function loadBackground() {
     currentBackground = parseInt(localStorage.getItem('bg'));
     if(isNaN(currentBackground)) {
         currentBackground = 0;
     }
-    main.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
+    setBackground();
 }
 function saveBackground() {
     localStorage.setItem('bg', currentBackground);
@@ -293,6 +297,6 @@ function changeBackground(direction) {
     if(currentBackground < 0) {
         currentBackground = backgroundsNumber - 1;
     }
-    main.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
+    setBackground();
     saveBackground();
 }
