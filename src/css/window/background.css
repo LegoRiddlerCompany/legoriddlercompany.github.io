@@ -1,0 +1,79 @@
+#background-change  {
+    position: absolute;
+    top:    0.8%;
+    right:  0.5%;
+    width:  var(--bg-width);
+    height: var(--bg-height);
+    .window-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--bg-padding);
+        font-size: var(--bg-font-size);
+        .background-controls-up {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.8vh;
+            button {
+                width: 3vw;
+                height: 4vh;
+                padding: 0.2vh;
+                padding-left: 1vh;
+                padding-right: 1vh;
+                background-color: #2f2f2f;
+                border: 0.2vw solid green;
+                border-radius: 0.4vw;
+                color: #f2f2f2;
+                font-family: inherit;
+                font-size: inherit;
+                &:hover {
+                    background-color: #3f3f3f;
+                }
+                &:active {
+                    background-color: #1f1f1f;
+                }
+            }
+            #background-prev {
+                margin-right: var(--bg-button-margin);
+            }
+            #background-next {
+                margin-left: var(--bg-button-margin);
+            }
+        }
+        .background-controls-down {
+            display: flex;
+            justify-content: center;
+            color: white;
+            .checkbox-container {
+                display: flex;
+                flex-direction: row;
+                .checkbox-view {
+                    display: inline-block;
+                    width: 2vh;
+                    height: 2vh;
+                    margin-right: 0.4vw;
+                    background-color: #2f2f2f;
+                    border: 0.2vw solid green;
+                    border-radius: 0.4vw;
+                    &:hover {
+                        background-color: #3f3f3f;
+                    }
+                    &:active {
+                        background-color: #003f00;
+/*                         background-color: #1f1f1f; */
+                    }
+                }
+                .checkbox-action:checked + .checkbox-view {
+                    background-color: #004f00;
+                    &:hover {
+                        background-color: #005f00;
+                    }
+                    &:active {
+                        background-color: #003f00;
+                    }
+                }
+            }
+        }
+/*         height: calc(100% - var(--title-bar-height) - var(--title-bar-border) - 1.1vh); */
+    }
+}

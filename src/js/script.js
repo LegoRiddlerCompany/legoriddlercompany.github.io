@@ -1,5 +1,4 @@
-const delay = ms => new Promise(res => setTimeout(res, ms));
-
+const main                  = document.getElementsByTagName('main')[0];
 const barTime               = document.getElementById('bar-time');
 const form                  = document.getElementById('form');
 const cheatsForm            = document.getElementById('cheats-form');
@@ -7,26 +6,20 @@ const keyForm               = document.getElementById('key-form');
 const chatForm              = document.getElementById('chat-form');
 const chatAnswerContainer   = document.getElementById('chat-answer-container');
 const timer                 = document.getElementById('timer');
+const autoBackground        = document.getElementById('auto-background');
 
 
-const riddlesNumber   = getRiddlesNumber();
-const folderRowNumber = Math.ceil(37/5);
+const riddlesNumber = getRiddlesNumber();
+const folderRowNumber = Math.ceil(riddlesNumber/5);
 
-const robinUnavailable = "Jestem niedostępny, zadzwoń później";
+const backgroundsNumber = 9;
+let currentBackground = 0;
+let backgroundInterval = null;
 
-let riddlesUnlocked = 1;
-let currentRiddle = 0;
-let currentTry = 1;
-
-let timerInterval = null;
-
-let inCall = false;
-
-let apiKey = "";
+loadBackground();
 
 setInterval(updateTime, 1000);
 
-//loadKey();
 
 for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
@@ -49,7 +42,7 @@ for(let r = 0; r < folderRowNumber; r++) {
         a.className = 'icon';
         a.href = 'javascript:void(0)';
         // a.onclick = openRiddle(fileNum);
-        a.setAttribute('onclick', 'openRiddle(' + fileNum + ')');
+        a.setAttribute('onclick', 'riddle.open(' + fileNum + ')');
 
         const img = document.createElement('img');
         img.src = '/assets/img/icon/riddle.png';
@@ -65,7 +58,7 @@ for(let r = 0; r < folderRowNumber; r++) {
 
         row.appendChild(container);
     }
-    folderBodyElement.appendChild(row);
+    folder.appendChildElement(row);
 }
 
 
@@ -177,7 +170,7 @@ function answerCall(declined) {
         skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
     } else {
         // Połączenie itd
-        openSkype();
+        skype.open();
         stopSkypeCallSound();
         closeCall();
         inCall = true;
@@ -266,4 +259,37 @@ function askAI(question) {
         console.error('Error:', error);
         addMessage(robinUnavailable, "robin");
     });
+}
+
+function setBackgroundAutoChange() {
+    let autoplay = autoBackground.checked;
+    if(autoplay) {
+        backgroundInterval = setInterval(nextBackground, 1000);
+    } else {
+        clearInterval(backgroundInterval);
+    }
+}
+function loadBackground() {
+    currentBackground = parseInt(localStorage.getItem('bg'));
+    main.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
+}
+function saveBackground() {
+    localStorage.setItem('bg', currentBackground);
+}
+function nextBackground() {
+    changeBackground(1);
+}
+function prevBackground() {
+    changeBackground(-1);
+}
+function changeBackground(direction) {
+    currentBackground += parseInt(direction);
+    if(currentBackground >= backgroundsNumber) {
+        currentBackground = 0;
+    }
+    if(currentBackground < 0) {
+        currentBackground = backgroundsNumber - 1;
+    }
+    main.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
+    saveBackground();
 }

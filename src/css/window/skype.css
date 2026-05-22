@@ -1,0 +1,95 @@
+#skype {
+    position: absolute;
+    top:    2%;
+    left:   3%;
+    width:  var(--skype-width);
+    height: var(--skype-height);
+}
+
+#skype-call {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left:   36%;
+    bottom: 10%;
+    width:  var(--skype-call-width);
+    height: var(--skype-call-height);
+    border: var(--skype-call-border) solid #080808;
+    border-radius:  var(--skype-call-border-radius);
+    box-shadow:     0px 0px var(--skype-call-border) black;
+    overflow: hidden;
+    color: #d1d1d1;
+    .skype-call-top {
+        display: flex;
+        justify-content: space-between;
+        height: var(--skype-call-top-height);
+        padding: 0.1vw;
+        padding-left: 0.3vw;
+        padding-right: 0.3vw;
+        background-color: #252525;
+        font-weight: 600;
+        font-size: var(--skype-call-top-font-size);
+        a {
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width: 0.8vw;
+            height: 0.8vw;
+            margin-top: 0.1vw;
+            background-color: #d1d1d1;
+            color: #252525;
+            text-decoration: none;
+            border: 0px 0px;
+            border-radius: 2vw;
+        }
+    }
+    .skype-call-bottom {
+        display: flex;
+        height: var(--skype-call-bottom-height);
+        background-color: #4c4c4c;
+        border-top: var(--skype-call-bottom-border) solid #595959;
+        img {
+            height: var(--skype-call-image-height);
+            width:  var(--skype-call-image-height);
+            margin: var(--skype-call-image-margin);
+            border: var(--skype-call-image-border) solid #595959;
+            background-color: #303030;
+
+        }
+        .skype-call-text {
+            align-items: center;
+            padding-top: 0.3vw;
+            color: white;
+            font-weight: 800;
+            font-size: var(--skype-call-bottom-font-size);
+        }
+        .skype-call-right {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: var(--skype-call-buttons-width);
+            .skype-call-space {
+                height: 100%;
+            }
+            .skype-call-buttons-container {
+                display: flex;
+                justify-content: start;
+                width: var(--skype-call-buttons-width);
+                height: var(--skype-call-button-width);
+                padding-bottom: 0.3vw;
+                .skype-call-button {
+                    img {
+                        width: var(--skype-call-button-width);
+                        height: var(--skype-call-button-width);
+                        margin: 0;
+                        border: none;
+                        background-color: transparent;
+                    }
+                    #skype-call-decline-img {
+                    margin-left: var(--skype-call-button-margin);
+                    }
+                }
+            }
+        }
+    }
+}

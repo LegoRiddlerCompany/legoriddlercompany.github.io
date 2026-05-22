@@ -5,35 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zagadka.pl</title>
     <link rel="stylesheet" href="/src/css/fonts.css">
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/footer.css">
-    <link rel="stylesheet" href="/src/css/window.css">
+    <link rel="stylesheet" href="/src/css/window/window.css">
+    <link rel="stylesheet" href="/src/css/window/skype.css">
+    <link rel="stylesheet" href="/src/css/window/riddle.css">
+    <link rel="stylesheet" href="/src/css/window/cheats.css">
+    <link rel="stylesheet" href="/src/css/window/chat.css">
+    <link rel="stylesheet" href="/src/css/window/folder.css">
+    <link rel="stylesheet" href="/src/css/window/background.css">
     <link rel="stylesheet" href="/src/css/icon.css">
-    <script defer src="/src/js/window.js"></script>
-    <script defer src="/src/js/riddleslist.js"></script>
-    <script defer src="/src/js/riddles.js"></script>
-    <script defer src="/src/js/audio.js"></script>
-    <script defer src="/src/js/script.js"></script>
     <audio id="clickaudio" src="/assets/audio/click.mp3"></audio>
     <audio id="witamciebatmanieaudio" src="/assets/audio/witamciebatmanie.mp3"></audio>
     <audio id="clocktikaudio" src="/assets/audio/tik.mp3"></audio>
     <audio id="clocktakaudio" src="/assets/audio/tak.mp3"></audio>
     <audio id="callaudio" src="/assets/audio/skype.mp3" loop></audio>
+    <script defer src="/src/js/global.js"></script>
+    <script defer src="/src/js/riddleslist.js"></script>
+    <script defer src="/src/js/app.js"></script>
+    <script defer src="/src/js/audio.js"></script>
+    <script defer src="/src/js/riddles.js"></script>
+    <script defer src="/src/js/window.js"></script>
+    <script defer src="/src/js/script.js"></script>
 </head>
 
 <body>
     <main>
         <div id="witam" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="openFolder()"><img src="/assets/img/icon/folder.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="folder.open()"><img src="/assets/img/icon/folder.png"></a>
             <span class="icon-name">Witam Cię Batmanie!</span>
         </div>
         <div id="skype-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="openSkype()"><img src="/assets/img/icon/skype.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="skype.open()"><img src="/assets/img/icon/skype.png"></a>
             <span class="icon-name">Skype</span>
         </div>
         <div id="chat-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="openChat()"><img src="/assets/img/icon/chat.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="chat.open()"><img src="/assets/img/icon/chat.png"></a>
             <span class="icon-name">Robin</span>
+        </div>
+        <div id="bgChange-icon" class="icon-container">
+            <a class="icon" href="javascript:void(0)" onclick="bgChange.open()"><img src="/assets/img/icon/bgchange.png"></a>
+            <span class="icon-name">Tapeta</span>
         </div>
 
         <div id="skype" class="window" hidden>
@@ -43,9 +55,9 @@
                     <div class="title-bar-text">Skype</div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeSkype()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeSkype()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="closeSkype()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="skype.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="skype.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="skype.close()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -60,9 +72,9 @@
                     <div class="title-bar-text">Witam Cię Batmanie!</div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeFolder()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeFolder()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="closeFolder()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="folder.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="folder.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="folder.close()"></button>
                 </div>
             </div>
             <div id="folder-body" class="window-body">
@@ -73,12 +85,12 @@
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
-                    <div id="riddle-window-name" class="title-bar-text">?????</div>
+                    <div id="riddle-window-name" class="title-bar-text"></div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeRiddle()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeRiddle()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="closeRiddle()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="riddle.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="riddle.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="riddle.close()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -99,9 +111,9 @@
                     <div class="title-bar-text">Robin</div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeChat()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeChat()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="closeChat()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="chat.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="chat.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="chat.close()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -127,9 +139,9 @@
                     <div class="title-bar-text">Cheats</div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="minimizeCheats()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="maximizeCheats()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="closeCheats()"></button>
+                    <button id="min-button" aria-label="Minimize" onclick="cheats.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="cheats.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="cheats.minimize()"></button>
                 </div>
             </div>
             <div class="window-body">
@@ -137,6 +149,33 @@
                     <input type="text" pattern="\d*" min="1" minlength="1" maxlength="3" id="cheats-input" name="input" placeholder="Numer zagadki" required>
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
+            </div>
+        </div>
+
+        <div id="background-change" class="window" hidden>
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/bgchange.png"></div>
+                    <div class="title-bar-text"></div>
+                </div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="bgChange.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="bgChange.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="bgChange.close()"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="background-controls-up">
+                    <button id="background-prev" onclick="prevBackground()"><</button>
+                    <button id="background-next" onclick="nextBackground()">></button>
+                </div>
+                <div class="background-controls-down">
+                    <label class="checkbox-container" for="auto-background">
+                        <input id="auto-background" class="checkbox-action" type="checkbox" onchange="setBackgroundAutoChange()" value="false">
+                        <span class="checkbox-view"></span>
+                        Pokaz Slajdów
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -169,13 +208,15 @@
         <div class="bar-left">
             <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/questionmark.png"></a>
 <!--             <div class="divider"></div> -->
-            <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="toggleSkype()" hidden><img src="/assets/img/icon/skype.png"></a>
-            <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="toggleFolder()" hidden><img src="/assets/img/icon/folder.png"></a>
-            <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="toggleRiddle()" hidden><img src="/assets/img/icon/riddle.png"></a>
+            <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="folder.toggle()" hidden><img src="/assets/img/icon/folder.png"></a>
+            <a id="bar-chat" class="bar-icon" href="javascript:void(0)" onclick="chat.toggle()" hidden><img src="/assets/img/icon/chat.png"></a>
+            <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="skype.toggle()" hidden><img src="/assets/img/icon/skype.png"></a>
+            <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="riddle.toggle()" hidden><img src="/assets/img/icon/riddle.png"></a>
+            <a id="bar-background-change" class="bar-icon" href="javascript:void(0)" onclick="bgChange.toggle()" hidden><img src="/assets/img/icon/bgchange.png"></a>
         </div>
         <div class="bar-right">
-            <a id="bar-unlock" class="bar-icon" href="javascript:void(0)" onclick="openCheats()"><img src="/assets/img/icon/unlocked.png"></a>
-            <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="toggleVolume()"><img src="/assets/img/icon/vol.png"></a>
+            <a id="bar-cheats" class="bar-icon" href="javascript:void(0)" onclick="cheats.open()"><img src="/assets/img/icon/unlocked.png"></a>
+            <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="volume.toggle()"><img src="/assets/img/icon/vol.png"></a>
             <p id="bar-time">18:00</p>
         </div>
     </footer>

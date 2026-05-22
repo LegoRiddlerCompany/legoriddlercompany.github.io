@@ -1,0 +1,132 @@
+#chat {
+    justify-content: center;
+    position: absolute;
+    bottom: 7%;
+    left:   0.3vw;
+    width:  var(--chat-width);
+    height: var(--chat-height);
+    padding-bottom: 0 !important;
+    font-size: var(--riddle-font-size);
+    /*     background-color: #cbe139; */
+    .window-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        height: var(--chat-body-height);
+        /*margin: 0;
+        *       margin-left: var(--chat-margin);
+        *       margin-right: var(--chat-margin);
+        *       padding-bottom: var(--chat-padding);*/
+        #chat-shadow {
+        position: absolute;
+        bottom: calc(10% + var(--chat-body-height) - 3.15vh);
+        left:   calc(2% - var(--title-bar-padding) - var(--window-box-shadow-size) * 4);
+        /*left: calc(-1 * var(--chat-margin));
+        *           bottom: calc(var(--chat-body-height) - var(--title-bar-height) - 1.2vh);*/
+        width: calc(var(--chat-width) - var(--window-box-shadow-size) * 5);
+        height: var(--title-bar-height);
+        /*             background-color: rgba(255, 0, 0, 0.8); */
+        /*             box-shadow: 0px 0.6vh 0.6vh -0.4vw black; */
+        }
+        #chat-answer-container {
+        height: 100%;
+        flex-grow: 2;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0.6vw;
+        background-color: #cbe139;/*#d3e93e*/
+        /*             box-shadow: inset 0px -0.4vh 0.5vw -0.4vh black; */
+        .chat-answer {
+            width: 70%;
+            margin: 0;
+            margin-top: 1.8vh;
+            margin-bottom: 0.4vh;
+            padding: 0.4vw;
+            border: 0px solid transparent;
+            border-radius: 0.5vw;
+            box-shadow: 0px 0px 0.6vw black;
+            font-family: "GothicBold" !important;
+            color: #524F42;
+            background-color: #fff6d2;
+        }
+        #robin {
+
+        }
+        #batman {
+        margin-left: 28% !important;
+        }
+        #reset {
+        width: 52%;
+        button {
+            width:          var(--cheats-button-width);
+            height:         var(--cheats-button-height);
+            margin-top:     var(--cheats-button-margin);
+            border-width:   var(--cheats-border-width);
+            border-radius:  var(--cheats-border-radius);
+            padding-left:   var(--cheats-button-padding);
+            padding-right:  var(--cheats-button-padding);
+            outline-width: 0.2vw;
+            font-size: inherit;
+            min-height: 0;
+            min-width:  0;
+        }
+        }
+        }
+        #chat-form {
+        width: auto;
+        flex-direction: row;
+        align-content: center;
+        margin: 0;
+        padding-left: 0.4vw;
+        padding-right: 0.4vw;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        background-image: linear-gradient(0deg, rgb(47, 140, 140) 70%, rgb(55, 166, 166));
+        input {
+            width: 100%;
+            margin-right: 0.4vw;
+        }
+        button {
+            margin: 0;
+        }
+        }
+        #key-form {
+        margin-top: 3vh;
+        margin-bottom: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:  100%;
+            margin-top: var(--cheats-margin);
+            font-size:  var(--cheats-font-size);
+            input {
+                width:          21vw;
+                height:         var(--cheats-input-height);
+                padding-left:   var(--cheats-input-padding-left);
+                padding-right:  var(--cheats-input-padding-left);
+                padding-top:    var(--cheats-input-padding-top);
+                padding-bottom: var(--cheats-input-padding-top);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                text-align: center;
+
+                font-size: inherit;
+            }
+            button {
+                width:          var(--cheats-button-width);
+                height:         var(--cheats-button-height);
+                margin-top:     var(--cheats-button-margin);
+                border-width:   var(--cheats-border-width);
+                border-radius:  var(--cheats-border-radius);
+                padding-left:   var(--cheats-button-padding);
+                padding-right:  var(--cheats-button-padding);
+                outline-width: 0.2vw;
+                font-size: inherit;
+                min-height: 0;
+                min-width:  0;
+            }
+        }
+    }
+}

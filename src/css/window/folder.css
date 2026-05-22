@@ -1,0 +1,29 @@
+#folder {
+    position: absolute;
+    top:    20%;
+    left:   40%;
+    width:  var(--folder-width);
+    height: var(--folder-height);
+    .window-body {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - var(--title-bar-height) - var(--title-bar-border)/* - 1.1vh*/);
+        /*margin: 0.3vw;
+        *       margin-top: 0;
+        *       margin-bottom: 0;*/
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 0;
+        scrollbar-width: 1vw;
+        font-family: 'Gothic';
+        /*         font-weight: 300 !important; */
+        .files-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            .icon-name {
+                width: var(--icon-name-width);
+            }
+        }
+    }
+}
