@@ -70,6 +70,7 @@
 }
 
 .window {
+    z-index: 0;
     padding-bottom:             var(--window-padding) !important;
 
     background-color: #2f2f2f;

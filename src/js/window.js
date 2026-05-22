@@ -16,6 +16,8 @@ const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 const bgChangeElement       = document.getElementById('background-change');
 const bgChangeBarElement    = document.getElementById('bar-background-change');
 
+const footer                = document.getElementsByTagName('footer')[0];
+
 const windowStatus = {
     CLOSED: 0,
     OPEN: 1,
@@ -30,10 +32,16 @@ const chat     = new App(chatElement, chatBarElement, null);
 const volume   = new App(volumeElement, volumeBarElement, null);
 const bgChange = new App(bgChangeElement, bgChangeBarElement, null);
 
+const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, bgChange]);
+
+volume.status = windowStatus.MINIMIZED;
 folder.additionalOpenAction  = folderOpenAction;
 riddle.additionalOpenAction  = riddleOpenAction;
 riddle.additionalCloseAction = riddleCloseAction;
 chat.additionalOpenAction    = chatOpenAction;
+
+skypeCall.style.zIndex = windowManager.getListLength();
+footer.style.zIndex    = windowManager.getListLength() + 1;
 
 function openCall() {
     skypeCall.removeAttribute('hidden');
@@ -74,203 +82,4 @@ function riddleCloseAction() {
 function chatOpenAction() {
     loadKey();
 }
-
-
-/*
- let skypeStatus  = windowStatus.CLOSED;
- let folderStatus = windowStatus.CLOSED;
- let riddleStatus = windowStatus.CLOSED;
- let chatStatus   = windowStatus.CLOSED;
- let volumeStatus = windowStatus.MINIMIZED;*/
-
-// SKYPE
-// function openSkype() {
-//     skypeElement.removeAttribute('hidden');
-//     skypeBarElement.removeAttribute('hidden');
-//     skypeStatus = windowStatus.OPEN;
-//     clickSound();
-// }
-// function toggleSkype() {
-//     if(skypeStatus === windowStatus.OPEN){
-//         skypeElement.hidden = 'hidden';
-//         skypeStatus = windowStatus.MINIMIZED;
-//     }
-//     else if(skypeStatus === windowStatus.MINIMIZED){
-//         skypeElement.removeAttribute('hidden');
-//         skypeStatus = windowStatus.OPEN;
-//     }
-//     clickSound();
-// }
-// function minimizeSkype() {
-//     skypeElement.hidden = 'hidden';
-//     skypeStatus = windowStatus.MINIMIZED;
-//     clickSound();
-// }
-// function maximizeSkype() {
-//     clickSound();
-// }
-// function closeSkype() {
-//     skypeElement.hidden = 'hidden';
-//     skypeBarElement.hidden = 'hidden';
-//     skypeStatus = windowStatus.CLOSED;
-//     clickSound();
-// }
-//////////////////
-
-// FOLDER
-// async function openFolder() {
-//     folderElement.removeAttribute('hidden');
-//     folderBarElement.removeAttribute('hidden');
-//     folderStatus = windowStatus.OPEN;
-//     if(!inCall) {
-//         await delay(2000);
-//         startCall();
-//     }
-//     clickSound();
-//
-// }
-// function toggleFolder() {
-//     if(folderStatus === windowStatus.OPEN){
-//         folderElement.hidden = 'hidden';
-//         folderStatus = windowStatus.MINIMIZED;
-//     }
-//     else if(folderStatus === windowStatus.MINIMIZED){
-//         folderElement.removeAttribute('hidden');
-//         folderStatus = windowStatus.OPEN;
-//     }
-//     clickSound();
-// }
-// function minimizeFolder() {
-//     folderElement.hidden = 'hidden';
-//     folderStatus = windowStatus.MINIMIZED;
-//     clickSound();
-// }
-// function maximizeFolder() {
-//     clickSound();
-// }
-// function closeFolder() {
-//     folderElement.hidden = 'hidden';
-//     folderBarElement.hidden = 'hidden';
-//     folderStatus = windowStatus.CLOSED;
-//     clickSound();
-// }
-//////////////////
-
-// ZAGATKA
-// function openRiddle(riddleNumber) {
-//     currentRiddle = riddleNumber;
-//     currentTry = 1;
-//
-//     hideHint();
-//
-//     riddleElement.removeAttribute('hidden');
-//     riddleBarElement.removeAttribute('hidden');
-//
-//     let riddle = getRiddle(riddleNumber - 1);
-//
-//     document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
-//     document.getElementById('riddle-text').innerText = riddle.riddle;
-//     document.getElementById('riddle-hint').innerText = riddle.hint;
-//
-//     startCounting();
-//     riddleStatus = windowStatus.OPEN;
-//
-//     clickSound();
-// }
-// function toggleRiddle() {
-//     if(riddleStatus === windowStatus.OPEN){
-//         riddleElement.hidden = 'hidden';
-//         riddleStatus = windowStatus.MINIMIZED;
-//     }
-//     else if(riddleStatus === windowStatus.MINIMIZED){
-//         riddleElement.removeAttribute('hidden');
-//         riddleStatus = windowStatus.OPEN;
-//     }
-//     clickSound();
-// }
-// function minimizeRiddle() {
-//     riddleElement.hidden = 'hidden';
-//     riddleStatus = windowStatus.MINIMIZED;
-//     clickSound();
-// }
-// function maximizeRiddle() {
-//     clickSound();
-// }
-// function closeRiddle() {
-//     riddleElement.hidden = 'hidden';
-//     riddleBarElement.hidden = 'hidden';
-//
-//     stopCounting();
-//
-//     riddleStatus = windowStatus.CLOSED;
-//
-//     clickSound();
-// }
-//////////////////
-
-// CHEATS
-// function openCheats() {
-//     cheatsElement.removeAttribute('hidden');
-//     clickSound();
-// }
-// function minimizeCheats() {
-//     cheatsElement.hidden = 'hidden';
-//     clickSound();
-// }
-// function maximizeCheats() {
-//     clickSound();
-// }
-// function closeCheats() {
-//     cheatsElement.hidden = 'hidden';
-//     clickSound();
-// }
-//////////////////
-
-// VOLUME
-// function toggleVolume() {
-//     if(volumeStatus === windowStatus.OPEN){
-//         volumeElement.hidden = 'hidden';
-//         volumeStatus = windowStatus.MINIMIZED;
-//     }
-//     else if(volumeStatus === windowStatus.MINIMIZED){
-//         volumeElement.removeAttribute('hidden');
-//         volumeStatus = windowStatus.OPEN;
-//     }
-//     clickSound();
-// }
-//////////////////
-
-// ROBIN
-// function openChat() {
-//     chatElement.removeAttribute('hidden');
-//     chatBarElement.removeAttribute('hidden');
-//     chatStatus = windowStatus.OPEN;
-//     loadKey();
-//     clickSound();
-// }
-// function toggleChat() {
-//     if(chatStatus === windowStatus.OPEN){
-//         chatElement.hidden = 'hidden';
-//         chatStatus = windowStatus.MINIMIZED;
-//     }
-//     else if(chatStatus === windowStatus.MINIMIZED){
-//         chatElement.removeAttribute('hidden');
-//         chatStatus = windowStatus.OPEN;
-//     }
-//     clickSound();
-// }
-// function minimizeChat() {
-//     chatElement.hidden = 'hidden';
-//     clickSound();
-// }
-// function maximizeChat() {
-//     clickSound();
-// }
-// function closeChat() {
-//     chatElement.hidden = 'hidden';
-//     chatBarElement.hidden = 'hidden';
-//     chatStatus = windowStatus.CLOSED;
-//     clickSound();
-// }
-//////////////////
 
