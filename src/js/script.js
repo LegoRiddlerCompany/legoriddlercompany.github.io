@@ -271,6 +271,9 @@ function setBackgroundAutoChange() {
 }
 function loadBackground() {
     currentBackground = parseInt(localStorage.getItem('bg'));
+    if(isNaN(currentBackground)) {
+        currentBackground = 0;
+    }
     main.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
 }
 function saveBackground() {
