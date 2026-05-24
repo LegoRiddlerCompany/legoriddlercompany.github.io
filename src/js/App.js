@@ -31,7 +31,7 @@ class App {
 
         this.getMeInFront();
         this.#dragElement(this.#windowElement, this.#windowElement.children[0]);
-        clickSound();
+        // clickSound();
     }
 
     toggle() {
@@ -44,17 +44,17 @@ class App {
             this.#status = windowStatus.OPEN;
             this.getMeInFront();
         }
-        clickSound();
+        // clickSound();
     }
 
     minimize() {
         this.#windowElement.hidden = 'hidden';
         this.#status = windowStatus.MINIMIZED;
-        clickSound();
+        // clickSound();
     }
 
     maximize() {
-        clickSound();
+        // clickSound();
     }
 
     close() {
@@ -63,7 +63,7 @@ class App {
         this.#status = windowStatus.CLOSED;
 
         this.#additionalCloseAction();
-        clickSound();
+        // clickSound();
     }
 
     appendChildElement(element) {

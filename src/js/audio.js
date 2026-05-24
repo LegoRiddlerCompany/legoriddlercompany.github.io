@@ -13,7 +13,7 @@ function clickSound() {
 }
 
 function witamCieBatmanie() {
-    clickSound();
+    // clickSound();
     witamcie.play();
 }
 
@@ -39,7 +39,7 @@ function startRiddlerCallAudio() {
 }
 
 riddlerWitamAudio.addEventListener('ended', () => {
-    inCall = false;
+    folder.open();
     folder.getMeInFront();
     showRiddle(1);
 });

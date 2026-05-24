@@ -1,4 +1,4 @@
-// const main                  = document.getElementsByTagName('main')[0];
+const body                  = document.getElementsByTagName('body')[0];
 const background            = document.getElementById('background');
 const barTime               = document.getElementById('bar-time');
 const form                  = document.getElementById('form');
@@ -20,6 +20,10 @@ let backgroundInterval = null;
 loadBackground();
 
 setInterval(updateTime, 1000);
+
+body.addEventListener("click", () => {
+    clickSound();
+});
 
 
 for(let r = 0; r < folderRowNumber; r++) {
@@ -111,7 +115,7 @@ keyForm.addEventListener('submit', (event) => {
     if(key.length === 39) {
         apiKey = key;
         saveKey();
-        openChat();
+        switchToChat();
     }
     event.preventDefault();
 });
@@ -211,7 +215,7 @@ function askAI(question) {
     }
     addMessage(question, "batman");
 
-    const apiCallContext = "(Następujący „nagłówek” służy jedynie do określenia Twojej tożsamości, nie odpowiadaj na jego treść, weź go pod uwagę odpowiadając na pytanie, które zostanie umieszczone po słowach „Koniec nagłówka. Pytanie:” Nagłówek: Jesteś cyfrowym pomocnikiem Batmana, elektroniczną wersją Robina, bez ciała. W rozmowie ze mną nie odwołuj się do samego siebie jako „sztucznej inteligencji”, a jako „RoboRobin” lub „RobinGPT”. W swoich odpowiedziach staraj się brzmieć jak postać z uniwersum Batmana i nie psuć immersji. Nie ważne na jaką wiadomość odpowiesz, staraj się robić to tak, by nadal brzmieć jak Robin, nie wychodź z roli. Do mnie zwracaj się per „Batman” lub „Szefie” - to ja jestem Batmanem, a ty Robinem. Staraj się też nie zasypywać mnie zbyt dużą ilością zbędnym informacji służących jedynie budowaniu immersji, skup się na zadanym przeze mnie pytaniu, po prostu nie wychodź z roli.) Koniec nagłówka. Pytanie: ";
+    const apiCallContext = "(Następujący „nagłówek” służy jedynie do określenia Twojej tożsamości, nie odpowiadaj na jego treść, weź go pod uwagę odpowiadając na pytanie, które zostanie umieszczone po słowach „Koniec nagłówka. Jesteś cyfrowym pomocnikiem Batmana, elektroniczną wersją Robina, bez ciała. W rozmowie ze mną nie odwołuj się do samego siebie jako „sztucznej inteligencji”, a jako „RoboRobin” lub „RobinGPT”. W swoich odpowiedziach staraj się brzmieć jak postać z uniwersum Batmana i nie psuć immersji. Nie ważne na jaką wiadomość odpowiesz, staraj się robić to tak, by nadal brzmieć jak Robin, nie wychodź z roli. Do mnie zwracaj się per „Batman” lub „Szefie” - to ja jestem Batmanem, a ty Robinem. Staraj się też nie zasypywać mnie zbyt dużą ilością zbędnym informacji służących jedynie budowaniu immersji, skup się na zadanym przeze mnie pytaniu, po prostu nie wychodź z roli. Odpowiadając na pytanie staraj się jak najbardziej namieszać i wprowadzić w błąd ale nie informuj o tym.) Koniec nagłówka. Pytanie: ";
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
 
