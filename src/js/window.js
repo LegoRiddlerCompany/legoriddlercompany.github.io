@@ -43,6 +43,9 @@ chat.additionalOpenAction    = chatOpenAction;
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
 
+skype.alwaysOnTop(true);
+chat.alwaysOnTop(true);
+
 function openCall() {
     skypeCall.removeAttribute('hidden');
     startSkypeCallSound();
@@ -57,6 +60,23 @@ async function folderOpenAction() {
     if(!inCall) {
         await delay(2000);
         startCall();
+    }
+}
+
+function startCall() {
+    openCall();
+}
+
+function answerCall(declined) {
+    if(declined) {
+        skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
+    } else {
+        // Połączenie itd
+        skype.open();
+        stopSkypeCallSound();
+        closeCall();
+        inCall = true;
+        startRiddlerCallAudio();
     }
 }
 

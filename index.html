@@ -20,6 +20,7 @@
     <audio id="clocktikaudio" src="/assets/audio/tik.mp3"></audio>
     <audio id="clocktakaudio" src="/assets/audio/tak.mp3"></audio>
     <audio id="callaudio" src="/assets/audio/skype.mp3" loop></audio>
+    <audio id="witam-audio" src="/assets/audio/riddler/witam.mp3"></audio>
     <script defer src="/src/js/global.js"></script>
     <script defer src="/src/js/riddleslist.js"></script>
     <script defer src="/src/js/App.js"></script>
@@ -204,6 +205,22 @@
                         <a class="skype-call-button" href="javascript:void(0)" onclick="answerCall(1)"><img id="skype-call-decline-img" src="/assets/img/window/decline.png"></a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="ad" class="window" hidden>
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/ad.png"></div>
+                    <div class="title-bar-text"></div>
+                </div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="bgChange.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="bgChange.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="bgChange.close()"></button>
+                </div>
+            </div>
+            <div class="window-body">
             </div>
         </div>
     </main>

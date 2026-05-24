@@ -19,11 +19,12 @@ class WindowManager {
 
     assignZIndexes() {
         this.#appList.forEach((app, id) => {
-            app.window.style.zIndex = id + 1;
+            app.setZIndex(id + 1);
+            // app.window.style.zIndex = id + 1;
             if(id + 1 === this.#appList.length) {
-                app.window.style.filter = 'brightness(100%)';
+                app.removeShadow();
             } else {
-                app.window.style.filter = 'brightness(65%)';
+                app.addShadow();
             }
         });
     }

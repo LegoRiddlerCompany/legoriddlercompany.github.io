@@ -4,6 +4,8 @@ const clocktikaudio     = document.getElementById('clocktikaudio');
 const clocktakaudio     = document.getElementById('clocktakaudio');
 const callaudio         = document.getElementById('callaudio');
 
+const riddlerWitamAudio = document.getElementById('witam-audio');
+
 const volumevalue       = document.getElementById('volume-value');
 
 function clickSound() {
@@ -32,6 +34,16 @@ function stopSkypeCallSound() {
     callaudio.currentTime = 0;
 }
 
+function startRiddlerCallAudio() {
+    riddlerWitamAudio.play();
+}
+
+riddlerWitamAudio.addEventListener('ended', () => {
+    inCall = false;
+    folder.getMeInFront();
+    showRiddle(1);
+});
+
 volumevalue.addEventListener('input', () => {
     let vol = volumevalue.value / 10;
 
@@ -40,4 +52,5 @@ volumevalue.addEventListener('input', () => {
     clocktikaudio.volume = vol;
     clocktakaudio.volume = vol;
     callaudio.volume = vol;
+    riddlerWitamAudio.volume = vol;
 });

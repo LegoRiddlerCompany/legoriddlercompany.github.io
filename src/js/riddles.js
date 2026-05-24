@@ -31,6 +31,14 @@ function getRiddle(id) {
     return riddlesList[id];
 }
 
+function showRiddle(number) {
+    if(number >= riddlesNumber) {
+        number = riddlesNumber;
+    }
+    const nextRiddle = document.getElementById('rid-' + number);
+    nextRiddle.removeAttribute('hidden');
+}
+
 function showHint() {
     hintElement.removeAttribute('hidden');
 }

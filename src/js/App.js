@@ -7,6 +7,8 @@ class App {
 
     #status         = windowStatus.CLOSED;
 
+    #alwaysOnTop    = false;
+
     #additionalOpenAction  = () => {};
     #additionalCloseAction = () => {};
 
@@ -70,8 +72,28 @@ class App {
         }
     }
 
+    alwaysOnTop(status) {
+        // if(status)
+        //     this.setZIndex(100);
+        this.#alwaysOnTop = status;
+    }
+
     getMeInFront() {
         this.#windowManager.getMeInFront(this);
+    }
+
+    setZIndex(index) {
+        // if(!this.#alwaysOnTop)
+            this.#windowElement.style.zIndex = index;
+    }
+
+    removeShadow() {
+        this.#windowElement.style.filter = 'brightness(100%)';
+    }
+
+    addShadow() {
+        if(!this.#alwaysOnTop)
+            this.#windowElement.style.filter = 'brightness(65%)';
     }
 
     get window() {
@@ -95,7 +117,7 @@ class App {
     }
 
     #dragElement(element, draggable) {
-        let thisApp = this;
+        // let thisApp = this;
         let vh = window.innerHeight, vw = window.innerWidth;
         let el = element.getBoundingClientRect();
         let eh = el.height, ew = el.width;

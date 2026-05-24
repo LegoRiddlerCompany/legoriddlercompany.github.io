@@ -67,14 +67,14 @@ form.addEventListener('submit', (event) => {
     let answer = form.answer.value;
 
     if(checkAnswer(currentRiddle - 1, answer)) {
-        let nextRiddleNumber = currentRiddle + 1;
-        if(nextRiddleNumber >= riddlesNumber) {
-            nextRiddleNumber = riddlesNumber;
-        }
+        // let nextRiddleNumber = currentRiddle + 1;
+        // if(nextRiddleNumber >= riddlesNumber) {
+        //     nextRiddleNumber = riddlesNumber;
+        // }
 
-        const nextRiddle = document.getElementById('rid-' + nextRiddleNumber);
-        nextRiddle.removeAttribute('hidden');
-
+        // const nextRiddle = document.getElementById('rid-' + nextRiddleNumber);
+        // nextRiddle.removeAttribute('hidden');
+        showRiddle(currentRiddle + 1);
 
         alert("tym razem ci się udało batmanie, czekam na ciebie z kolejną zagadką");
         stopCounting();
@@ -161,21 +161,6 @@ function startCounting() {
 }
 function stopCounting() {
     clearInterval(timerInterval);
-}
-
-function startCall() {
-    openCall();
-}
-function answerCall(declined) {
-    if(declined) {
-        skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
-    } else {
-        // Połączenie itd
-        skype.open();
-        stopSkypeCallSound();
-        closeCall();
-        inCall = true;
-    }
 }
 
 function loadKey() {

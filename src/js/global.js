@@ -2,7 +2,7 @@
 
 const robinUnavailable = "Jestem niedostępny, zadzwoń później";
 
-let riddlesUnlocked = 1;
+let riddlesUnlocked = 0;
 let currentRiddle = 0;
 let currentTry = 1;
 
