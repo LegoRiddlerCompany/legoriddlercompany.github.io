@@ -1,5 +1,11 @@
 :root {
     font-family: 'GothicBold';
+
+    --dark-green: #44a340;
+    --light-green: #8cbe65;
+    --yellow: #ffe764;
+    --gray: #222222;
+    --gray-highlight: rgba(51, 51, 51, 0.4);
 }
 
 [hidden]{

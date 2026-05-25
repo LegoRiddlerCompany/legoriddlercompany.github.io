@@ -5,7 +5,7 @@ const form                  = document.getElementById('form');
 const cheatsForm            = document.getElementById('cheats-form');
 const keyForm               = document.getElementById('key-form');
 const chatForm              = document.getElementById('chat-form');
-const chatAnswerContainer   = document.getElementById('chat-answer-container');
+const chatContainer         = document.getElementById('chat-container');
 const timer                 = document.getElementById('timer');
 const autoBackground        = document.getElementById('auto-background');
 
@@ -50,7 +50,7 @@ for(let r = 0; r < folderRowNumber; r++) {
         a.setAttribute('onclick', 'riddle.open(' + fileNum + ')');
 
         const img = document.createElement('img');
-        img.src = '/assets/img/icon/riddle.png';
+        img.src = '/assets/img/icon/desktop/riddle.png';
 
         a.appendChild(img);
 
@@ -99,13 +99,47 @@ form.addEventListener('submit', (event) => {
 });
 
 cheatsForm.addEventListener('submit', (event) => {
-    let riddlesToUnlock = parseInt(cheatsForm.input.value);
+    let [command, argument] = cheatsForm.input.value.trim().split(' ');
+    if(argument === undefined) { argument = ""; }
 
-    for(let i = 0; i < riddlesToUnlock && i< riddlesNumber; i++) {
-        let rNum = i + 1;
-        const riddle = document.getElementById('rid-' + rNum);
-        riddle.removeAttribute('hidden');
+    const commandResult = document.createElement('span');
+    const executedCommand = document.createElement('span');
+
+    let result;
+
+    switch(command) {
+        case 'odblokuj':
+            let ridnum = parseInt(argument);
+            if(isNaN(ridnum)) { ridnum = 100; }
+            let ur = unlockRiddles(ridnum);
+            result = "Liczba odblokowanych zagadek: " + ur;
+            break;
+        case 'crt':
+            if(argument === 'on') {
+                body.className = "crt";
+                result = "Dodano efekt crt";
+            }
+            else {
+                body.className = "";
+                result = "Usunięto efekt crt";
+            }
+            break;
+        case 'pomoc':
+        case 'pomocy':
+        case 'help':
+            result = "Sprawdź notke na pulpicie :P";
+            break;
+        default:
+            result = "Nic się nie stało";
+            break;
     }
+    executedCommand.innerText = "C:\\Users\\Batman> " + command + " " + argument;
+    commandResult.innerHTML = "&emsp;" + result;
+
+    cheatsForm.insertBefore(executedCommand, document.getElementById('cheats-input-label'));
+    cheatsForm.insertBefore(commandResult, document.getElementById('cheats-input-label'));
+
+    cheatsForm.reset();
 
     event.preventDefault();
 });
@@ -184,29 +218,41 @@ function saveKey() {
 function switchToChat() {
     keyForm.hidden = "hidden";
     chatForm.removeAttribute('hidden');
-    chatAnswerContainer.removeAttribute('hidden');
+    chatContainer.removeAttribute('hidden');
 }
 
 function resetKey() {
     keyForm.removeAttribute('hidden');
     chatForm.hidden = "hidden";
-    chatAnswerContainer.hidden = "hidden";
+    chatContainer.hidden = "hidden";
     localStorage.removeItem('akey');
     apiKey = "";
 }
 
 function addMessage(msg, who) {
+    let div = document.createElement('div');
+    let img = document.createElement('img');
+    img.className = "chat-sender";
+
     let p = document.createElement('p');
-    p.className = "chat-answer";
+    p.className = "chat-message";
     p.innerText = msg;
 
     if(who === "robin") {
-        p.id = "robin"
+        img.src = "/assets/img/icon/window/robingpt.png";
+        div.id = "robin"
+        div.appendChild(img);
+        div.appendChild(p);
     } else {
-        p.id = "batman"
+        img.src = "/assets/img/icon/window/batman.png";
+        div.id = "batman"
+        div.appendChild(p);
+        div.appendChild(img);
     }
 
-    chatAnswerContainer.appendChild(p);
+    div.className = "chat-message-container";
+
+    chatContainer.appendChild(div);
 }
 
 function askAI(question) {

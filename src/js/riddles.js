@@ -46,3 +46,13 @@ function showHint() {
 function hideHint() {
     hintElement.hidden = "hidden";
 }
+
+function unlockRiddles(riddlesToUnlock) {
+    for(let i = 0; i < riddlesToUnlock && i < riddlesNumber; i++) {
+        let rNum = i + 1;
+        const riddle = document.getElementById('rid-' + rNum);
+        riddle.removeAttribute('hidden');
+    }
+
+    return Math.min(riddlesToUnlock, riddlesNumber);
+}

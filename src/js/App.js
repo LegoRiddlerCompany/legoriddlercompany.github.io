@@ -92,7 +92,7 @@ class App {
     }
 
     addShadow() {
-        if(!this.#alwaysOnTop)
+        if(this.#alwaysOnTop === false)
             this.#windowElement.style.filter = 'brightness(65%)';
     }
 
@@ -108,6 +108,10 @@ class App {
         this.#status = status;
     }
 
+    get status() {
+        return this.#status;
+    }
+
     set additionalOpenAction(func) {
         this.#additionalOpenAction = func;
     }
@@ -118,7 +122,8 @@ class App {
 
     #dragElement(element, draggable) {
         // let thisApp = this;
-        let vh = window.innerHeight, vw = window.innerWidth;
+        let vh = main.offsetHeight, vw = window.innerWidth;
+        // console.log(main.style, vh);
         let el = element.getBoundingClientRect();
         let eh = el.height, ew = el.width;
         let maxh = vh - eh;

@@ -2,7 +2,7 @@
     --bar-height:           6vh;
     --bar-border:           calc(var(--bar-height) / 20);
 
-    --bar-time-width:       6vw;
+    --bar-time-width:       5vw;
     --bar-time-font-size:   calc(var(--bar-height) / 2);
 
     --bar-divider-width:    0.1vw;
@@ -12,8 +12,12 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #1a1a1a;
+/*     background-color: #1a1a1a; */
 /*     border-top: var(--bar-border) solid #3d3d3d; */
+    background-image: url(/assets/img/window/bg.png);
+    background-repeat: repeat;
+    background-size: 14vw;
+/*     background-position: 10vw 6vh; */
     height: var(--bar-height);
     div {
         display: flex;
@@ -56,16 +60,58 @@ footer {
     }
 }
 
+#bar-volume {
+    img {
+        padding: 20%;
+        height: 60%;
+        width: 60%;
+    }
+}
+
 .bar-icon:hover {
-    background-color: #282828;
+    background-color: var(--gray-highlight);
+}
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
 }
 /* TODO */
 .volume-container {
     display: flex;
     position: absolute;
     bottom: 6.8vh;
-    right: 6.5vw;
-    width: 1vw;
+    right: 6vw;
+    height: 30vh;
+    width: 3vw;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    appearance: slider-vertical;
+    background-color: blue;
+    input[type=range] {
+        height: 100%;
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+/*             border: 1px solid #000000; */
+            height: 1vh;
+/*             height: 100%; */
+            width: 2vw;
+            background: #ffffff;
+            cursor: pointer;
+/*             margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */ */
+            box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        }
+        &::-webkit-slider-runnable-track {
+            display: flex;
+            height: 100%;
+            width: 0.5vw;
+            background-color: red;
+            justify-content: center;
+        }
+
+    }
+    /*width: 1vw;
     height: 16vh;
     padding: 0.6vw;
     padding-right: 0.3vw;
@@ -84,7 +130,7 @@ footer {
                 width: 14vh !important;
             }
         }
-    }
+    }*/
 }
 
 .divider {

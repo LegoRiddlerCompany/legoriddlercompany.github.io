@@ -1,20 +1,5 @@
-const skypeElement          = document.getElementById('skype');
-const skypeBarElement       = document.getElementById('bar-skype');
-const folderElement         = document.getElementById('folder');
-const folderBarElement      = document.getElementById('bar-folder');
-const folderBodyElement     = document.getElementById('folder-body');
-const riddleElement         = document.getElementById('riddle');
-const riddleBarElement      = document.getElementById('bar-riddle');
-const cheatsElement         = document.getElementById('cheats');
-const cheatsBarElement      = document.getElementById('bar-cheats');
-const chatElement           = document.getElementById('chat');
-const chatBarElement        = document.getElementById('bar-chat');
-const volumeElement         = document.getElementById('volume');
-const volumeBarElement      = document.getElementById('bar-volume');
 const skypeCall             = document.getElementById('skype-call');
 const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
-const bgChangeElement       = document.getElementById('background-change');
-const bgChangeBarElement    = document.getElementById('bar-background-change');
 
 const footer                = document.getElementsByTagName('footer')[0];
 
@@ -24,15 +9,19 @@ const windowStatus = {
     MINIMIZED: 2
 }
 
-const skype    = new App(skypeElement, skypeBarElement, null);
-const folder   = new App(folderElement, folderBarElement, folderBodyElement);
-const riddle   = new App(riddleElement, riddleBarElement, null);
-const cheats   = new App(cheatsElement, cheatsBarElement, null);
-const chat     = new App(chatElement, chatBarElement, null);
-const volume   = new App(volumeElement, volumeBarElement, null);
-const bgChange = new App(bgChangeElement, bgChangeBarElement, null);
+const skype     = new App(document.getElementById('skype'),             document.getElementById('bar-skype'),             null);
+const folder    = new App(document.getElementById('folder'),            document.getElementById('bar-folder'),            document.getElementById('folder-body'));
+const riddle    = new App(document.getElementById('riddle'),            document.getElementById('bar-riddle'),            null);
+const cheats    = new App(document.getElementById('cheats'),            document.getElementById('bar-cheats'),            null);
+const chat      = new App(document.getElementById('chat'),              document.getElementById('bar-chat'),              null);
+const volume    = new App(document.getElementById('volume'),            document.getElementById('bar-volume'),            null);
+const wallpaper = new App(document.getElementById('background-change'), document.getElementById('bar-background-change'), null);
+const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null);
 
-const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, bgChange]);
+skype.alwaysOnTop(true);
+chat.alwaysOnTop(true);
+
+const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note]);
 
 volume.status = windowStatus.MINIMIZED;
 folder.additionalOpenAction  = folderOpenAction;
@@ -43,8 +32,15 @@ chat.additionalOpenAction    = chatOpenAction;
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
 
-skype.alwaysOnTop(true);
-chat.alwaysOnTop(true);
+
+
+cheats.window.addEventListener("click", () => {
+    if(cheats.status === windowStatus.OPEN) {
+        const input = document.getElementById('cheats-input');
+        input.focus();
+        input.scrollIntoView();
+    }
+});
 
 function openCall() {
     skypeCall.removeAttribute('hidden');
