@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/src/css/window/folder.css">
     <link rel="stylesheet" href="/src/css/window/background.css">
     <link rel="stylesheet" href="/src/css/icon.css">
+    <link rel="stylesheet" href="/src/css/crt.css">
     <audio id="clickaudio" src="/assets/audio/click.mp3"></audio>
     <audio id="witamciebatmanieaudio" src="/assets/audio/witamciebatmanie.mp3"></audio>
     <audio id="clocktikaudio" src="/assets/audio/tik.mp3"></audio>
@@ -31,31 +32,31 @@
     <script defer src="/src/js/script.js"></script>
 </head>
 
-<body>
+<body class="crt">
     <main>
         <div id="background">
         </div>
         <div id="witam" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="folder.open()"><img src="/assets/img/icon/folder.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="folder.open()"><img src="/assets/img/icon/desktop/folder.png"></a>
             <span class="icon-name">Witam Cię Batmanie!</span>
         </div>
         <div id="skype-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="skype.open()"><img src="/assets/img/icon/skype.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="skype.open()"><img src="/assets/img/icon/desktop/skype.png"></a>
             <span class="icon-name">Skype</span>
         </div>
         <div id="chat-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="chat.open()"><img src="/assets/img/icon/chat.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="chat.open()"><img src="/assets/img/icon/desktop/chat.png"></a>
             <span class="icon-name">Robin</span>
         </div>
         <div id="bgChange-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="bgChange.open()"><img src="/assets/img/icon/bgchange.png"></a>
+            <a class="icon" href="javascript:void(0)" onclick="bgChange.open()"><img src="/assets/img/icon/desktop/wallpaper.png"></a>
             <span class="icon-name">Tapeta</span>
         </div>
 
         <div id="skype" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/skype.png"></div>
                     <div class="title-bar-text">Skype</div>
                 </div>
                 <div class="title-bar-controls">
@@ -72,7 +73,7 @@
         <div id="folder" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/folder.png"></div>
                     <div class="title-bar-text">Witam Cię Batmanie!</div>
                 </div>
                 <div class="title-bar-controls">
@@ -88,7 +89,7 @@
         <div id="riddle" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/riddle.png"></div>
                     <div id="riddle-window-name" class="title-bar-text"></div>
                 </div>
                 <div class="title-bar-controls">
@@ -111,7 +112,7 @@
         <div id="chat" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/chat.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/chat.png"></div>
                     <div class="title-bar-text">Robin</div>
                 </div>
                 <div class="title-bar-controls">
@@ -139,7 +140,7 @@
         <div id="cheats" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/riddle.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/cheats.png"></div>
                     <div class="title-bar-text">Cheats</div>
                 </div>
                 <div class="title-bar-controls">
@@ -159,7 +160,7 @@
         <div id="background-change" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/bgchange.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/wallpaper.png"></div>
                     <div class="title-bar-text"></div>
                 </div>
                 <div class="title-bar-controls">
@@ -208,7 +209,7 @@
             </div>
         </div>
 
-        <div id="ad" class="window" hidden>
+        <!--<div id="ad" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/ad.png"></div>
@@ -222,21 +223,21 @@
             </div>
             <div class="window-body">
             </div>
-        </div>
+        </div>-->
     </main>
     <footer>
         <div class="bar-left">
-            <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/questionmark.png"></a>
+            <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/bar/home.png"></a>
 <!--             <div class="divider"></div> -->
-            <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="folder.toggle()" hidden><img src="/assets/img/icon/folder.png"></a>
-            <a id="bar-chat" class="bar-icon" href="javascript:void(0)" onclick="chat.toggle()" hidden><img src="/assets/img/icon/chat.png"></a>
-            <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="skype.toggle()" hidden><img src="/assets/img/icon/skype.png"></a>
-            <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="riddle.toggle()" hidden><img src="/assets/img/icon/riddle.png"></a>
-            <a id="bar-background-change" class="bar-icon" href="javascript:void(0)" onclick="bgChange.toggle()" hidden><img src="/assets/img/icon/bgchange.png"></a>
+            <a id="bar-folder" class="bar-icon" href="javascript:void(0)" onclick="folder.toggle()" hidden><img src="/assets/img/icon/bar/folder.png"></a>
+            <a id="bar-chat" class="bar-icon" href="javascript:void(0)" onclick="chat.toggle()" hidden><img src="/assets/img/icon/bar/chat.png"></a>
+            <a id="bar-skype" class="bar-icon" href="javascript:void(0)" onclick="skype.toggle()" hidden><img src="/assets/img/icon/bar/skype.png"></a>
+            <a id="bar-riddle" class="bar-icon" href="javascript:void(0)" onclick="riddle.toggle()" hidden><img src="/assets/img/icon/bar/riddle.png"></a>
+            <a id="bar-background-change" class="bar-icon" href="javascript:void(0)" onclick="bgChange.toggle()" hidden><img src="/assets/img/icon/bar/wallpaper.png"></a>
         </div>
         <div class="bar-right">
-            <a id="bar-cheats" class="bar-icon" href="javascript:void(0)" onclick="cheats.open()"><img src="/assets/img/icon/unlocked.png"></a>
-            <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="volume.toggle()"><img src="/assets/img/icon/vol.png"></a>
+            <a id="bar-cheats" class="bar-icon" href="javascript:void(0)" onclick="cheats.open()"><img src="/assets/img/icon/bar/cheats.png"></a>
+            <a id="bar-volume" class="bar-icon" href="javascript:void(0)" onclick="volume.toggle()"><img src="/assets/img/icon/bar/vol.png"></a>
             <p id="bar-time">18:00</p>
         </div>
     </footer>

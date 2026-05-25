@@ -106,9 +106,17 @@
         padding: 0;
         border: 0 solid transparent;
         border-radius: 0.3vh;
-        background-color: #151515;
+/*         background-color: #151515; */
         align-content: center;
-/*         background-color:   rgba(0, 0, 0, 0); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color:   rgba(0, 0, 0, 0);
+        &:hover {
+            filter: brightness(140%);
+        }
+        &:active {
+            filter: brightness(70%);
+        }
     }
 }
 
@@ -142,32 +150,14 @@
 }
 
 
-/*#max-button {
-    background-image: url('/assets/img/window/max.svg');
-}
-#max-button:hover {
-    background-image: url('/assets/img/window/maxh.svg');
-}
-#max-button:active {
-    background-image: url('/assets/img/window/maxa.svg');
+#max-button {
+    background-image: url('/assets/img/icon/window/max.png');
 }
 #min-button {
-    background-image: url('/assets/img/window/min.svg');
-}
-#min-button:hover {
-    background-image: url('/assets/img/window/minh.svg');
-}
-#min-button:active {
-    background-image: url('/assets/img/window/mina.svg');
+    background-image: url('/assets/img/icon/window/min.png');
 }
 #ext-button {
-    background-image: url('/assets/img/window/min.svg');
+    background-image: url('/assets/img/icon/window/ext.png');
 }
-#ext-button:hover {
-    background-image: url('/assets/img/window/minh.svg');
-}
-#ext-button:active {
-    background-image: url('/assets/img/window/mina.svg');
-}*/
 
 
