@@ -236,7 +236,6 @@ function addMessage(msg, who) {
 
     let p = document.createElement('p');
     p.className = "chat-message";
-    p.innerText = msg;
 
     if(who === "robin") {
         img.src = "/assets/img/icon/window/robingpt.png";
@@ -253,7 +252,32 @@ function addMessage(msg, who) {
     div.className = "chat-message-container";
 
     chatContainer.appendChild(div);
+
+    let curr = 0;
+    let currText = '';
+
+    function write(){
+
+        // Find the target element to write to
+        // let elem = document.getElementById('target');
+
+        // Append next character into the text content
+
+        currText = currText + msg.charAt(curr)
+        p.innerText = currText;
+
+        // Update the current position
+        curr++;
+
+        // if we're not yet in the end of the string
+        // we have a little (20ms) pause before we write the next character
+        if (curr < msg.length)
+            window.setTimeout(write, 20);
+    };
+    write();
+    // p.innerText = msg;
 }
+
 
 function askAI(question) {
     if(apiKey === "") {
