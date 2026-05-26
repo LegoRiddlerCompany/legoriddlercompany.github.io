@@ -170,6 +170,8 @@ chatForm.addEventListener('submit', (event) => {
 
     askAI(question);
 
+    chatForm.reset();
+
     event.preventDefault();
 });
 
@@ -267,6 +269,8 @@ function addMessage(msg, who) {
     let curr = 0;
     let currText = '';
 
+    robinGada(msg);
+
     function write(){
 
         // Find the target element to write to
@@ -276,6 +280,7 @@ function addMessage(msg, who) {
 
         currText = currText + msg.charAt(curr)
         p.innerText = currText;
+        chatContainer.scrollTo(0, chatContainer.scrollHeight);
 
         // Update the current position
         curr++;
@@ -287,6 +292,28 @@ function addMessage(msg, who) {
     };
     write();
     // p.innerText = msg;
+}
+
+function robinGada(text) {
+    const speechSynth = window.speechSynthesis;
+    const enteredText = text;
+    // const error = document.querySelector('.error-para');
+
+    if (!speechSynth.speaking &&
+        !enteredText.trim().length) {
+        // error.textContent = `Nothing to Convert! Enter text in the text area.`
+    }
+
+    if (!speechSynth.speaking && enteredText.trim().length) {
+        // error.textContent = "";
+        const newUtter = new SpeechSynthesisUtterance(enteredText);
+        speechSynth.speak(newUtter);
+        // convertBtn.textContent = "Sound is Playing..."
+    }
+
+    // setTimeout(() => {
+    //     convertBtn.textContent = "Play Converted Sound"
+    // }, 5000);
 }
 
 

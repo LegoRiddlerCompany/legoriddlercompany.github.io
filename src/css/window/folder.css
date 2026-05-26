@@ -13,6 +13,10 @@
         *       margin-bottom: 0;*/
         overflow-y: auto;
         overflow-x: hidden;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        scrollbar-width: none;
         z-index: 0;
         scrollbar-width: 1vw;
         font-family: 'Gothic';

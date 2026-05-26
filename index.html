@@ -148,8 +148,10 @@
                 </div>
 <!--                 <div id="chat-shadow"></div> -->
                 <form id="chat-form" method="post" hidden>
-                    <input type="text" minlength="1" id="chat-input" name="input" placeholder="Pytanie do robina" autocomplete="off" required>
-                    <button type="submit" onclick="clickSound()">></button>
+                    <div class="chat-form-container">
+                        <input type="text" minlength="1" id="chat-input" name="input" placeholder="Zapytaj RobinGPT" autocomplete="off" required>
+                        <button type="submit" onclick="clickSound()"></button>
+                    </div>
                 </form>
             </div>
         </div>

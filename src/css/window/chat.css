@@ -34,8 +34,13 @@
             overflow-y: auto;
             overflow-x: hidden;
             padding: 0.6vw;
-            background-color: #cbe139;/*#d3e93e*/
+            padding-bottom: 9vh;
+/*             background-color: #cbe139;/*#d3e93e*/ */
             /*             box-shadow: inset 0px -0.4vh 0.5vw -0.4vh black; */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            scrollbar-width: none;
             .chat-message-container {
                 display: flex;
                 flex-direction: row;
@@ -45,22 +50,25 @@
                     width: 7vh;
                     height: 7vh;
                     border: 0px solid transparent;
-                    border-radius: 2vw;
+                    border-radius: 4vw;
                     box-shadow: 0px 0px 0.4vw black;
                 }
                 .chat-message {
-                    width: 60%;
+                    width: 80%;
                     margin: 0;
                     margin-top: 1.2vh;
                     margin-bottom: 0.4vh;
                     padding: 0.4vw;
                     border: 0px solid transparent;
-                    border-radius: 0.5vw;
-                    box-shadow: 0px 0px 0.4vw black;
+                    border-bottom-left-radius: 0.5vw;
+                    border-bottom-right-radius: 0.5vw;
+/*                     border-radius: 0.5vw; */
+/*                     box-shadow: 0px 0px 0.4vw black; */
+                    box-shadow: -0.4vh 0.4vh 0 black;
                     font-family: "GothicLight";
                     font-weight: 800;
-                    color: #524F42;
-                    background-color: #fff6d2;
+                    color: white;
+                    background-color: var(--gray);
                 }
             }
             #robin {
@@ -80,12 +88,13 @@
                 display: flex;
                 position: fixed;
                 justify-content: end;
-                top: 8%;
-                right: 0.8%;
+                top: 7%;
+                right: 0%;
                 width: 100%;
+                padding: 0.7vh;
                 button {
-                    width: 4vh;
-                    height: 4vh;
+                    width: var(--title-bar-controls-height);
+                    height: var(--title-bar-controls-height);
                     /*width:          var(--cheats-button-width);
                     height:         var(--cheats-button-height);
                     margin-top:     var(--cheats-button-margin);
@@ -116,7 +125,11 @@
             }
         }
         #chat-form {
-            width: auto;
+            display: flex;
+            position: fixed;
+            left: 0%;
+            bottom: 0%;
+            width: calc(100% - 0.8vw);
             flex-direction: row;
             align-content: center;
             margin: 0;
@@ -124,14 +137,53 @@
             padding-right: 0.4vw;
             padding-top: 0.5vh;
             padding-bottom: 0.5vh;
-            background-image: linear-gradient(0deg, rgb(47, 140, 140) 70%, rgb(55, 166, 166));
-        input {
-            width: 100%;
-            margin-right: 0.4vw;
-        }
-        button {
-            margin: 0;
-        }
+/*             background-image: linear-gradient(0deg, rgb(47, 140, 140) 70%, rgb(55, 166, 166)); */
+            .chat-form-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 0.8vh;
+                margin: 1vh;
+                border: 0 solid;
+                border-radius: 0.8vh;
+                background-color: var(--chat-gray);
+                box-shadow: 0 0 1vh rgba(0, 0, 0, 0.5);
+                input {
+                    color: white;
+                    width: 85%;
+                    height: 2vh;
+                    padding: 1vh;
+                    margin-right: 0.4vw;
+                    font-family: 'Gothic';
+                    font-weight: 800;
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                    text-align: start;
+                    text-overflow: ellipsis;
+                }
+                button {
+                    width: 5vh;
+                    height: 5vh;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    outline: none;
+                    box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.5);
+                    background-color: transparent;
+                    background-image: url('/assets/img/icon/window/send.png');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    &:hover {
+                        filter: brightness(140%);
+                    }
+                    &:active {
+                        filter: brightness(70%);
+                    }
+                }
+            }
         }
         #key-form {
             margin-top: 3vh;

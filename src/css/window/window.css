@@ -21,7 +21,7 @@
     --riddle-width:                 62vw;
     --riddle-font-size:             2vh;
 
-    --chat-height:                  50vh;
+    --chat-height:                  55vh;
     --chat-width:                   38vw;
     --chat-margin:                  0.26vw;
     --chat-padding:                 0.21vw;
@@ -82,7 +82,7 @@
     background-size: 42vw;
     background-position: 10vw 6vh;
 
-    box-shadow: inset 0 0 1vw #4f4f4f,
+    box-shadow: inset 0 0 0.8vw #4f4f4f,
                 0 0 0.6vw rgba(0, 0, 0, 0.7);
 }
 .window-body {
