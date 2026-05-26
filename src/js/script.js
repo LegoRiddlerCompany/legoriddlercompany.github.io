@@ -290,7 +290,7 @@ function addMessage(msg, who) {
         // if we're not yet in the end of the string
         // we have a little (20ms) pause before we write the next character
         if (curr < msg.length)
-            window.setTimeout(write, 40);
+            window.setTimeout(write, 60);
     };
     write();
     // p.innerText = msg;
@@ -310,6 +310,7 @@ function robinGada(text) {
         // error.textContent = "";
         const newUtter = new SpeechSynthesisUtterance(enteredText);
         newUtter.rate = 1.5;
+        newUtter.voice = voices[0];
         speechSynth.speak(newUtter);
         // convertBtn.textContent = "Sound is Playing..."
     }

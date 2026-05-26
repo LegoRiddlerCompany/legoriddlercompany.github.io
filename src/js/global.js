@@ -2,6 +2,8 @@ const main = document.getElementsByTagName('main')[0];
 
 const robinUnavailable = "Jestem niedostępny, zadzwoń później";
 
+const voices = window.speechSynthesis.getVoices();
+
 let riddlesUnlocked = 0;
 let currentRiddle = 0;
 let currentTry = 1;
