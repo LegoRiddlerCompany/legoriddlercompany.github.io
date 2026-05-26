@@ -269,7 +269,9 @@ function addMessage(msg, who) {
     let curr = 0;
     let currText = '';
 
-    robinGada(msg);
+    if(who === "robin") {
+        robinGada(msg);
+    }
 
     function write(){
 
@@ -288,7 +290,7 @@ function addMessage(msg, who) {
         // if we're not yet in the end of the string
         // we have a little (20ms) pause before we write the next character
         if (curr < msg.length)
-            window.setTimeout(write, 20);
+            window.setTimeout(write, 40);
     };
     write();
     // p.innerText = msg;
@@ -307,6 +309,7 @@ function robinGada(text) {
     if (!speechSynth.speaking && enteredText.trim().length) {
         // error.textContent = "";
         const newUtter = new SpeechSynthesisUtterance(enteredText);
+        newUtter.rate = 1.5;
         speechSynth.speak(newUtter);
         // convertBtn.textContent = "Sound is Playing..."
     }
@@ -315,7 +318,6 @@ function robinGada(text) {
     //     convertBtn.textContent = "Play Converted Sound"
     // }, 5000);
 }
-
 
 function askAI(question) {
     if(apiKey === "") {

@@ -51,7 +51,8 @@
                     height: 7vh;
                     border: 0px solid transparent;
                     border-radius: 4vw;
-                    box-shadow: 0px 0px 0.4vw black;
+                    box-shadow: 0px 0px 1vh hwb(0deg 0% 100%/50%);
+                    margin-top: 0.8vw;
                 }
                 .chat-message {
                     width: 80%;
@@ -64,7 +65,7 @@
                     border-bottom-right-radius: 0.5vw;
 /*                     border-radius: 0.5vw; */
 /*                     box-shadow: 0px 0px 0.4vw black; */
-                    box-shadow: -0.4vh 0.4vh 0 black;
+                    box-shadow: -0.4vh 0.4vh 1vh hwb(0deg 0% 100%/50%);
                     font-family: "GothicLight";
                     font-weight: 800;
                     color: white;
@@ -137,6 +138,7 @@
             padding-right: 0.4vw;
             padding-top: 0.5vh;
             padding-bottom: 0.5vh;
+            background-image: linear-gradient(0deg, #252525 1px, rgb(55 166 166 / 0%));
 /*             background-image: linear-gradient(0deg, rgb(47, 140, 140) 70%, rgb(55, 166, 166)); */
             .chat-form-container {
                 display: flex;
