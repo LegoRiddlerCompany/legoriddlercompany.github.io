@@ -11,7 +11,8 @@ const autoBackground        = document.getElementById('auto-background');
 
 
 const riddlesNumber = getRiddlesNumber();
-const folderRowNumber = Math.ceil(riddlesNumber/5);
+const riddlesInRow = 4;
+const folderRowNumber = Math.ceil(riddlesNumber / riddlesInRow);
 
 const backgroundsNumber = 9;
 let currentBackground = 0;
@@ -30,8 +31,8 @@ for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
     row.className = 'files-row';
 
-    for(let f = 0; f < 5; f++) {
-        let fileNum     = (5 * r) + f + 1;
+    for(let f = 0; f < riddlesInRow; f++) {
+        let fileNum     = (riddlesInRow * r) + f + 1;
         let fileNumText = '' + fileNum;
         if(fileNum >= riddlesNumber + 1) { break; }
         if(fileNum < 10) { fileNumText = '0' + fileNum; }
@@ -56,7 +57,7 @@ for(let r = 0; r < folderRowNumber; r++) {
 
         const span = document.createElement('span');
         span.className = 'icon-name';
-        span.innerText = "zagadka" + fileNumText + ".exe";
+        span.innerText = "zagadka" + fileNumText /*+ ".exe"*/;
 
         container.appendChild(a);
         container.appendChild(span);
@@ -124,13 +125,23 @@ cheatsForm.addEventListener('submit', (event) => {
                 result = "Usunięto efekt crt";
             }
             break;
+        case 'fullscreen':
+            if(argument === 'on') {
+                requestFullScreen(document.documentElement);
+                result = "Włączono pełny ekran";
+            }
+            else {
+                document.exitFullscreen();
+                result = "Wyłączono pełny ekran";
+            }
+            break;
         case 'pomoc':
         case 'pomocy':
         case 'help':
-            result = "Sprawdź notke na pulpicie :P";
+            result = "Sprawdź komendy.txt na pulpicie :P";
             break;
         default:
-            result = "Nic się nie stało";
+            result = "Nic się nie zmieniło...";
             break;
     }
     executedCommand.innerText = "C:\\Users\\Batman> " + command + " " + argument;

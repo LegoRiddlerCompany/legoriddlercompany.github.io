@@ -1,9 +1,9 @@
 :root {
-    --icon-width:       3vw;
+    --icon-width:       4vw;
     --icon-height:      var(--icon-width);
     --icon-margin:      calc(var(--icon-width) / 4);
-/*     --icon-name-width:  calc(var(--icon-width) * 1.9); */
-    --icon-name-width:  calc(var(--icon-width) * 2.3);
+    --icon-name-width:  calc(var(--icon-width) * 1.9);
+/*     --icon-name-width:  calc(var(--icon-width) * 2.3); */
     --icon-font-size:   calc(var(--icon-width) / 4);
     --icon-font-shadow: calc(var(--icon-width) / 64);
 
@@ -41,5 +41,5 @@
 #witam {
     position: absolute;
     top: 40%;
-    left: 45.5%;
+    left: 42%;
 }

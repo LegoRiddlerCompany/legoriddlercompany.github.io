@@ -2,7 +2,7 @@
     --bar-height:           6vh;
     --bar-border:           calc(var(--bar-height) / 20);
 
-    --bar-time-width:       6vw;
+    --bar-time-width:       7vw;
     --bar-time-font-size:   calc(var(--bar-height) / 2);
 
     --bar-divider-width:    0.1vw;
@@ -61,6 +61,13 @@ footer {
 }
 
 #bar-volume {
+    img {
+        padding: 25%;
+        height: 50%;
+        width: 50%;
+    }
+}
+#bar-cheats {
     img {
         padding: 20%;
         height: 60%;

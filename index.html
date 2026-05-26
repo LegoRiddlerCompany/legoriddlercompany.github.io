@@ -59,7 +59,7 @@
         </div>
         <div id="note-icon" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="note.open()"><img src="/assets/img/icon/desktop/note.png"></a>
-            <span class="icon-name">Notka</span>
+            <span class="icon-name">komendy.txt</span>
         </div>
 
         <div id="skype" class="window" hidden>
@@ -111,7 +111,7 @@
                 <p id="riddle-text"></p>
                 <p id="riddle-hint" hidden></p>
                 <form id="form" method="post">
-                    <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" required>
+                    <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" autocomplete="off" required>
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
                 <p id="timer">10:00</p>
@@ -132,7 +132,7 @@
             </div>
             <div class="window-body">
                 <form id="key-form" method="post">
-                    <input type="password" minlength="1" maxlength="40" id="key-input" name="input" placeholder="Wklej klucz" required>
+                    <input type="password" minlength="1" maxlength="40" id="key-input" name="input" placeholder="Wklej klucz" autocomplete="off" required>
                     <button type="submit" onclick="clickSound()">Ok</button>
                 </form>
                 <div id="chat-container" hidden>
@@ -141,12 +141,14 @@
                     </div>
                     <div id="robin" class="chat-message-container">
                         <img class="chat-sender" src="/assets/img/icon/window/robingpt.png">
-                        <p class="chat-message">Resetowanie klucza: <!--<button id="key-reset" onclick="resetKey()">⟲</button>--></p>
+                        <p class="chat-message">
+                        Szefie, melduję się na stanowisku! Tu RoboRobin - Twoje osobiste wsparcie techniczne, system operacyjny Bat-komputera i cyfrowe ramię w walce z przestępczością w Gotham. Jestem gotów do przetwarzania danych, łamania szyfrów i zabezpieczeń oraz analizy taktycznej, kiedy tylko będziesz tego potrzebował. Czekam na Twoje rozkazy! Co planujemy na dzisiejszą noc?
+                        </p>
                     </div>
                 </div>
 <!--                 <div id="chat-shadow"></div> -->
                 <form id="chat-form" method="post" hidden>
-                    <input type="text" minlength="1" id="chat-input" name="input" placeholder="Pytanie do robina" required>
+                    <input type="text" minlength="1" id="chat-input" name="input" placeholder="Pytanie do robina" autocomplete="off" required>
                     <button type="submit" onclick="clickSound()">></button>
                 </form>
             </div>
@@ -156,7 +158,7 @@
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/cheats.png"></div>
-                    <div class="title-bar-text">Konsola</div>
+                    <div class="title-bar-text">Terminal</div>
                 </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="cheats.minimize()"></button>
@@ -170,7 +172,7 @@
                     <label for="cheats-input">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</label>
                     <span><br></span>
                     <label id="cheats-input-label" for="cheats-input">C:\Users\Batman>
-                        <input type="text" minlength="0" maxlength="30" id="cheats-input" form="cheats-form" name="input">
+                        <input type="text" minlength="0" maxlength="30" id="cheats-input" form="cheats-form" name="input" autocomplete="off">
                     </label>
                     <button type="submit" onclick="clickSound()" hidden>Ok</button>
                 </form>
@@ -208,7 +210,7 @@
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/note.png"></div>
-                    <div class="title-bar-text">Notka</div>
+                    <div class="title-bar-text">komendy.txt</div>
                 </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="note.minimize()"></button>
@@ -217,9 +219,12 @@
                 </div>
             </div>
             <div class="window-body">
-                <textarea id="note-text" rows="15" cols="28" readonly>
+                <div class="note-container">
+                    <span>22 maja 2026 o 6:00</span>
+<textarea id="note-text" rows="15" cols="28" readonly>
 Przydatne komendy:
- - crt on/off
+ - fullscreen on / off
+ - crt on / off
  - odblokuj [liczba]
 
 
@@ -228,8 +233,8 @@ Przydatne komendy:
 
 
 
-
- </textarea>
+</textarea>
+                </div>
             </div>
         </div>
 

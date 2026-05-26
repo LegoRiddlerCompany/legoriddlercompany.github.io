@@ -7,6 +7,10 @@
     src: url(/assets/fonts/ScienceGothic-SemiBold.ttf);
 }
 @font-face {
+    font-family: "GothicLight";
+    src: url(/assets/fonts/ScienceGothic-Light.ttf);
+}
+@font-face {
     font-family: "GothicThin";
     src: url(/assets/fonts/ScienceGothic-Thin.ttf);
 }

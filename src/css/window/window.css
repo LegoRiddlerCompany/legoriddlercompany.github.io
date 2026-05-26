@@ -15,7 +15,7 @@
     --skype-width:                  32vw;
 
     --folder-height:                56vh;
-    --folder-width:                 42vw;
+    --folder-width:                 39vw;
 
     --riddle-height:                66vh;
     --riddle-width:                 62vw;
@@ -34,7 +34,7 @@
     --bg-button-margin:             0.3vw;
 
     --note-height:                  40vh;
-    --note-width:                   24vw;
+    --note-width:                   20vw;
     --note-font-size:               2vh;
 
     --cheats-height:                44vh;
@@ -83,7 +83,7 @@
     background-position: 10vw 6vh;
 
     box-shadow: inset 0 0 1vw #4f4f4f,
-                0 0 0.6vw black;
+                0 0 0.6vw rgba(0, 0, 0, 0.7);
 }
 .window-body {
 /*     margin: var(--window-body-margin) !important; */

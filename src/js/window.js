@@ -19,7 +19,9 @@ const wallpaper = new App(document.getElementById('background-change'), document
 const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null);
 
 skype.alwaysOnTop(true);
+skype.alwaysOnBar(true);
 chat.alwaysOnTop(true);
+chat.alwaysOnBar(true);
 
 const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note]);
 
@@ -28,19 +30,22 @@ folder.additionalOpenAction  = folderOpenAction;
 riddle.additionalOpenAction  = riddleOpenAction;
 riddle.additionalCloseAction = riddleCloseAction;
 chat.additionalOpenAction    = chatOpenAction;
+cheats.additionalOpenAction  = focusCheatsInput;
 
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
 
 
 
-cheats.window.addEventListener("click", () => {
+cheats.window.addEventListener("click", focusCheatsInput);
+
+function focusCheatsInput() {
     if(cheats.status === windowStatus.OPEN) {
         const input = document.getElementById('cheats-input');
         input.focus();
         input.scrollIntoView();
     }
-});
+}
 
 function openCall() {
     skypeCall.removeAttribute('hidden');

@@ -8,6 +8,7 @@ class App {
     #status         = windowStatus.CLOSED;
 
     #alwaysOnTop    = false;
+    #alwaysOnBar    = false;
 
     #additionalOpenAction  = () => {};
     #additionalCloseAction = () => {};
@@ -35,14 +36,17 @@ class App {
     }
 
     toggle() {
-        if(this.#status === windowStatus.OPEN){
+        if(this.#status === windowStatus.OPEN) {
             this.#windowElement.hidden = 'hidden';
             this.#status = windowStatus.MINIMIZED;
         }
-        else if(this.#status === windowStatus.MINIMIZED){
+        else if(this.#status === windowStatus.MINIMIZED) {
             this.#windowElement.removeAttribute('hidden');
             this.#status = windowStatus.OPEN;
             this.getMeInFront();
+        }
+        if(this.#status === windowStatus.CLOSED) {
+            this.open();
         }
         // clickSound();
     }
@@ -58,9 +62,18 @@ class App {
     }
 
     close() {
+        // if(!this.#alwaysOnBar) {
+        //     this.#barElement.hidden = 'hidden';
+        //     this.#status = windowStatus.CLOSED;
+        // } else {
+        //     this.#status = windowStatus.MINIMIZED;
+        // }
         this.#windowElement.hidden = 'hidden';
-        this.#barElement.hidden = 'hidden';
+        if(!this.#alwaysOnBar) {
+            this.#barElement.hidden = 'hidden';
+        }
         this.#status = windowStatus.CLOSED;
+
 
         this.#additionalCloseAction();
         // clickSound();
@@ -70,6 +83,16 @@ class App {
         if(this.#bodyElement !== null) {
             this.#bodyElement.appendChild(element);
         }
+    }
+
+    alwaysOnBar(status) {
+        this.#alwaysOnBar = status;
+        this.#barElement.removeAttribute('hidden');
+        // if(status) {
+        //     this.#status = windowStatus.MINIMIZED;
+        // } else {
+        //     this.#status = windowStatus.CLOSED;
+        // }
     }
 
     alwaysOnTop(status) {

@@ -7,6 +7,15 @@
     background-image: none;
     background-color: black/*var(--gray)*/;
     box-shadow: 0 0 0.6vw black;
+    .title-bar {
+        background-color: black;
+        .title-bar-controls > #min-button, #max-button {
+            display: none;
+        }
+        .title-bar-controls > #ext-button {
+            background-image: url('/assets/img/icon/window/termext.png');
+        }
+    }
     .window-body {
         display: flex;
         margin: 0;
