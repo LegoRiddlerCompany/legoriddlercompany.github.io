@@ -310,7 +310,7 @@ function robinGada(text) {
     if (!speechSynth.speaking && enteredText.trim().length) {
         // error.textContent = "";
         const newUtter = new SpeechSynthesisUtterance(enteredText);
-        newUtter.rate = 1.25;
+        newUtter.rate = 1.20;
         newUtter.voice = voices[0];
         speechSynth.speak(newUtter);
         // convertBtn.textContent = "Sound is Playing..."
