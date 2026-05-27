@@ -271,29 +271,30 @@ function addMessage(msg, who) {
 
     if(who === "robin") {
         robinGada(msg);
+
+        function write(){
+
+            // Find the target element to write to
+            // let elem = document.getElementById('target');
+
+            // Append next character into the text content
+
+            currText = currText + msg.charAt(curr)
+            p.innerText = currText;
+            chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+            // Update the current position
+            curr++;
+
+            // if we're not yet in the end of the string
+            // we have a little (20ms) pause before we write the next character
+            if (curr < msg.length)
+                window.setTimeout(write, 52);
+        };
+        write();
+    } else {
+        p.innerText = msg;
     }
-
-    function write(){
-
-        // Find the target element to write to
-        // let elem = document.getElementById('target');
-
-        // Append next character into the text content
-
-        currText = currText + msg.charAt(curr)
-        p.innerText = currText;
-        chatContainer.scrollTo(0, chatContainer.scrollHeight);
-
-        // Update the current position
-        curr++;
-
-        // if we're not yet in the end of the string
-        // we have a little (20ms) pause before we write the next character
-        if (curr < msg.length)
-            window.setTimeout(write, 60);
-    };
-    write();
-    // p.innerText = msg;
 }
 
 function robinGada(text) {
