@@ -1,22 +1,28 @@
 class App {
-    #windowManager  = null;
+    #windowManager   = null;
 
-    #windowElement  = null;
-    #barElement     = null;
-    #bodyElement    = null;
+    #windowElement   = null;
+    #barElement      = null;
+    #barLightElement = null;
+    #bodyElement     = null;
 
-    #status         = windowStatus.CLOSED;
+    #status          = windowStatus.CLOSED;
 
-    #alwaysOnTop    = false;
-    #alwaysOnBar    = false;
+    #alwaysOnTop     = false;
+    #alwaysOnBar     = false;
 
     #additionalOpenAction  = () => {};
     #additionalCloseAction = () => {};
 
     constructor(windowElement, barElement, bodyElement) {
-        this.#windowElement = windowElement;
-        this.#barElement    = barElement;
-        this.#bodyElement   = bodyElement;
+        this.#windowElement   = windowElement;
+        this.#barElement      = barElement;
+        this.#bodyElement     = bodyElement;
+        this.#barLightElement = barElement.children[1];
+
+        if(this.#barLightElement === undefined) {
+            this.#barLightElement = null;
+        }
 
         this.#windowElement.addEventListener("mousedown", (event) => {
             this.getMeInFront();
@@ -26,6 +32,9 @@ class App {
     open(argAction=null) {
         this.#windowElement.removeAttribute('hidden');
         this.#barElement.removeAttribute('hidden');
+        if(this.#barLightElement) {
+            this.#barLightElement.removeAttribute('hidden');
+        }
         this.#status = windowStatus.OPEN;
 
         this.#additionalOpenAction(argAction);
@@ -37,10 +46,16 @@ class App {
     toggle() {
         if(this.#status === windowStatus.OPEN) {
             this.#windowElement.hidden = 'hidden';
+            if(this.#barLightElement) {
+                this.#barLightElement.hidden = 'hidden';
+            }
             this.#status = windowStatus.MINIMIZED;
         }
         else if(this.#status === windowStatus.MINIMIZED) {
             this.#windowElement.removeAttribute('hidden');
+            if(this.#barLightElement) {
+                this.#barLightElement.removeAttribute('hidden');
+            }
             this.#status = windowStatus.OPEN;
             this.getMeInFront();
         }
@@ -51,6 +66,9 @@ class App {
 
     minimize() {
         this.#windowElement.hidden = 'hidden';
+        if(this.#barLightElement) {
+            this.#barLightElement.hidden = 'hidden';
+        }
         this.#status = windowStatus.MINIMIZED;
     }
 
@@ -67,6 +85,9 @@ class App {
         this.#windowElement.hidden = 'hidden';
         if(!this.#alwaysOnBar) {
             this.#barElement.hidden = 'hidden';
+        }
+        if(this.#barLightElement) {
+            this.#barLightElement.hidden = 'hidden';
         }
         this.#status = windowStatus.CLOSED;
 
@@ -164,7 +185,6 @@ class App {
 
     #dragElement(element, draggable) {
         let vh = main.offsetHeight, vw = window.innerWidth;
-        console.log(vh);
         let el = element.getBoundingClientRect();
         let eh = el.height, ew = el.width;
         let maxh = vh - eh;
