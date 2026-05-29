@@ -29,6 +29,12 @@ class WindowManager {
         });
     }
 
+    updateDesktopSize() {
+        this.#appList.forEach((app, id) => {
+            app.updateDesktopSize();
+        });
+    }
+
     setAppsWindowManager() {
         this.#appList.forEach((app) => {
             app.windowManager = this;

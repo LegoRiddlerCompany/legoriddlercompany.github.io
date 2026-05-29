@@ -8,6 +8,10 @@
     --light-gray: #666666;
     --chat-gray: #333333;
     --gray-highlight: rgba(51, 51, 51, 0.4);
+
+    --top: #333333;
+    --mid: #222222;
+    --base: #111111;
 }
 
 [hidden]{
@@ -43,6 +47,7 @@ body::-webkit-scrollbar { display: none; }
 main {
     display: flex;
     flex-grow: 1;
+    padding: 0.8vh;
 /*     background-color: black; */
 /*     background-image: url('/assets/img/background/0.webp'); */
     background-repeat: no-repeat;

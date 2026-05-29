@@ -99,6 +99,12 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
+["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
+    eventType => document.addEventListener(eventType, () => {
+        windowManager.updateDesktopSize();
+    }, false)
+);
+
 cheatsForm.addEventListener('submit', (event) => {
     let [command, argument] = cheatsForm.input.value.trim().split(' ');
     if(argument === undefined) { argument = ""; }
@@ -130,7 +136,7 @@ cheatsForm.addEventListener('submit', (event) => {
                 requestFullScreen(document.documentElement);
                 result = "Włączono pełny ekran";
             }
-            else {
+            else if(document.fullscreenElement) {
                 document.exitFullscreen();
                 result = "Wyłączono pełny ekran";
             }
@@ -294,6 +300,7 @@ function addMessage(msg, who) {
         write();
     } else {
         p.innerText = msg;
+        chatContainer.scrollTo(0, chatContainer.scrollHeight);
     }
 }
 

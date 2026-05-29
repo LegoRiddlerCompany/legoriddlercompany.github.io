@@ -32,7 +32,6 @@ class App {
 
         this.getMeInFront();
         this.#dragElement(this.#windowElement, this.#windowElement.children[0]);
-        // clickSound();
     }
 
     toggle() {
@@ -48,17 +47,14 @@ class App {
         if(this.#status === windowStatus.CLOSED) {
             this.open();
         }
-        // clickSound();
     }
 
     minimize() {
         this.#windowElement.hidden = 'hidden';
         this.#status = windowStatus.MINIMIZED;
-        // clickSound();
     }
 
     maximize() {
-        // clickSound();
     }
 
     close() {
@@ -74,9 +70,7 @@ class App {
         }
         this.#status = windowStatus.CLOSED;
 
-
         this.#additionalCloseAction();
-        // clickSound();
     }
 
     appendChildElement(element) {
@@ -143,10 +137,34 @@ class App {
         this.#additionalCloseAction = func;
     }
 
-    #dragElement(element, draggable) {
-        // let thisApp = this;
+    updateDesktopSize() {
+        let element = this.#windowElement;
         let vh = main.offsetHeight, vw = window.innerWidth;
-        // console.log(main.style, vh);
+        let el = element.getBoundingClientRect();
+        let eh = el.height, ew = el.width;
+        let maxh = vh - eh;
+        let maxw = vw - ew;
+        let top  = element.offsetTop;
+        let left = element.offsetLeft;
+
+        if(top < 0) { top = 0; }
+        if(top > maxh) { top = maxh; }
+        if(left < 0) { left = 0; }
+        if(left > maxw) { left = maxw; }
+
+        element.style.top = top + "px";
+        element.style.left = left + "px";
+
+        if(this.#status === windowStatus.OPEN) {
+            this.open();
+            this.#windowElement.hidden = 'hidden';
+            this.#windowElement.removeAttribute('hidden');
+        }
+    }
+
+    #dragElement(element, draggable) {
+        let vh = main.offsetHeight, vw = window.innerWidth;
+        console.log(vh);
         let el = element.getBoundingClientRect();
         let eh = el.height, ew = el.width;
         let maxh = vh - eh;
@@ -157,23 +175,20 @@ class App {
         function dragMouseDown(e) {
             e = e || window.event;
             e.preventDefault();
-            // get the mouse cursor position at startup:
             pos3 = e.clientX;
             pos4 = e.clientY;
+            element.style.cursor = 'grab';
             document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
             document.onmousemove = elementDrag;
         }
 
         function elementDrag(e) {
             e = e || window.event;
             e.preventDefault();
-            // calculate the new cursor position:
             pos1 = pos3 - e.clientX;
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-            // set the element's new position:
             let newTop    = (element.offsetTop - pos2);
             let newLeft   = (element.offsetLeft - pos1);
 
@@ -187,9 +202,9 @@ class App {
         }
 
         function closeDragElement() {
-            /* stop moving when mouse button is released:*/
             document.onmouseup = null;
             document.onmousemove = null;
+            element.style.cursor = 'default';
         }
     }
 }

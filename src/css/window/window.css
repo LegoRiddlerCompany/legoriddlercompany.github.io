@@ -125,6 +125,7 @@
         &:active {
             filter: brightness(70%);
         }
+        cursor: pointer;
     }
 }
 
@@ -140,6 +141,7 @@
 .title-bar-icon {
     height: 100%;
     width: 100%;
+    user-select: none;
 }
 .title-bar-text {
     max-height:     var(--title-bar-controls-height);
@@ -151,7 +153,7 @@
     align-items: center;*/
     color: white;
     text-shadow: 0 0 0.7vw black;
-    text-shadow: ;
+    user-select: none;
 }
 .checkbox-action {
     display: none;
