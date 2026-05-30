@@ -23,6 +23,7 @@
     <script defer src="/src/js/callersList.js"></script>
     <script defer src="/src/js/App.js"></script>
     <script defer src="/src/js/WindowManager.js"></script>
+    <script defer src="/src/js/RiddleManager.js"></script>
     <script defer src="/src/js/background.js"></script>
     <script defer src="/src/js/audio.js"></script>
     <script defer src="/src/js/riddles.js"></script>
@@ -346,7 +347,7 @@ Przydatne komendy:
                 <div class="facetime-controls-widget">
                     <div class="controls-container">
                         <div class="control-item">
-                            <button class="control-btn btn-danger" onclick="riddleManager.answerWhatsapp();">
+                            <button class="control-btn btn-danger" onclick="riddleManager.answerSkypeCall();">
                                 <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odbierz</span>
@@ -362,11 +363,11 @@ Przydatne komendy:
             </div>
         </div>
 
-        <div id="whatsapp-call" class="window call">
+        <div id="whatsapp-call" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
-                    <div class="title-bar-text">Whatsbat</div>
+                    <div class="title-bar-text">Whatsbatt</div>
                 </div>
                 <div class="title-bar-controls">
                 </div>
@@ -381,7 +382,7 @@ Przydatne komendy:
                 <div class="facetime-controls-widget">
                     <div class="controls-container">
                         <div class="control-item">
-                            <button class="control-btn btn-danger" onclick="riddleManager.answerWhatsapp();">
+                            <button class="control-btn btn-danger" onclick="riddleManager.answerWhatsappCall();">
                                 <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odbierz</span>
@@ -401,7 +402,7 @@ Przydatne komendy:
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
-                    <div id="whatsapp-title" class="title-bar-text">Whatsbat</div>
+                    <div id="whatsapp-title" class="title-bar-text">Whatsbatt</div>
                 </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="whatsapp.minimize()"></button>
@@ -414,7 +415,7 @@ Przydatne komendy:
                     <img id="whatsapp-avatar" alt="Avatar">
                 </div>
                 <div class="timer-center-zone">
-                    <span class="call-timer">00:14</span>
+                    <span class="call-timer">00:00</span>
                 </div>
                 <div class="facetime-controls-widget">
                     <div class="controls-container">

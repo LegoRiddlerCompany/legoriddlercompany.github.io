@@ -22,7 +22,7 @@ const whatsapp  = new App(document.getElementById('whatsapp'),          document
 
 skype.alwaysOnTop(true);
 skype.alwaysOnBar(true);
-chat.alwaysOnTop(true);
+// chat.alwaysOnTop(true);
 chat.alwaysOnBar(true);
 
 const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note, whatsapp]);

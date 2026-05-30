@@ -24,9 +24,6 @@
 //
 // }
 
-const riddleManager = RiddleManager();
-
-riddleManager.init();
 
 class RiddleManager {
     #form = null;
@@ -37,7 +34,7 @@ class RiddleManager {
 
     init() {
         this.#form.addEventListener('submit', (event) => {
-            let answer = riddleForm.answer.value;
+            let answer = this.#form.answer.value;
 
             if(checkAnswer(currentRiddle - 1, answer)) {
                 // let nextRiddleNumber = currentRiddle + 1;
@@ -124,7 +121,7 @@ class RiddleManager {
         a_riddlerStart.play();
     }
 
-    answerWhatsapp() {
+    answerWhatsappCall() {
         whatsapp.open("joker");
     }
 
@@ -136,3 +133,7 @@ class RiddleManager {
 
     }
 }
+
+const riddleManager = new RiddleManager();
+
+riddleManager.init();
