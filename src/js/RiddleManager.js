@@ -86,7 +86,7 @@ class RiddleManager {
 
     startSkypeCall() {
         skypeCall.removeAttribute('hidden');
-        startSkypeCallSound();
+        this.startSkypeCallSound();
     }
     startSkypeCallSound() {
         callaudio.play();
