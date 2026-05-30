@@ -124,6 +124,9 @@ class RiddleManager {
         a_riddlerStart.play();
     }
 
+    answerWhatsapp() {
+        whatsapp.open("joker");
+    }
 
     load() {
 

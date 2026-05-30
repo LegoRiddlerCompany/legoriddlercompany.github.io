@@ -17,20 +17,23 @@ const chat      = new App(document.getElementById('chat'),              document
 const volume    = new App(document.getElementById('volume'),            document.getElementById('bar-volume'),            null);
 const wallpaper = new App(document.getElementById('background-change'), document.getElementById('bar-background-change'), null);
 const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null);
+const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null);
+
 
 skype.alwaysOnTop(true);
 skype.alwaysOnBar(true);
 chat.alwaysOnTop(true);
 chat.alwaysOnBar(true);
 
-const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note]);
+const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note, whatsapp]);
 
 volume.status = windowStatus.MINIMIZED;
-folder.additionalOpenAction  = folderOpenAction;
-riddle.additionalOpenAction  = riddleOpenAction;
-riddle.additionalCloseAction = riddleCloseAction;
-chat.additionalOpenAction    = chatOpenAction;
-cheats.additionalOpenAction  = focusCheatsInput;
+folder.additionalOpenAction   = folderOpenAction;
+riddle.additionalOpenAction   = riddleOpenAction;
+riddle.additionalCloseAction  = riddleCloseAction;
+chat.additionalOpenAction     = chatOpenAction;
+cheats.additionalOpenAction   = focusCheatsInput;
+whatsapp.additionalOpenAction = whatsappOpenAction;
 
 skype.additionalOpenAction  = skypeOpenAction;//// remove
 
@@ -41,8 +44,6 @@ function skypeOpenAction() {
 
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
-
-
 
 cheats.window.addEventListener("click", focusCheatsInput);
 
@@ -65,6 +66,11 @@ async function folderOpenAction() {
         //startCall();
         riddleManager.start();
     }
+}
+
+function whatsappOpenAction(who) {
+    document.getElementById('whatsapp-title').innerText = "Whatsbat - " + callersList[who].fullname;
+    document.getElementById('whatsapp-avatar').src = callersList[who].img;
 }
 
 

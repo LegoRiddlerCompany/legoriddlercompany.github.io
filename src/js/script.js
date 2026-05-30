@@ -13,28 +13,21 @@ const riddlesNumber = getRiddlesNumber();
 const riddlesInRow = 4;
 const folderRowNumber = Math.ceil(riddlesNumber / riddlesInRow);
 
-const backgroundsNumber = 9;
-let currentBackground = 0;
-let backgroundInterval = null;
-
 loadBackground();
+loadCRTEffect();
 
 setInterval(updateTime, 1000);
 
 body.addEventListener("click", () => {
     clickSound();
-    vid.style.zIndex = '3';
-
-
-    vid.play();
 });
 
 
 const vid = document.getElementById('video');
 const src = document.getElementById('source');
 
-const svid = document.getElementById('video2');
-const ssrc = document.getElementById('source2');
+const svid = document.getElementById('video-swap');
+const ssrc = document.getElementById('source-swap');
 
 vid.addEventListener('ended', () => {
     vid.pause();
@@ -137,11 +130,13 @@ cheatsForm.addEventListener('submit', (event) => {
             break;
         case 'crt':
             if(argument === 'on') {
-                body.className = "crt";
+                setCRTEffect("true");
+                saveCRTEffect("true");
                 result = "Dodano efekt crt.";
             }
             else {
-                body.className = "";
+                setCRTEffect("false");
+                saveCRTEffect("false");
                 result = "Usunięto efekt crt.";
             }
             break;
@@ -395,43 +390,4 @@ function askAI(question) {
         console.error('Error:', error);
         addMessage(robinUnavailable, "robin");
     });
-}
-
-function setBackgroundAutoChange() {
-    let autoplay = autoBackground.checked;
-    if(autoplay) {
-        backgroundInterval = setInterval(nextBackground, 1000);
-    } else {
-        clearInterval(backgroundInterval);
-    }
-}
-function setBackground() {
-    background.style.backgroundImage = "url('/assets/img/background/" + currentBackground + ".webp')";
-}
-function loadBackground() {
-    currentBackground = parseInt(localStorage.getItem('bg'));
-    if(isNaN(currentBackground)) {
-        currentBackground = 0;
-    }
-    setBackground();
-}
-function saveBackground() {
-    localStorage.setItem('bg', currentBackground);
-}
-function nextBackground() {
-    changeBackground(1);
-}
-function prevBackground() {
-    changeBackground(-1);
-}
-function changeBackground(direction) {
-    currentBackground += parseInt(direction);
-    if(currentBackground >= backgroundsNumber) {
-        currentBackground = 0;
-    }
-    if(currentBackground < 0) {
-        currentBackground = backgroundsNumber - 1;
-    }
-    setBackground();
-    saveBackground();
 }

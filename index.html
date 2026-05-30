@@ -23,6 +23,7 @@
     <script defer src="/src/js/callersList.js"></script>
     <script defer src="/src/js/App.js"></script>
     <script defer src="/src/js/WindowManager.js"></script>
+    <script defer src="/src/js/background.js"></script>
     <script defer src="/src/js/audio.js"></script>
     <script defer src="/src/js/riddles.js"></script>
     <script defer src="/src/js/window.js"></script>
@@ -62,7 +63,7 @@
             <span class="icon-name">komendy.txt</span>
         </div>
 
-        <div id="skype" class="window" hidden>
+        <!--<div id="skype" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/skype.png"></div>
@@ -78,14 +79,63 @@
                 <p>Tutaj bedzie rozmowa</p>
                 <video id="video" controls preload="auto" style="z-index: 3; position: absolute;">
                     <source id="source" src="/assets/video/riddle/0.mp4" type="video/mp4"/>
-                    <!--<source src="/assets/video/waiting/0.mp4" type="video/mp4"/>
-                    <source src="/assets/video/rushing/0.mp4" type="video/mp4"/>-->
                 </video>
                 <video id="video2" preload="auto" style="z-index: 2; position: absolute;" loop>
                     <source id="source2" src="/assets/video/waiting/0.mp4" type="video/mp4"/>
-                    <!--<source src="/assets/video/waiting/0.mp4" type="video/mp4"/>
-                    <source src="/assets/video/rushing/0.mp4" type="video/mp4"/>-->
                 </video>
+            </div>
+        </div>-->
+        <div id="skype" class="window" hidden>
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/skype.png"></div>
+                    <div class="title-bar-text">Skyppler</div>
+                </div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="skype.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="skype.maximize()"></button>
+                    <button id="ext-button" aria-label="Close" onclick="skype.close()"></button>
+                </div>
+            </div>
+
+            <div class="window-sandbox-wrapper">
+                <div class="clean-video-frame">
+                    <video id="video" preload="auto" style="z-index: 3; position: absolute;">
+                        <source id="source" src="/assets/video/riddle/0.mp4" type="video/mp4"/>
+                    </video>
+                    <video id="video-swap" preload="auto" style="z-index: 2; position: absolute;" loop>
+                        <source id="source-swap" src="/assets/video/waiting/0.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <div class="video-container-layer">
+
+                    <div class="facetime-controls">
+                        <div class="drag-handle"></div>
+                        <div class="controls-container">
+
+                            <div class="control-item">
+                                <button class="control-btn btn-dark">
+                                    <img src="https://i.ibb.co/XxDdsbTq/mute.png" alt="mute icon" class="btn-icon">
+                                </button>
+                                <span class="control-label">Mute</span>
+                            </div>
+
+                            <div class="control-item">
+                                <button class="control-btn btn-dark" disabled="">
+                                    <img src="https://i.ibb.co/zTkcZLpv/flip.png" alt="flip icon" class="btn-icon">
+                                </button>
+                                <span class="control-label label-disabled">Flip</span>
+                            </div>
+
+                            <div class="control-item">
+                                <button class="control-btn btn-danger" disabled="">
+                                    <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                                </button>
+                                <span class="control-label label-disabled">End</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -260,7 +310,7 @@ Przydatne komendy:
             <input id="volume-value" type="range" min="0" max="9" step="1" value="9" />
         </div>
 
-        <div id="skype-call" class="skype-call-container" hidden>
+        <!--<div id="skype-call" class="skype-call-container" hidden>
             <div class="skype-call-top">
                 <span>Skype</span>
                 <a href="javascript:void(0)"><span>x</span></a>
@@ -276,23 +326,128 @@ Przydatne komendy:
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!--<div id="ad" class="window" hidden>
+        </div>-->
+        <div id="skype-call" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/ad.png"></div>
-                    <div class="title-bar-text"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
+                    <div class="title-bar-text">Skyppler</div>
                 </div>
                 <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="bgChange.minimize()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="bgChange.maximize()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="bgChange.close()"></button>
                 </div>
             </div>
-            <div class="window-body">
+            <div class="audio-call-row">
+                <div class="profile-avatar">
+                    <img src="/assets/img/prof/riddler.png" alt="Avatar">
+                </div>
+                <div id="whatsapp-call-text" class="timer-center-zone">
+                    <span class="call-timer">Dzwoni Riddler</span>
+                </div>
+                <div class="facetime-controls-widget">
+                    <div class="controls-container">
+                        <div class="control-item">
+                            <button class="control-btn btn-danger" onclick="riddleManager.answerWhatsapp();">
+                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Odbierz</span>
+                        </div>
+                        <div class="control-item">
+                            <button class="control-btn btn-danger">
+                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Odrzuć</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>-->
+        </div>
+
+        <div id="whatsapp-call" class="window call">
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
+                    <div class="title-bar-text">Whatsbat</div>
+                </div>
+                <div class="title-bar-controls">
+                </div>
+            </div>
+            <div class="audio-call-row">
+                <div class="profile-avatar">
+                    <img src="/assets/img/prof/unknown.png" alt="Avatar">
+                </div>
+                <div id="whatsapp-call-text" class="timer-center-zone">
+                    <span class="call-timer">Dzwoni nieznany numer...</span>
+                </div>
+                <div class="facetime-controls-widget">
+                    <div class="controls-container">
+                        <div class="control-item">
+                            <button class="control-btn btn-danger" onclick="riddleManager.answerWhatsapp();">
+                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Odbierz</span>
+                        </div>
+                        <div class="control-item">
+                            <button class="control-btn btn-danger">
+                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Odrzuć</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="whatsapp" class="window call" hidden>
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
+                    <div id="whatsapp-title" class="title-bar-text">Whatsbat</div>
+                </div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="whatsapp.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="whatsapp.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="audio-call-row">
+                <div class="profile-avatar">
+                    <img id="whatsapp-avatar" alt="Avatar">
+                </div>
+                <div class="timer-center-zone">
+                    <span class="call-timer">00:14</span>
+                </div>
+                <div class="facetime-controls-widget">
+                    <div class="controls-container">
+                        <div class="control-item">
+                            <button class="control-btn btn-dark">
+                                <img src="https://i.ibb.co/SXLB06Rf/volume.png" alt="speaker icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Audio</span>
+                        </div>
+
+                        <div class="control-item">
+                            <button class="control-btn btn-dark" disabled="">
+                                <img src="https://i.ibb.co/Gf1Mbwfj/webcam.png" alt="camera icon" class="btn-icon" style="opacity: 0.6;">
+                            </button>
+                            <span class="control-label label-disabled">Camera</span>
+                        </div>
+                        <div class="control-item">
+                            <button class="control-btn btn-dark">
+                                <img src="https://i.ibb.co/XxDdsbTq/mute.png" alt="mute icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">Mute</span>
+                        </div>
+                        <div class="control-item">
+                            <button class="control-btn btn-danger">
+                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                            </button>
+                            <span class="control-label">End</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <footer>
         <div class="bar-left">
@@ -308,6 +463,10 @@ Przydatne komendy:
             </a>
             <a id="bar-skype" class="bar-icon bar-app" href="javascript:void(0)" onclick="skype.toggle()" hidden>
                 <img src="/assets/img/icon/bar/skype.png">
+                <div class="app-light" hidden></div>
+            </a>
+            <a id="bar-whatsapp" class="bar-icon bar-app" href="javascript:void(0)" onclick="whatsapp.toggle()">
+                <img src="/assets/img/icon/bar/whatsapp.png">
                 <div class="app-light" hidden></div>
             </a>
             <a id="bar-riddle" class="bar-icon bar-app" href="javascript:void(0)" onclick="riddle.toggle()" hidden>

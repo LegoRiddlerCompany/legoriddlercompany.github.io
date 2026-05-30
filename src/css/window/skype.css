@@ -1,4 +1,4 @@
-#skype {
+/*#skype {
     position: absolute;
     top:    2%;
     left:   3%;
@@ -92,4 +92,466 @@
             }
         }
     }
+}*/
+#skype {
+    position: absolute;
+    top:    2%;
+    left:   3%;
+    width: 51.8465vh;
+    height: 59.6465vh;
+}
+
+#skype-call {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left:   36%;
+    bottom: 10%;
+    width:  var(--skype-call-width);
+    height: var(--skype-call-height);
+    border: var(--skype-call-border) solid #080808;
+    border-radius:  var(--skype-call-border-radius);
+    box-shadow:     0px 0px var(--skype-call-border) black;
+    overflow: hidden;
+    color: #d1d1d1;
+    .skype-call-top {
+        display: flex;
+        justify-content: space-between;
+        height: var(--skype-call-top-height);
+        padding: 0.1vw;
+        padding-left: 0.3vw;
+        padding-right: 0.3vw;
+        background-color: #252525;
+        font-weight: 600;
+        font-size: var(--skype-call-top-font-size);
+        a {
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width: 0.8vw;
+            height: 0.8vw;
+            margin-top: 0.1vw;
+            background-color: #d1d1d1;
+            color: #252525;
+            text-decoration: none;
+            border: 0px 0px;
+            border-radius: 2vw;
+        }
+    }
+
+    .skype-call-bottom {
+        display: flex;
+        height: var(--skype-call-bottom-height);
+        background-color: #4c4c4c;
+        border-top: var(--skype-call-bottom-border) solid #595959;
+        img {
+            height: var(--skype-call-image-height);
+            width:  var(--skype-call-image-height);
+            margin: var(--skype-call-image-margin);
+            border: var(--skype-call-image-border) solid #595959;
+            background-color: #303030;
+
+        }
+        .skype-call-text {
+            align-items: center;
+            padding-top: 0.3vw;
+            color: white;
+            font-weight: 800;
+            font-size: var(--skype-call-bottom-font-size);
+        }
+        .skype-call-right {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: var(--skype-call-buttons-width);
+            .skype-call-space {
+                height: 100%;
+            }
+            .skype-call-buttons-container {
+                display: flex;
+                justify-content: start;
+                width: var(--skype-call-buttons-width);
+                height: var(--skype-call-button-width);
+                padding-bottom: 0.3vw;
+                .skype-call-button {
+                    img {
+                        width: var(--skype-call-button-width);
+                        height: var(--skype-call-button-width);
+                        margin: 0;
+                        border: none;
+                        background-color: transparent;
+                    }
+                    #skype-call-decline-img {
+                    margin-left: var(--skype-call-button-margin);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.window-sandbox-wrapper {
+    position: absolute !important;
+    width: 51.8465vh;
+    height: calc(59.6465vh - var(--title-bar-height));
+}
+
+.video-container-layer {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    pointer-events: auto !important;
+}
+
+.clean-video-frame {
+    position: absolute !important;
+    top: 1.6vh !important;
+    left: 3.5% !important;
+    width: 93% !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 1.5vh !important;
+    z-index: 1 !important;
+    box-shadow: 0 1.5vh 3vh rgba(0, 0, 0, 0.65) !important;
+    pointer-events: none !important;
+}
+
+.clean-video-frame::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 1.5vh !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+    box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.5),
+    inset 0 8px 12px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+.clean-video-frame video {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 1.5vh !important;
+    overflow: hidden !important;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+:root {
+    --panel-bg: #222222;
+    --btn-dark: #333333;
+    --btn-dark-hover: #444444;
+    --btn-danger: #333333;
+    --btn-danger-hover: #444444;
+    --text-gray: #ffffff;
+    --disabled-opacity: 0.35;
+}
+
+.facetime-controls {
+    position: absolute !important;
+    bottom: 3.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--panel-bg);
+    padding: 1.5vh 2.5vw 2.2vh 2.5vw;
+    border-radius: 2.2vh;
+    box-shadow: 0 0.22vh 2vh rgb(0 0 0 / 50%),
+    inset 0 1px 0 rgb(255 255 255 / 45%);
+    opacity: 97.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8vh;
+    width: max-content;
+    user-select: none;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+}
+
+.drag-handle {
+    width: 4.5vw;
+    height: 0.75vh;
+    background-color: #333333;
+    border-radius: 0.25vh;
+    box-shadow: inset 0 0 0.2454vh rgb(0 0 0 / 20%);
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+}
+
+.control-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8vh;
+}
+
+.control-btn {
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+
+    &:active:not(:disabled) {
+        transform: scale(0.94);
+    }
+
+    &:disabled {
+        opacity: var(--disabled-opacity);
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+.btn-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.btn-dark {
+    background-color: var(--btn-dark);
+
+    &:hover:not(:disabled) {
+        background-color: var(--btn-dark-hover);
+    }
+}
+
+.btn-danger {
+    background-color: var(--btn-danger);
+
+    &:hover:not(:disabled) {
+        background-color: var(--btn-danger-hover);
+    }
+}
+
+.control-label {
+    color: var(--text-gray);
+    font-family: "GothicBold";
+    src: url(/assets/fonts/ScienceGothic-SemiBold.ttf);
+    font-size: 1.6vmin;
+    letter-spacing: -0.01vw;
+}
+
+.label-disabled {
+    opacity: var(--disabled-opacity);
+}
+
+.btn-dark.active {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+:root {
+    --widget-height: 9.5vh;
+    --btn-dark: #333333;
+    --btn-dark-hover: #444444;
+    --btn-danger: #cc3333;
+    --btn-danger-hover: #e63939;
+    --text-gray: #b3b3b3;
+    --disabled-opacity: 0.35;
+}
+
+#skype-call {
+    left:   calc(50% - var(--skype-width) / 2);
+    width: calc(var(--skype-width) * 0.73) !important;
+}
+
+#whatsapp-call {
+    width: calc(var(--skype-width) * 0.87) !important;
+}
+
+#whatsapp-call-text {
+    height: 100%;
+    margin-top: 10%;
+    padding-left: 0.7vw;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: start !important;
+    align-items: start !important;
+    span {
+        font-size: 1.6vh;
+    }
+}
+
+.call {
+/* Sizing blueprints */
+position: absolute;
+width: var(--skype-width) !important;
+left:   calc(50% - var(--skype-width) / 2);
+bottom: 10%;
+
+/* FIX 1: Overrides the tall height and pins it to your panel scale value directly */
+height: 16.5vh !important;
+padding-bottom: 0 !important;
+border-radius: 0 !important; /* Sharp edges retained */
+
+/* Re-opens window workspace coordinates for structural absolute calculations */
+position: absolute !important;
+overflow: hidden;
+}
+
+/* ==========================================================================
+ *  THE UNIFIED AUDIO REGION (Absolute Position Alignment Fix)
+ *  ========================================================================== */
+.audio-call-row {
+    /* FIX 2: Absolute pinning anchors the row below the title bar, preventing click offset glitches */
+    position: absolute !important;
+    top: 32px !important; /* Adjust this value if your title-bar has a different custom native height */
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    /* Perfectly balanced interior margins */
+    padding: 0 1.5vh !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+}
+
+/* --- FAR LEFT: PROFILE AVATAR --- */
+.profile-avatar {
+    height: var(--widget-height) !important;
+    width: var(--widget-height) !important;
+    background-color: #44a240;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1vw #44a240;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* --- INTERIOR CENTER ENGINE: THE OPTICAL SPACE TIMER --- */
+.timer-center-zone {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-grow: 1 !important;
+    text-align: center;
+    padding: 0 0.5vh;
+}
+
+.call-timer {
+    color: #ffffff;
+    font-family: "GothicBold", sans-serif;
+    font-size: 2.4vh;
+    font-weight: 400;
+    text-shadow: 0 0 2vh black;
+}
+
+/* --- FAR RIGHT: COHESIVE 4-BUTTON WIDGET --- */
+.facetime-controls-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    height: var(--widget-height) !important;
+    background-color: #222222;
+    padding: 0 1.2vw;
+    border-radius: 2vh;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0,0,0,0.3);
+    width: max-content;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+ *  COMPRESSED BUTTON SPECS
+ *  ========================================================================== */
+.controls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8vw;
+}
+
+.control-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4vh;
+}
+
+.control-btn {
+    width: 4.2vmin !important;
+    height: 4.2vmin !important;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease, opacity 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+
+    &:active:not(:disabled) {
+        transform: scale(0.94);
+    }
+
+    &:disabled {
+        opacity: var(--disabled-opacity) !important;
+        cursor: not-allowed !important;
+        pointer-events: none !important;
+    }
+}
+
+.btn-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.btn-dark {
+    background-color: var(--btn-dark);
+    border: 1px solid #444444;
+    &:hover:not(:disabled) { background-color: var(--btn-dark-hover); }
+}
+
+.btn-danger {
+    background-color: var(--btn-danger);
+    border: 1px solid #992222;
+    &:hover:not(:disabled) { background-color: var(--btn-danger-hover); }
+}
+
+.control-label {
+    color: var(--text-gray);
+    font-family: "GothicBold";
+    font-size: 1.2vmin;
+    font-weight: 600;
+}
+
+.label-disabled {
+    opacity: var(--disabled-opacity);
+}
 }
