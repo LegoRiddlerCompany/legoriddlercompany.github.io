@@ -10,7 +10,7 @@ let currentTry = 1;
 
 let timerInterval = null;
 
-let inCall = false;
+let initialOpen = false;
 
 let apiKey = "";
 

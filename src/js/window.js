@@ -32,6 +32,13 @@ riddle.additionalCloseAction = riddleCloseAction;
 chat.additionalOpenAction    = chatOpenAction;
 cheats.additionalOpenAction  = focusCheatsInput;
 
+skype.additionalOpenAction  = skypeOpenAction;//// remove
+
+function skypeOpenAction() {
+    vid.load();
+    vid.play();
+}
+
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
 
@@ -47,53 +54,47 @@ function focusCheatsInput() {
     }
 }
 
-function closeCall() {
-    skypeCall.hidden = 'hidden';
-    skypeCallDeclineImg.src = "/assets/img/window/decline.png";
-}
+// function closeCall() {
+//     skypeCall.hidden = 'hidden';
+//     skypeCallDeclineImg.src = "/assets/img/window/decline.png";
+// }
 
 async function folderOpenAction() {
-    if(!inCall) {
+    if(!initialOpen) {
         await delay(2000);
-        startCall();
+        //startCall();
+        riddleManager.start();
     }
 }
 
-function startCall() {
-    openCall();
-}
 
-function openCall() {
-    skypeCall.removeAttribute('hidden');
-    startSkypeCallSound();
-}
-
-function answerCall(declined) {
-    if(declined) {
-        skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
-    } else {
-        // Połączenie itd
-        skype.open();
-        stopSkypeCallSound();
-        closeCall();
-        inCall = true;
-        startRiddlerCallAudio();
-    }
-}
+// function answerCall(declined) {
+//     if(declined) {
+//         skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
+//     } else {
+//         // Połączenie itd
+//         skype.open();
+//         stopSkypeCallSound();
+//         closeCall();
+//         initialOpen = true;
+//         startRiddlerCallAudio();
+//     }
+// }
 
 function riddleOpenAction(riddleNumber) {
-    currentRiddle = riddleNumber;
-    currentTry = 1;
-
-    hideHint();
-
-    let riddle = getRiddle(riddleNumber - 1);
-
-    document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
-    document.getElementById('riddle-text').innerText = riddle.riddle;
-    document.getElementById('riddle-hint').innerText = riddle.hint;
-
-    startCounting();
+    riddleManager.openRiddle(riddleNumber);
+    // currentRiddle = riddleNumber;
+    // currentTry = 1;
+    //
+    // hideHint();
+    //
+    // let riddle = getRiddle(riddleNumber - 1);
+    //
+    // document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
+    // document.getElementById('riddle-text').innerText = riddle.riddle;
+    // document.getElementById('riddle-hint').innerText = riddle.hint;
+    //
+    // startCounting();
 }
 
 function riddleCloseAction() {

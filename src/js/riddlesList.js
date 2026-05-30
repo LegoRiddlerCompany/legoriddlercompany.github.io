@@ -2,7 +2,8 @@ const riddlesList = [
     {
         riddle: "Mam masę zębów lecz nie jem nie gryzę. \nZnajdziesz mnie na czubku gdzieś pod twym fryzem.",
         hint: "Potrafi porządnie poczesać.",
-        answers: ["grzebień", "grzebien"]
+        answers: ["grzebień", "grzebien"],
+        videourl: []
     },
     {
         riddle: "Raz się toczy, a raz sprzyja. \nDobrze jest mnie mieć, w sejfie mnie trzymać.Mówię we wszystkich językach świata, ale własnego nie posiadam.",

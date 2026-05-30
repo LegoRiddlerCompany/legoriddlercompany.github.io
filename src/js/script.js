@@ -1,7 +1,6 @@
 const body                  = document.getElementsByTagName('body')[0];
 const background            = document.getElementById('background');
 const barTime               = document.getElementById('bar-time');
-const form                  = document.getElementById('form');
 const cheatsForm            = document.getElementById('cheats-form');
 const keyForm               = document.getElementById('key-form');
 const chatForm              = document.getElementById('chat-form');
@@ -24,7 +23,54 @@ setInterval(updateTime, 1000);
 
 body.addEventListener("click", () => {
     clickSound();
+    vid.style.zIndex = '3';
+
+
+    vid.play();
 });
+
+
+const vid = document.getElementById('video');
+const src = document.getElementById('source');
+
+const svid = document.getElementById('video2');
+const ssrc = document.getElementById('source2');
+
+vid.addEventListener('ended', () => {
+    vid.pause();
+
+    vid.style.zIndex = '1';
+    vid.removeAttribute('controls');
+
+    src.setAttribute('src', '/assets/video/rushing/0.mp4');
+    vid.load();
+
+    // vid.hidden = 'hidden';
+    //
+    // svid.removeAttribute('hidden');
+    // svid.load();
+
+
+    svid.play();
+
+    // vid.play();
+});
+
+// svid.addEventListener('ended', () => {
+//     svid.pause();
+//
+//     // svid.hidden = 'hidden';
+//     //
+//     // vid.removeAttribute('hidden');
+//
+//     vid.style.zIndex = '3';
+//
+//
+//     vid.play();
+// });
+
+
+
 
 
 for(let r = 0; r < folderRowNumber; r++) {
@@ -66,38 +112,6 @@ for(let r = 0; r < folderRowNumber; r++) {
     }
     folder.appendChildElement(row);
 }
-
-
-form.addEventListener('submit', (event) => {
-    let answer = form.answer.value;
-
-    if(checkAnswer(currentRiddle - 1, answer)) {
-        // let nextRiddleNumber = currentRiddle + 1;
-        // if(nextRiddleNumber >= riddlesNumber) {
-        //     nextRiddleNumber = riddlesNumber;
-        // }
-
-        // const nextRiddle = document.getElementById('rid-' + nextRiddleNumber);
-        // nextRiddle.removeAttribute('hidden');
-        showRiddle(currentRiddle + 1);
-
-        alert("tym razem ci się udało batmanie, czekam na ciebie z kolejną zagadką");
-        stopCounting();
-    } else {
-        if(currentTry === 1) {
-            alert("nie udało ci się batmanie, zostały jeszcze dwie próby");
-            showHint();
-        } else if(currentTry === 2) {
-            alert("znowu ci się nie udało batmanie, została jeszcze jedna próba");
-        } else if(currentTry >= 3) {
-            alert("nie udało ci się batmanie, czas na kare");
-            stopCounting();
-        }
-        currentTry += 1;
-    }
-
-    event.preventDefault();
-});
 
 ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
     eventType => document.addEventListener(eventType, () => {
@@ -144,14 +158,14 @@ cheatsForm.addEventListener('submit', (event) => {
         case 'aktywuj':
             const bingos = document.getElementById('background').children[0];
             bingos.hidden = 'hidden';
-            result = "System Riddlosoft Bingos został aktywowany."
+            result = "System Riddlosoft Bingos został pomyślnie aktywowany."
             break;
         case 'reset':
             if(argument === 'totalny') {
                 localStorage.clear();
                 result = "Nastąpił kompletny reset. Odśwież stronę.";
             } else {
-                result = "Nic się nie zmieniło... Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
+                result = "Reset aktywowany. Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
             }
             break;
         case 'pomoc':
