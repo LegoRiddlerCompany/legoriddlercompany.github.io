@@ -107,7 +107,7 @@ const riddlesList = [
     {
         riddle: "Mam dwie twarze, jedną wybierz mądrze, Gdy inną pokaże, dla ciebie los zły stworzę. Czym jestem?",
         hint: "Nawet jeśli pecha przyniosę, to wartość posiadam.",
-        answers: ["moenta"]
+        answers: ["moneta"]
     },
     {
         riddle: "Mówią, żem matką, choć ciągle mnie ranią, Wiele znieść mogę, ale jak nie przestaną, Bez jedzenia i tlenu na świecie zostaną. Czym jestem?",

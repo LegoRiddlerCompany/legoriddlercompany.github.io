@@ -15,11 +15,12 @@
     --skype-width:                  32vw;
 
     --folder-height:                56vh;
-    --folder-width:                 39vw;
+    --folder-width:                 38vw;
 
-    --riddle-height:                66vh;
-    --riddle-width:                 62vw;
+    --riddle-height:                46vh;
+    --riddle-width:                 42vw;
     --riddle-font-size:             2vh;
+    --riddle-body-height:           calc(var(--riddle-height) - var(--title-bar-height) - var(--title-bar-padding) * 2);
 
     --chat-height:                  55vh;
     --chat-width:                   38vw;

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zagadka.pl</title>
+    <title>?????????????????????????????????????????</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/icon/favicon.ico">
     <link rel="stylesheet" href="/src/css/fonts.css">
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/footer.css">
@@ -17,15 +18,9 @@
     <link rel="stylesheet" href="/src/css/window/note.css">
     <link rel="stylesheet" href="/src/css/icon.css">
     <link rel="stylesheet" href="/src/css/crt.css">
-<!--     <link rel="preload" as="image" href="/assets/img/window/decline.png"> -->
-    <audio id="clickaudio" src="/assets/audio/click.mp3"></audio>
-    <audio id="witamciebatmanieaudio" src="/assets/audio/witamciebatmanie.mp3"></audio>
-    <audio id="clocktikaudio" src="/assets/audio/tik.mp3"></audio>
-    <audio id="clocktakaudio" src="/assets/audio/tak.mp3"></audio>
-    <audio id="callaudio" src="/assets/audio/skype.mp3" loop></audio>
-    <audio id="witam-audio" src="/assets/audio/riddler/witam.mp3"></audio>
     <script defer src="/src/js/global.js"></script>
-    <script defer src="/src/js/riddleslist.js"></script>
+    <script defer src="/src/js/riddlesList.js"></script>
+    <script defer src="/src/js/callersList.js"></script>
     <script defer src="/src/js/App.js"></script>
     <script defer src="/src/js/WindowManager.js"></script>
     <script defer src="/src/js/audio.js"></script>
@@ -44,7 +39,7 @@
         </div>
         <div id="witam" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="folder.open()"><img src="/assets/img/icon/desktop/folder.png"></a>
-            <span class="icon-name">Witam Cię Batmanie!</span>
+            <span class="icon-name">??????</span>
         </div>
         <div id="skype-icon" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="skype.open()"><img src="/assets/img/icon/desktop/skype.png"></a>
@@ -109,17 +104,23 @@
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="riddle.minimize()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="riddle.maximize()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="riddle.close()"></button>
+                    <button id="ext-button" aria-label="Close"    ></button>
                 </div>
             </div>
             <div class="window-body">
-                <p id="riddle-text"></p>
-                <p id="riddle-hint" hidden></p>
-                <form id="form" method="post">
-                    <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" autocomplete="off" required>
-                    <button type="submit" onclick="clickSound()">Ok</button>
-                </form>
-                <p id="timer">10:00</p>
+                <div class="riddle-top">
+                    <p id="riddle-text"></p>
+                    <p id="riddle-hint" hidden></p>
+                </div>
+                <div class="riddle-bottom">
+                    <form id="form" method="post">
+                        <div class="riddle-form-container">
+                            <input type="text" maxlength="20" id="answer" name="answer" placeholder="Odpowiedź" autocomplete="off" required>
+                            <button type="submit" onclick="clickSound()"></button>
+                        </div>
+                    </form>
+                    <p id="timer">10:00</p>
+                </div>
             </div>
         </div>
 
@@ -145,7 +146,7 @@
                         <button onclick="resetKey()"></button>
                     </div>
                     <div id="robin" class="chat-message-container">
-                        <img class="chat-sender" src="/assets/img/icon/window/robingpt.png">
+                        <img class="chat-sender" src="/assets/img/prof/robingpt.png">
                         <p class="chat-message">
                         Szefie, melduję się na stanowisku! Tu RoboRobin - Twoje osobiste wsparcie techniczne, system operacyjny Bat-komputera i cyfrowe ramię w walce z przestępczością w Gotham. Jestem gotów do przetwarzania danych, łamania szyfrów i zabezpieczeń oraz analizy taktycznej, kiedy tylko będziesz tego potrzebował. Czekam na Twoje rozkazy! Co planujemy na dzisiejszą noc?
                         </p>

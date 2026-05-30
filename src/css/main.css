@@ -53,8 +53,6 @@ main {
     display: flex;
     flex-grow: 1;
     padding: 0.8vh;
-/*     background-color: black; */
-/*     background-image: url('/assets/img/background/0.webp'); */
     background-repeat: no-repeat;
     background-size: cover;
     height: 95%;
@@ -63,7 +61,21 @@ main {
     animation-fill-mode: both;
 
     .bingos-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 1vw;
+        bottom: 7vh;
+        font-family: 'GothicLight';
+        font-weight: 200;
+        color: var(--light-gray);
+        .aktywuj-bingos {
+            font-size: 2.8vh;
 
+        }
+        .ustaw-bingos {
+            font-size: 2vh;
+        }
     }
 }
 

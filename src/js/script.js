@@ -124,21 +124,34 @@ cheatsForm.addEventListener('submit', (event) => {
         case 'crt':
             if(argument === 'on') {
                 body.className = "crt";
-                result = "Dodano efekt crt";
+                result = "Dodano efekt crt.";
             }
             else {
                 body.className = "";
-                result = "Usunięto efekt crt";
+                result = "Usunięto efekt crt.";
             }
             break;
         case 'fullscreen':
             if(argument === 'on') {
                 requestFullScreen(document.documentElement);
-                result = "Włączono pełny ekran";
+                result = "Włączono pełny ekran.";
             }
             else if(document.fullscreenElement) {
                 document.exitFullscreen();
-                result = "Wyłączono pełny ekran";
+                result = "Wyłączono pełny ekran.";
+            }
+            break;
+        case 'aktywuj':
+            const bingos = document.getElementById('background').children[0];
+            bingos.hidden = 'hidden';
+            result = "System Riddlosoft Bingos został aktywowany."
+            break;
+        case 'reset':
+            if(argument === 'totalny') {
+                localStorage.clear();
+                result = "Nastąpił kompletny reset. Odśwież stronę.";
+            } else {
+                result = "Nic się nie zmieniło... Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
             }
             break;
         case 'pomoc':
@@ -257,12 +270,12 @@ function addMessage(msg, who) {
     p.className = "chat-message";
 
     if(who === "robin") {
-        img.src = "/assets/img/icon/window/robingpt.png";
+        img.src = "/assets/img/prof/robingpt.png";
         div.id = "robin"
         div.appendChild(img);
         div.appendChild(p);
     } else {
-        img.src = "/assets/img/icon/window/batman.png";
+        img.src = "/assets/img/prof/batman.png";
         div.id = "batman"
         div.appendChild(p);
         div.appendChild(img);

@@ -47,11 +47,6 @@ function focusCheatsInput() {
     }
 }
 
-function openCall() {
-    skypeCall.removeAttribute('hidden');
-    startSkypeCallSound();
-}
-
 function closeCall() {
     skypeCall.hidden = 'hidden';
     skypeCallDeclineImg.src = "/assets/img/window/decline.png";
@@ -66,6 +61,11 @@ async function folderOpenAction() {
 
 function startCall() {
     openCall();
+}
+
+function openCall() {
+    skypeCall.removeAttribute('hidden');
+    startSkypeCallSound();
 }
 
 function answerCall(declined) {

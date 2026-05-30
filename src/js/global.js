@@ -4,7 +4,7 @@ const robinUnavailable = "Jestem niedostępny, zadzwoń później";
 
 const voices = window.speechSynthesis.getVoices();
 
-let riddlesUnlocked = 0;
+let riddlesUnlocked = 40;
 let currentRiddle = 0;
 let currentTry = 1;
 
@@ -29,22 +29,3 @@ function requestFullScreen(element) {
         }
     }
 }
-// function waitForElement(selector) {
-//     return new Promise(resolve => {
-//         if (document.querySelector(selector)) {
-//             return resolve(document.querySelector(selector));
-//         }
-//
-//         const observer = new MutationObserver(mutations => {
-//             if (document.querySelector(selector)) {
-//                 observer.disconnect();
-//                 resolve(document.querySelector(selector));
-//             }
-//         });
-//
-//         observer.observe(document.body, {
-//             childList: true,
-//             subtree: true
-//         });
-//     });
-// }
