@@ -39,14 +39,6 @@ function showRiddle(number) {
     nextRiddle.removeAttribute('hidden');
 }
 
-function showHint() {
-    hintElement.removeAttribute('hidden');
-}
-
-function hideHint() {
-    hintElement.hidden = "hidden";
-}
-
 function unlockRiddles(riddlesToUnlock) {
     for(let i = 0; i < riddlesToUnlock && i < riddlesNumber; i++) {
         let rNum = i + 1;

@@ -1,128 +1,150 @@
 const riddlesList = [
     {
         riddle: "Mam masę zębów lecz nie jem nie gryzę. \nZnajdziesz mnie na czubku gdzieś pod twym fryzem.",
-        hint: "Potrafi porządnie poczesać.",
-        answers: ["grzebień", "grzebien"],
-        videourl: []
+        answers: ["grzebień", "grzebien", "grzebieniem"]
     },
     {
-        riddle: "Raz się toczy, a raz sprzyja. \nDobrze jest mnie mieć, w sejfie mnie trzymać.Mówię we wszystkich językach świata, ale własnego nie posiadam.",
-        hint: "Legalny w Polsce bukmacher z kodem GIMPSONPL 300 zl free betu.",
-        answers: ["fortuna"]
+        riddle: "Nie mam ust, a każdy mnie słyszy. \nJestem zdrowiem, choć bywam zaraźliwy. \nJeśli ktoś zagadki tej łatwej nie zgadnie, \nto będziesz to Ty, mój drogi Batmanie.",
+        answers: ["śmiech", "smiech", "śmiechem", "smiechem"]
     },
     {
-        riddle: "Mówię we wszystkich językach świata, ale własnego nie posiadam.",
-        hint: "Najchętniej pojawiam się w górach lub pustym pokoju.",
-        answers: ["echo"]
+        riddle: "Jak mnie złapiesz to źle się poczujesz, \njesienią czy zimą was poszukuję.",
+        answers: ["choroba", "chorobą"]
     },
     {
-        riddle: "Jak mnie złapiesz to źle się poczujesz, \njesienią czy zimą was poszukuje.",
-        hint: "Ktoś coś tam mnie dissował.",
-        answers: ["choroba"]
+        riddle: "Im bardziej Ty jesteś suchy, \ntym bardziej ja staję się mokry.",
+        answers: ["ręcznik", "recznik", "ręcznikiem", "recznikiem"]
     },
     {
-        riddle: "Im bardziej Ty jesteś suchy tym bardziej ja staję się mokry.",
-        hint: "Na haku w łazience.",
-        answers: ["ręcznik", "recznik"]
+        riddle: "Co chodzi na czterech nogach, \npotem na dwóch i w końcu na trzech?",
+        answers: ["człowiek", "czlowiek"]
     },
     {
-        riddle: "Jest nas trzy, ale tylko we dwie za ręce się trzymamy. \nNikt nas się nie spodziewa, lecz zawsze się na Ciebie czychamy. \nDuże nie jesteśmy, ale hałas robimy spory. \nCo by nie patrzeć, straszymy lepiej niż największe potwory.",
-        hint: "Można nas usłyszeć w trakcie burzy która łez nie roni.",
-        answers: ["dziewięć", "dziewieć", "dziewięc", "dziewiec"]
-    },
-    {
-        riddle: "Co widzi inaczej, niż widziane jest przez innych. \nPoluje na ludzi lecz ich wcale nie zjada. \nMa cztery łapy i czasem z pingwinami gada.",
-        hint: "Jeden z pingwinów mieszkał kiedyś w polsce.",
-        answers: ["lew"]
-    },
-    {
-        riddle: "Co to za miejsce gdzie każdy tam chodzi. \nZa uścisk dłoni oferują ogromne nagrody. \nMałym wstępujesz a wielkim wychodzisz. \nCzęść nienawidzi, lecz mądry tylko słodzi.",
-        hint: "Gdzie koła się kręcą a każdy nogą kroczy.",
-        answers: ["kasyno"]
-    },
-    {
-        riddle: "W lesie nie mieszka, choć nie jest mu daleko. \nJak wilk, nieswoją skórę przywdziewa. \nOgon wychodzi mimo że ogona nie ma.",
-        hint: "Wtapia nierzadko i w niektórych miejscach jest już niedozwolony.",
-        answers: ["dzikusek", "dzikuseq", "dzikuseqq", "zero", "zerotenfuras"]
-    },
-    {
-        riddle: "Dzięki mnie załatwisz ważne sprawy, \nale sam nic za Ciebie nie zrobię. \nCzym jestem?",
-        hint: "Brakuje podpowiastki",
+        riddle: "Dzięki mnie załatwisz ważne sprawy, \nale sam nic za Ciebie nie zrobię.",
         answers: ["długopis", "dlugopis", "długopisem", "dlugopisem"]
     },
     {
-        riddle: "Jestem czymś czego nikt nie widział, \nnigdy nie byłem, ale będę. \nczym jestem?",
-        hint: "Brakuje podpowiastki",
-        answers: ["jutro", "jutrem"]
+        riddle: "Mam rzeki, ale nie mam wody, \nmam miasta, ale nie mam domów, \nmam lasy, ale nie mam drzew.",
+        answers: ["mapą", "mapa", "mapy"]
     },
     {
-        riddle: "Ludzie to kupują do jedzenia, \nale tego nie jedzą. \nco to jest?",
-        hint: "Brakuje podpowiastki",
-        answers: ["talerz"]
+        riddle: "Raz się toczy, a raz sprzyja. \nDobrze jest mnie mieć, \nw sejfie mnie trzymać.",
+        answers: ["fortuną", "fortuna"]
     },
     {
-        riddle: "Idzie w górę, ale nigdy w dół. \nco to jest?",
-        hint: "Brakuje podpowiastki",
-        answers: ["wiek"]
+        riddle: "Ten, kto mnie robi, nie potrzebuje mnie. \nTen, kto mnie kupuje, sam ze mnie nie korzysta. \nTen, kto ze mnie korzysta, nawet o tym nie wie.",
+        answers: ["trumną", "trumna"]
     },
     {
-        riddle: "Mimo że mam szyje to nie mam głowy. \nczym jestem?",
-        hint: "Brakuje podpowiastki",
-        answers: ["butelka", "butla", "butelką", "butelka"]
+        riddle: "Mówię we wszystkich językach świata, \nale własnego nie posiadam.",
+        answers: ["echem", "echo"]
     },
     {
-        riddle: "Co należy do ciebie, \nale inni ludzie używają tego częściej?",
-        hint: "Brakuje podpowiastki",
-        answers: ["twoje imię", "twoje imie", "moje imię", "moje imie", "imię", "imie"]
+        riddle: "Co widzi inaczej, niż samo jest widziane, \npoluje na ludzi lecz ich wcale nie zjada, \nma cztery łapy piękne, wspaniałe, \nod czasu do czasu z pingwinami gada.",
+        answers: ["lew", "lwem", "lwy"]
     },
     {
-        riddle: "Im wyżej się znajdziesz, tym niższe będzie, a chętnie bym ci je podniósł.",
-        hint: "Brakuje podpowiastki",
-        answers: ["ciśnienie", "cisnienie"]
-    },
-    {
-        riddle: "Część ludzi pragnie jej, nawet kiedy jest gorzka, chociaż czasem ciężko ją przełknąć.",
-        hint: "Brakuje podpowiastki",
-        answers: ["prawda", "prawdę", "prawde"]
-    },
-    {
-        riddle: "Kiedy nimi rzucasz, a ja nie łapie, to nie dzieje się nic, jednak gdy pomożesz mi je łapać, to łatwo możemy je zepsuć.",
-        hint: "Brakuje podpowiastki",
-        answers: ["żarty", "zarty", "żart", "zart"]
-    },
-    {
-        riddle: "Możesz mnie uzyskać drobno krusząc kamień jak zapytasz o mnie kota, prawdy ci nie powie, ale też nie skłamie.",
-        hint: "Brakuje podpowiastki",
+        riddle: "Możesz mnie uzyskać drobno krusząc kamień, \njak zapytasz o mnie kota, prawdy ci nie powie, \nale też nie skłamie.",
         answers: ["miał", "mial", "meow", "miau"]
     },
     {
-        riddle: "Choć mam duże wymagania, to nie oczekuje nic, twój sobowtór o mnie śpiewał na jednej ze swoich płyt.",
-        hint: "Brakuje podpowiastki",
-        answers: ["nowy batman", "batman"]
+        riddle: "Mówią, żem matką, choć ciągle mnie ranią. \nWiele znieść mogę, ale jak nie przestaną, \nbez jedzenia i tlenu na świecie zostaną.",
+        answers: ["naturą", "natura", "matką ziemią", "matką ziemia", "matka ziemią", "matka ziemia", "matką naturą", "matką natura", "matka naturą", "matka natura"]
     },
     {
-        riddle: "Zwiąże ci język, choć nie mam dłoni, Sparaliżuje ciało, bez jadu, bez broni, Mym bratem jest ciemność, a siostrą cisza, Najgłośniej przemawiam, gdy nikt się nie zbliża. Kim jestem?",
-        hint: "Wielu mówi że mam wielkie oczy / Odwaga mym wrogiem",
-        answers: ["strach"]
+        riddle: "Co należy do ciebie, \nale inni ludzie używają tego częściej?",
+        answers: ["twoje imię", "twoje imie", "imię", "imie", "moje imię", "moje imie", "imiona"]
     },
     {
-        riddle: "Mam dwie twarze, jedną wybierz mądrze, Gdy inną pokaże, dla ciebie los zły stworzę. Czym jestem?",
-        hint: "Nawet jeśli pecha przyniosę, to wartość posiadam.",
-        answers: ["moneta"]
+        riddle: "Ludzie to kupują do jedzenia, \nale tego nie jedzą.",
+        answers: ["talerz", "nóż", "noz", "nóz", "noż", "widelec", "sztuciec", "sztućce", "sztucce"]
     },
     {
-        riddle: "Mówią, żem matką, choć ciągle mnie ranią, Wiele znieść mogę, ale jak nie przestaną, Bez jedzenia i tlenu na świecie zostaną. Czym jestem?",
-        hint: "Mam dwie córki florę i faunę.",
-        answers: ["natura"]
+        riddle: "Jeśli mnie zjesz, \nten który mnie posłał zje ciebie.",
+        answers: ["przynęta", "przyneta", "przynętą", "przynetą"]
     },
     {
-        riddle: "Nie mam ust, a każdy mnie słyszy, Jestem zdrowiem, choć bywam zaraźliwy, Jeśli ktoś zagadki tej łatwej nie zgadnie, To będziesz to ty, mój drogi Batmanie.",
-        hint: "Mogę być szczery albo szyderczy.",
-        answers: ["śmiech", "smiech"]
+        riddle: "Nie mam wpływu na to czy rosnę, czy maleję.",
+        answers: ["temperatura", "temperaturą"]
     },
     {
-        riddle: "Dla jednej chwili zatrzymasz świat cały, dla jednej osoby porzucisz ideały. Potrafię przetrwać nawet w lodzie i mroku, i nigdy nie znikam z pamięci i wzroku. Czym jestem?",
-        hint: "To nie różowy miś ani kwiaty.",
-        answers: ["miłość", "miłośc", "miłosć", "milość", "milośc", "milosć", "milosc"]
+        riddle: "Możesz mnie trzymać w prawej ręce, \nale nigdy w lewej.",
+        answers: ["lewą ręką", "lewa ręką", "lewa ręka", "lewa reką", "lewą reką", "lewą reka", "lewą ręka", "lewa reka", "lewą dłoń", "lewą dłon", "lewą dloń", "lewą dlon", "lewa dłoń", "lewa dłon", "lewa dloń", "lewa dlon", "lewą dłonią", "lewą dlonia", "lewą dłonia", "lewą dlonią", "lewa dłonią",
+        "lewa dłonia", "lewa dlonią", "lewa dlonia"]
+    },
+    {
+        riddle: "Mimo że mam szyję, \nto nie mam głowy.",
+        answers: ["butelką", "butelka"]
+    },
+    {
+        riddle: "Co byś nie zrobił to idzie w górę \ni nawet jak chciałbyś to w dół w ogóle.",
+        answers: ["wiek"]
+    },
+    {
+        riddle: "Dla jednej chwili zatrzymasz świat cały, \ndla jednej osoby porzucisz ideały. \nPotrafię przetrwać nawet w lodzie i mroku \ni nigdy nie znikam z pamięci i wzroku.",
+        answers: ["miłość", "miłosc", "miłośc", "miłosć", "milość", "milośc", "milosć", "milosc"]
+    },
+    {
+        riddle: "Kiedy nimi rzucasz, a ja nie łapie, to nie dzieje się nic, \njednak gdy pomożesz mi je łapać, to łatwo możemy je zepsuć.",
+        answers: ["żart", "zart", "żarty", "zarty", "dowcip", "dowcpiy", "kawał", "kawal", "kawały",
+        "kawaly"]
+    },
+    {
+        riddle: "Zawsze biegnę za Tobą, krok w krok, choć nie mam nóg. \nZnikam, gdy robi się zupełnie ciemno, i uciekam, gdy próbujesz mnie złapać.",
+        answers: ["twoim cieniem", "twój cień", "twój cien", "twoj cień", "twoj cien", "cień", "cien",
+        "cieniem"]
+    },
+    {
+        riddle: "Część ludzi mnie pragnie, nawet kiedy jestem gorzka, \nchociaż czasem ciężko mnie przełknąć.",
+        answers: ["prawdą", "prawda", "prawdę", "prawde"]
+    },
+    {
+        riddle: "Tylko u mnie znajdziesz czwartek przed środą.",
+        answers: ["słownik", "slownik", "słownikiem", "slownikiem"]
+    },
+    {
+        riddle: "Mam dwie twarze, jedną wybierz mądrze. \nGdy inną pokażę, dla ciebie los zły stworzę.",
+        answers: ["monetą", "moneta"]
+    },
+    {
+        riddle: "Co to za miejsce gdzie każdy chodzi, \nbo za uścisk dłoni oferują nagrody, \nmałym wstępujesz, a wielkim wychodzisz, \nczęść nienawidzi, lecz mądry tylko słodzi?",
+        answers: ["kasyno", "kasyna", "casino"]
+    },
+    {
+        riddle: "Choć mam duże wymagania, to nie oczekuje nic, \nktoś tam o mnie śpiewał na jednej ze swych płyt.",
+        answers: ["nowy batman"]
+    },
+    {
+        riddle: "Mogę przynieść płacz, mogę wywołać śmiech. \nRodzę się w ułamku sekundy, ale potrafię trwać przez całe życie. \nNie mam masy, ale potrafię bardzo ciążyć.",
+        answers: ["wspomnienie", "wspomnieniem", "wspomnienia"]
+    },
+    {
+        riddle: "Zwiąże ci język, choć nie mam dłoni. \nSparaliżuję ciało, bez jadu, bez broni. \nMym bratem jest ciemność, a siostrą cisza. \nNajgłośniej przemawiam, gdy nikt się nie zbliża.",
+        answers: ["strach", "strachem"]
+    },
+    {
+        riddle: "Nie mam oczu, ale kiedyś widziałam wszystko. \nMiałam dużo na głowie, lecz teraz jest tam czysto.",
+        answers: ["czaszka", "czaszką", "czacha", "czachą"]
+    },
+    {
+        riddle: "Nikt nas się nie spodziewa, a zawsze na Ciebie czyhamy. \nDuże nie jesteśmy, lecz hałas robimy spory Co by nie mówić, \nstraszymy lepiej niż największe potwory.",
+        answers: ["dziewięć", "dziewięc", "dziewieć", "dziewiec", "9", "9,99", "9zł", "9zl", "9 złotych",
+        "9 zlotych", "9,99zł", "9,99zl", "9.99", "9.99zł", "9.99zl"]
+    },
+    {
+        riddle: "Im wyżej się znajdziesz, tym niższe będzie, \na chętnie bym ci je podniósł.",
+        answers: ["ciśnienie", "cisnienie"]
+    },
+    {
+        riddle: "Jak wilk, nieswoją skórę przywdziewa. \nW lesie nie mieszka, choć nie jest mu daleko. \nOgon wychodzi, choć ogona nie ma.",
+        answers: ["dzikusek", "dzikuseq", "dzikuseqq", "zero", "zerotenfuras", "tenfuras"]
+    },
+    {
+        riddle: "Jestem czymś czego nikt nie widział, \nnigdy nie byłem, ale będę.",
+        answers: ["jutro", "jutrem"]
+    },
+    {
+        riddle: "Gdy jestem potrzebna, nikt o mnie nie dba, \nrzucają mną w przepaść, gdzie ciemność bezwzględna. \nGdy jednak przestaje być już pożyteczna - czyszczą mnie, \ndają dostęp do powietrza.",
+        answers: ["kotwica", "kotwicą", "kotwice", "kotwicę"]
     },
 ]

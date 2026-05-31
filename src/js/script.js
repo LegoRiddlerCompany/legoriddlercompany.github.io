@@ -16,54 +16,15 @@ const folderRowNumber = Math.ceil(riddlesNumber / riddlesInRow);
 loadBackground();
 loadCRTEffect();
 
+for(let i = 0; i < backgroundsNumber; i++) {
+    nextBackground();
+}
+
 setInterval(updateTime, 1000);
 
 body.addEventListener("click", () => {
     clickSound();
 });
-
-
-const vid = document.getElementById('video');
-const src = document.getElementById('source');
-
-const svid = document.getElementById('video-swap');
-const ssrc = document.getElementById('source-swap');
-
-vid.addEventListener('ended', () => {
-    vid.pause();
-
-    vid.style.zIndex = '1';
-    vid.removeAttribute('controls');
-
-    src.setAttribute('src', '/assets/video/rushing/0.mp4');
-    vid.load();
-
-    // vid.hidden = 'hidden';
-    //
-    // svid.removeAttribute('hidden');
-    // svid.load();
-
-
-    svid.play();
-
-    // vid.play();
-});
-
-// svid.addEventListener('ended', () => {
-//     svid.pause();
-//
-//     // svid.hidden = 'hidden';
-//     //
-//     // vid.removeAttribute('hidden');
-//
-//     vid.style.zIndex = '3';
-//
-//
-//     vid.play();
-// });
-
-
-
 
 
 for(let r = 0; r < folderRowNumber; r++) {
@@ -79,7 +40,7 @@ for(let r = 0; r < folderRowNumber; r++) {
         const container = document.createElement('div');
         container.className = 'icon-container';
         container.id = 'rid-' + fileNum;
-        if(fileNum > riddlesUnlocked) {
+        if(fileNum > riddleManager.unlockedRiddles) {
             container.hidden = 'hidden';
         }
 
@@ -212,34 +173,6 @@ function updateTime() {
     if(g < 10) { g = '0' + g; }
 
     barTime.innerText = g + ":" + m;
-}
-
-function startCounting() {
-    clearInterval(timerInterval);
-    timer.innerText = "10:00";
-
-    let time = 600;
-
-    timerInterval = setInterval(function () {
-        time -= 1;
-        if(time <= 0) {
-            clearInterval(timerInterval);
-        }
-
-        let min = Math.floor(time / 60);
-        let sec = time - (min * 60);
-
-        if(min < 10){ min = '0' + min; }
-        if(sec < 10){ sec = '0' + sec; }
-
-        timer.innerText = min + ':' + sec;
-
-        clockSound(time % 2);
-
-    }, 1000);
-}
-function stopCounting() {
-    clearInterval(timerInterval);
 }
 
 function loadKey() {

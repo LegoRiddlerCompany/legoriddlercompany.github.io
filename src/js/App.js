@@ -8,6 +8,9 @@ class App {
 
     #status          = windowStatus.CLOSED;
 
+    #closingAllowed  = true;
+    #openingAllowed  = true;
+
     #alwaysOnTop     = false;
     #alwaysOnBar     = false;
 
@@ -30,6 +33,11 @@ class App {
     }
 
     open(argAction=null) {
+        if(this.#openingAllowed) {
+            this.forceOpen(argAction);
+        }
+    }
+    forceOpen(argAction=null) {
         this.#windowElement.removeAttribute('hidden');
         this.#barElement.removeAttribute('hidden');
         if(this.#barLightElement) {
@@ -76,6 +84,11 @@ class App {
     }
 
     close() {
+        if(this.#closingAllowed) {
+            this.forceClose();
+        }
+    }
+    forceClose() {
         // if(!this.#alwaysOnBar) {
         //     this.#barElement.hidden = 'hidden';
         //     this.#status = windowStatus.CLOSED;
@@ -92,6 +105,19 @@ class App {
         this.#status = windowStatus.CLOSED;
 
         this.#additionalCloseAction();
+    }
+
+    allowClosing() {
+        this.#closingAllowed = true;
+    }
+    forbidClosing() {
+        this.#closingAllowed = false;
+    }
+    allowOpening() {
+        this.#openingAllowed = true;
+    }
+    forbidOpening() {
+        this.#openingAllowed = false;
     }
 
     appendChildElement(element) {

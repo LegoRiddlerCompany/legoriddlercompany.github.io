@@ -6,11 +6,11 @@ const voices = window.speechSynthesis.getVoices();
 
 const backgroundTime_ms = 1000;
 
-let riddlesUnlocked = 40;
-let currentRiddle = 0;
-let currentTry = 1;
+// let riddlesUnlocked = 40;
+// let currentRiddle = 0;
+// let currentTry = 1;
 
-let timerInterval = null;
+// let timerInterval = null;
 
 let initialOpen = false;
 

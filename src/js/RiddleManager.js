@@ -23,42 +23,154 @@
 // function answerCall() {
 //
 // }
+/*
+const vid = document.getElementById('video');
+const src = document.getElementById('source');
 
+const svid = document.getElementById('video-swap');
+const ssrc = document.getElementById('source-swap');
+*/
+
+// vid.style.zIndex = '3';
+// svid.style.zIndex = '2';
+
+// vid.addEventListener('ended', () => {
+//     vid.pause();
+//
+//     vid.style.zIndex = '1';
+//     vid.removeAttribute('controls');
+//
+//     src.setAttribute('src', '/assets/video/rushing/0.mp4');
+//     vid.load();
+//
+//     // vid.hidden = 'hidden';
+//     //
+//     // svid.removeAttribute('hidden');
+//     // svid.load();
+//
+//
+//     svid.play();
+//
+//     // vid.play();
+// });
+
+// svid.addEventListener('ended', () => {
+//     svid.pause();
+//
+//     // svid.hidden = 'hidden';
+//     //
+//     // vid.removeAttribute('hidden');
+//
+//     vid.style.zIndex = '3';
+//
+//
+//     vid.play();
+// });
+
+
+// src="/assets/video/riddle/0.mp4"
+// src="/assets/video/waiting/0.mp4"
+
+const riddleStage = {
+    INTRO: 0,
+    RIDDLE: 1,
+    OUTRO: 2
+}
 
 class RiddleManager {
     #form = null;
 
+    #unlockedRiddles = 1;
+    #currentRiddle = 0;
+    #currentTry = 1;
+
+    #video = null;
+    #swap  = null;
+
+    #timerInterval = null;
+    #rushingTime = [30, 60, 90]; // w sekundach
+    #paused = false;
+
+    #stage = riddleStage.INTRO;
+
     constructor() {
         this.#form = document.getElementById('riddle-form');
+        this.#video = {
+            el:  document.getElementById('video'),
+            src: document.getElementById('source')
+        };
+        this.#swap = {
+            el:  document.getElementById('video-swap'),
+            src: document.getElementById('source-swap')
+        };
     }
 
     init() {
+        this.#stage = riddleStage.INTRO;
+
+        this.#video.el.style.zIndex = '3';
+        this.#swap.el.style.zIndex = '2';
+
+        this.#video.src.setAttribute('src', '/assets/video/riddle/0.mp4');
+        this.#swap.src.setAttribute('src', '/assets/video/waiting/0.mp4');
+
+        this.#video.el.load();
+        this.#swap.el.load();
+
+        this.#video.el.addEventListener('ended', () => {
+            this.#video.el.pause();
+
+            this.#video.el.style.zIndex = '1';
+
+            if(this.#stage === riddleStage.INTRO) {
+                riddle.forceOpen(1);
+                riddle.getMeInFront();
+                this.#stage = riddleStage.RIDDLE;
+            } else if(this.#stage === riddleStage.RIDDLE) {
+                this.resume();
+            } else if(this.#stage === riddleStage.OUTRO) {
+                console.log("OUTRO");
+                skype.close();
+                riddle.forceClose();
+                riddle.allowOpening();
+                riddle.allowClosing();
+            }
+
+            this.#swap.el.play();
+        });
+
         this.#form.addEventListener('submit', (event) => {
             let answer = this.#form.answer.value;
 
-            if(checkAnswer(currentRiddle - 1, answer)) {
-                // let nextRiddleNumber = currentRiddle + 1;
+            if(checkAnswer(this.#currentRiddle - 1, answer)) {
+                // let nextRiddleNumber = this.#currentRiddle + 1;
                 // if(nextRiddleNumber >= riddlesNumber) {
                 //     nextRiddleNumber = riddlesNumber;
                 // }
 
                 // const nextRiddle = document.getElementById('rid-' + nextRiddleNumber);
                 // nextRiddle.removeAttribute('hidden');
-                showRiddle(currentRiddle + 1);
+                this.playCorrectAnswerVideo();
 
-                alert("tym razem ci się udało batmanie, czekam na ciebie z kolejną zagadką");
-                stopCounting();
+                this.#stage = riddleStage.OUTRO;
+                this.unlockNextRiddle();
+
+                this.stopCounting();
             } else {
-                if(currentTry === 1) {
-                    alert("nie udało ci się batmanie, zostały jeszcze dwie próby");
-                } else if(currentTry === 2) {
-                    alert("znowu ci się nie udało batmanie, została jeszcze jedna próba");
-                    showHint();
-                } else if(currentTry >= 3) {
-                    alert("nie udało ci się batmanie, czas na kare");
-                    stopCounting();
+                if(this.#currentTry === 1) {
+
+                    this.playWrongAnswerVideo();
+                } else if(this.#currentTry === 2) {
+
+                    this.playWrongAnswerVideo();
+                } else if(this.#currentTry >= 3) {
+                    this.playWrongAnswerVideo();
+
+                    this.#stage = riddleStage.OUTRO;
+                    this.unlockNextRiddle();
+                    this.stopCounting();
                 }
-                currentTry += 1;
+                this.#currentTry += 1;
             }
 
             event.preventDefault();
@@ -70,18 +182,55 @@ class RiddleManager {
     }
 
     openRiddle(riddleNumber) {
-        currentRiddle = riddleNumber;
-        currentTry = 1;
+        this.#currentRiddle = riddleNumber;
+        this.#currentTry = 1;
 
-        hideHint();
+        let riddleEntry = getRiddle(riddleNumber - 1);
 
-        let riddle = getRiddle(riddleNumber - 1);
+        document.getElementById('riddle-window-name').innerText = "zagadka " + riddleNumber;
+        document.getElementById('riddle-text').innerText = riddleEntry.riddle;
+        console.log(this.#currentRiddle, this.#unlockedRiddles, this.#currentRiddle === this.#unlockedRiddles);
+        if(this.#currentRiddle === this.#unlockedRiddles) {
+            riddle.forbidClosing();
+            this.startCounting();
+        }
+    }
 
-        document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
-        document.getElementById('riddle-text').innerText = riddle.riddle;
-        document.getElementById('riddle-hint').innerText = riddle.hint;
+    startCounting() {
+        clearInterval(this.#timerInterval);
+        timer.innerText = "10:00";
 
-        startCounting();
+        let time = 600;
+        let rushingT = this.#rushingTime;
+
+        this.#timerInterval = setInterval(() => {
+            if(!this.#paused) {
+                time -= 1;
+                if(time <= 0) {
+                    clearInterval(this.#timerInterval);
+                }
+
+                let min = Math.floor(time / 60);
+                let sec = time - (min * 60);
+
+                if(min < 10){ min = '0' + min; }
+                if(sec < 10){ sec = '0' + sec; }
+
+                timer.innerText = min + ':' + sec;
+
+                if(time === 600 - rushingT[0]) {
+                    this.playRushingVideo('m', 0);
+                } else if(time === 600 - rushingT[1]) {
+                    this.playRushingVideo('m', 1);
+                } else if(time === 600 - rushingT[2]) {
+                    this.playRushingVideo('m', 2);
+                }
+                clockSound(time % 2);
+            }
+        }, 1000);
+    }
+    stopCounting() {
+        clearInterval(this.#timerInterval);
     }
 
     startSkypeCall() {
@@ -93,14 +242,13 @@ class RiddleManager {
     }
     answerSkypeCall(declined) {
         if(declined) {
-            skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
         } else {
             // Połączenie itd
             skype.open();
             this.stopSkypeCallSound();
             this.closeSkypeCall();
             initialOpen = true;
-            this.initialRiddlerCallAudio();
+            this.playRiddleVideo();
         }
     }
     stopSkypeCallSound() {
@@ -109,28 +257,65 @@ class RiddleManager {
     }
     closeSkypeCall() {
         skypeCall.hidden = 'hidden';
-        skypeCallDeclineImg.src = "/assets/img/window/decline.png";
     }
 
-    initialRiddlerCallAudio() {
-        a_riddlerStart.addEventListener('ended', () => {
-            folder.open();
-            folder.getMeInFront();
-            showRiddle(1);
-        });
-        a_riddlerStart.play();
+    playRiddleVideo() {
+        answeraudio.play();
+        this.#video.el.load();
+        this.#video.el.play();
+    }
+    playRushingVideo(who, num) {
+        this.#video.src.setAttribute('src', '/assets/video/rushing/' + who + '/' + num + '.mp4');
+        this.#video.el.load();
+        this.#video.el.style.zIndex = '3';
+        skype.open();
+        this.#video.el.play();
+    }
+    playWrongAnswerVideo() {
+        this.pause();
+        let ridnum = this.#currentRiddle - 1;
+        this.#video.src.setAttribute('src', '/assets/video/wrong/' + this.#currentTry + '/' + ridnum + '.mp4');
+        this.#video.el.load();
+        this.#video.el.style.zIndex = '3';
+        skype.open();
+        this.#video.el.play();
+    }
+    playCorrectAnswerVideo() {
+        this.pause();
+        let ridnum = this.#currentRiddle - 1;
+        this.#video.src.setAttribute('src', '/assets/video/correct/' + ridnum + '.mp4');
+        this.#video.el.load();
+        this.#video.el.style.zIndex = '3';
+        skype.open();
+        this.#video.el.play();
     }
 
     answerWhatsappCall() {
         whatsapp.open("joker");
     }
 
-    load() {
+    pause() {
+        this.#paused = true;
+    }
+    resume() {
+        this.#paused = false;
+    }
 
+    load() {
+        this.#paused = false;
     }
 
     save() {
 
+    }
+
+    unlockNextRiddle() {
+        this.#unlockedRiddles += 1;
+        showRiddle(this.#currentRiddle + 1);
+    }
+
+    get unlockedRiddles() {
+        return this.#unlockedRiddles;
     }
 }
 

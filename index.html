@@ -101,11 +101,11 @@
 
             <div class="window-sandbox-wrapper">
                 <div class="clean-video-frame">
-                    <video id="video" preload="auto" style="z-index: 3; position: absolute;">
-                        <source id="source" src="/assets/video/riddle/0.mp4" type="video/mp4"/>
+                    <video id="video" preload="auto" style="position: absolute;">
+                        <source id="source" type="video/mp4"/><!--src="/assets/video/riddle/0.mp4"-->
                     </video>
-                    <video id="video-swap" preload="auto" style="z-index: 2; position: absolute;" loop>
-                        <source id="source-swap" src="/assets/video/waiting/0.mp4" type="video/mp4"/>
+                    <video id="video-swap" preload="auto" style="position: absolute;" loop>
+                        <source id="source-swap" type="video/mp4"/><!--src="/assets/video/waiting/0.mp4"-->
                     </video>
                 </div>
                 <div class="video-container-layer">
@@ -165,13 +165,12 @@
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="riddle.minimize()"></button>
                     <button id="max-button" aria-label="Maximize" onclick="riddle.maximize()"></button>
-                    <button id="ext-button" aria-label="Close"    ></button>
+                    <button id="ext-button" aria-label="Close"    onclick="riddle.close()"></button>
                 </div>
             </div>
             <div class="window-body">
                 <div class="riddle-top">
                     <p id="riddle-text"></p>
-                    <p id="riddle-hint" hidden></p>
                 </div>
                 <div class="riddle-bottom">
                     <form id="riddle-form" method="post">

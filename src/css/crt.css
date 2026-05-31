@@ -92,5 +92,6 @@
     pointer-events: none;
 }
 .crt {
+    filter: saturate(110%) brightness(110%);
 /*     animation: textShadow 1.6s infinite; */
 }

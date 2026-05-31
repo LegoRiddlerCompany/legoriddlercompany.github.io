@@ -1,5 +1,5 @@
 const skypeCall             = document.getElementById('skype-call');
-const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
+// const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 
 const footer                = document.getElementsByTagName('footer')[0];
 
@@ -25,6 +25,8 @@ skype.alwaysOnBar(true);
 // chat.alwaysOnTop(true);
 chat.alwaysOnBar(true);
 
+riddle.forbidOpening();
+
 const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note, whatsapp]);
 
 volume.status = windowStatus.MINIMIZED;
@@ -35,12 +37,6 @@ chat.additionalOpenAction     = chatOpenAction;
 cheats.additionalOpenAction   = focusCheatsInput;
 whatsapp.additionalOpenAction = whatsappOpenAction;
 
-skype.additionalOpenAction  = skypeOpenAction;//// remove
-
-function skypeOpenAction() {
-    vid.load();
-    vid.play();
-}
 
 skypeCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex    = windowManager.getListLength() + 1;
@@ -104,7 +100,7 @@ function riddleOpenAction(riddleNumber) {
 }
 
 function riddleCloseAction() {
-    stopCounting();
+    // stopCounting();
 }
 
 function chatOpenAction() {
