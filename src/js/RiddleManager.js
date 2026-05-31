@@ -366,7 +366,7 @@ class RiddleManager {
     load() {
         this.#stage = riddleStage.INTRO;
         this.#time = localStorage.getItem('riddle-time');
-        this.#unlockedRiddles = localStorage.getItem('unlocked-riddles');
+        this.#unlockedRiddles = parseInt(localStorage.getItem('unlocked-riddles'));
 
         this.#video.el.style.zIndex = '3';
         this.#swap.el.style.zIndex = '2';
