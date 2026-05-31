@@ -1,4 +1,5 @@
 const skypeCall             = document.getElementById('skype-call');
+const whatsappCall          = document.getElementById('whatsapp-call');
 // const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 
 const footer                = document.getElementsByTagName('footer')[0];
@@ -38,8 +39,9 @@ cheats.additionalOpenAction   = focusCheatsInput;
 whatsapp.additionalOpenAction = whatsappOpenAction;
 
 
-skypeCall.style.zIndex = windowManager.getListLength();
-footer.style.zIndex    = windowManager.getListLength() + 1;
+skypeCall.style.zIndex    = windowManager.getListLength();
+whatsappCall.style.zIndex = windowManager.getListLength();
+footer.style.zIndex       = windowManager.getListLength() + 1;
 
 cheats.window.addEventListener("click", focusCheatsInput);
 
@@ -65,7 +67,7 @@ async function folderOpenAction() {
 }
 
 function whatsappOpenAction(who) {
-    document.getElementById('whatsapp-title').innerText = "Whatsbat - " + callersList[who].fullname;
+    document.getElementById('whatsapp-title').innerText = "Whatsbatt - " + callersList[who].fullname;
     document.getElementById('whatsapp-avatar').src = callersList[who].img;
 }
 

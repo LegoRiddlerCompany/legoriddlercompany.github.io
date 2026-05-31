@@ -87,6 +87,8 @@ class RiddleManager {
     #video = null;
     #swap  = null;
 
+    #audio = null;
+
     #timerInterval = null;
     #rushingTime = [30, 60, 90]; // w sekundach
     #paused = false;
@@ -117,6 +119,10 @@ class RiddleManager {
         this.#video.el.load();
         this.#swap.el.load();
 
+        let helper  = riddlesList[0].helper.name;
+        let track   = riddlesList[0].helper.track;
+        this.#audio = callersList[helper].audio[track];
+
         this.#video.el.addEventListener('ended', () => {
             this.#video.el.pause();
 
@@ -129,7 +135,6 @@ class RiddleManager {
             } else if(this.#stage === riddleStage.RIDDLE) {
                 this.resume();
             } else if(this.#stage === riddleStage.OUTRO) {
-                console.log("OUTRO");
                 skype.close();
                 riddle.forceClose();
                 riddle.allowOpening();
@@ -139,40 +144,40 @@ class RiddleManager {
             this.#swap.el.play();
         });
 
+        this.#audio.addEventListener('ended', () => {
+            whatsapp.close();
+            this.playWrongAnswerVideo();
+        });
+
         this.#form.addEventListener('submit', (event) => {
-            let answer = this.#form.answer.value;
+            if(!this.#paused) {
+                let answer = this.#form.answer.value;
 
-            if(checkAnswer(this.#currentRiddle - 1, answer)) {
-                // let nextRiddleNumber = this.#currentRiddle + 1;
-                // if(nextRiddleNumber >= riddlesNumber) {
-                //     nextRiddleNumber = riddlesNumber;
-                // }
-
-                // const nextRiddle = document.getElementById('rid-' + nextRiddleNumber);
-                // nextRiddle.removeAttribute('hidden');
-                this.playCorrectAnswerVideo();
-
-                this.#stage = riddleStage.OUTRO;
-                this.unlockNextRiddle();
-
-                this.stopCounting();
-            } else {
-                if(this.#currentTry === 1) {
-
-                    this.playWrongAnswerVideo();
-                } else if(this.#currentTry === 2) {
-
-                    this.playWrongAnswerVideo();
-                } else if(this.#currentTry >= 3) {
-                    this.playWrongAnswerVideo();
+                if(checkAnswer(this.#currentRiddle - 1, answer)) {
+                    this.playCorrectAnswerVideo();
 
                     this.#stage = riddleStage.OUTRO;
                     this.unlockNextRiddle();
-                    this.stopCounting();
-                }
-                this.#currentTry += 1;
-            }
 
+                    this.stopCounting();
+                } else {
+                    if(this.#currentTry === 1) {
+
+                        this.playWrongAnswerVideo();
+                    } else if(this.#currentTry === 2) {
+                        this.pause();
+                        this.startWhatsappCall();
+                        // this.playWrongAnswerVideo();
+                    } else if(this.#currentTry >= 3) {
+                        this.playWrongAnswerVideo();
+
+                        this.#stage = riddleStage.OUTRO;
+                        this.unlockNextRiddle();
+                        this.stopCounting();
+                    }
+                    // this.#currentTry += 1;
+                }
+            }
             event.preventDefault();
         });
     }
@@ -259,6 +264,32 @@ class RiddleManager {
         skypeCall.hidden = 'hidden';
     }
 
+    startWhatsappCall() {
+        whatsappCall.removeAttribute('hidden');
+        this.startWhatsappCallSound();
+    }
+    startWhatsappCallSound() {
+        whatsappcallaudio.play();
+    }
+    answerWhatsappCall() {
+        // TODO
+        this.stopWhatsappCallSound();
+        this.closeWhatsappCall();
+        whatsapp.open(riddlesList[this.#currentRiddle - 1].helper.name);
+        answeraudio.play();
+        answeraudio.addEventListener('ended', () => {
+            this.#audio.play();
+        });
+        answeraudio.removeEventListener('ended');
+    }
+    stopWhatsappCallSound() {
+        whatsappcallaudio.pause();
+        whatsappcallaudio.currentTime = 0;
+    }
+    closeWhatsappCall() {
+        whatsappCall.hidden = 'hidden';
+    }
+
     playRiddleVideo() {
         answeraudio.play();
         this.#video.el.load();
@@ -279,6 +310,8 @@ class RiddleManager {
         this.#video.el.style.zIndex = '3';
         skype.open();
         this.#video.el.play();
+
+        this.#currentTry += 1;
     }
     playCorrectAnswerVideo() {
         this.pause();
@@ -288,10 +321,6 @@ class RiddleManager {
         this.#video.el.style.zIndex = '3';
         skype.open();
         this.#video.el.play();
-    }
-
-    answerWhatsappCall() {
-        whatsapp.open("joker");
     }
 
     pause() {
@@ -318,7 +347,3 @@ class RiddleManager {
         return this.#unlockedRiddles;
     }
 }
-
-const riddleManager = new RiddleManager();
-
-riddleManager.init();

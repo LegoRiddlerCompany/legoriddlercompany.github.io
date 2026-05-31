@@ -1,7 +1,11 @@
 const riddlesList = [
     {
         riddle: "Mam masę zębów lecz nie jem nie gryzę. \nZnajdziesz mnie na czubku gdzieś pod twym fryzem.",
-        answers: ["grzebień", "grzebien", "grzebieniem"]
+        answers: ["grzebień", "grzebien", "grzebieniem"],
+        helper: {
+            name: "harley",
+            track: 0
+        }
     },
     {
         riddle: "Nie mam ust, a każdy mnie słyszy. \nJestem zdrowiem, choć bywam zaraźliwy. \nJeśli ktoś zagadki tej łatwej nie zgadnie, \nto będziesz to Ty, mój drogi Batmanie.",

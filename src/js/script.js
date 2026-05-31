@@ -26,6 +26,10 @@ body.addEventListener("click", () => {
     clickSound();
 });
 
+const riddleManager = new RiddleManager();
+
+riddleManager.init();
+
 
 for(let r = 0; r < folderRowNumber; r++) {
     const row = document.createElement('div');
