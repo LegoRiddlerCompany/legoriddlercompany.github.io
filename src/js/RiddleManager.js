@@ -115,8 +115,8 @@ class RiddleManager {
         this.#stage = riddleStage.INTRO;
         this.#currentRiddle = 1;
 
-        this.#video.el.style.zIndex = '3';
-        this.#swap.el.style.zIndex = '2';
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
 
         this.#video.src.setAttribute('src', '/assets/video/riddle/0.mp4');
         this.#swap.src.setAttribute('src', '/assets/video/waiting/0.mp4');
@@ -132,10 +132,13 @@ class RiddleManager {
             this.resume();
             this.#video.el.pause();
 
-            this.#video.el.style.zIndex = '1';
+            this.#video.el.style.zIndex = '2';
+            this.#swap.el.style.zIndex = '4';
 
             if(this.#stage === riddleStage.INTRO) {
-                riddle.forceOpen(this.#currentRiddle);
+                if(this.#currentRiddle === 1) {
+                    riddle.forceOpen(this.#currentRiddle);
+                }
                 riddle.getMeInFront();
                 this.#stage = riddleStage.RIDDLE;
             } else if(this.#stage === riddleStage.RIDDLE) {
@@ -189,6 +192,7 @@ class RiddleManager {
                     // this.#currentTry += 1;
                 }
             }
+            this.#form.reset();
             event.preventDefault();
         });
     }
@@ -316,6 +320,8 @@ class RiddleManager {
     }
 
     playRiddleVideo() {
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
         answeraudio.play();
         this.#video.el.load();
         this.#video.el.play();
@@ -323,7 +329,8 @@ class RiddleManager {
     playRushingVideo(who, num) {
         this.#video.src.setAttribute('src', '/assets/video/rushing/' + who + '/' + num + '.mp4');
         this.#video.el.load();
-        this.#video.el.style.zIndex = '3';
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
         skype.open();
         this.#video.el.play();
     }
@@ -333,7 +340,8 @@ class RiddleManager {
         let losetrack = riddlesList[this.#currentRiddle - 1].losetrack[this.#currentTry - 1];
         this.#video.src.setAttribute('src', '/assets/video/wrong/' + this.#currentTry + '/' + who + '/' + losetrack + '.mp4');
         this.#video.el.load();
-        this.#video.el.style.zIndex = '3';
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
         skype.open();
         this.#video.el.play();
 
@@ -345,7 +353,8 @@ class RiddleManager {
         let wintrack = riddlesList[this.#currentRiddle - 1].wintrack;
         this.#video.src.setAttribute('src', '/assets/video/correct/' + who + '/' + wintrack + '.mp4');
         this.#video.el.load();
-        this.#video.el.style.zIndex = '3';
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
         skype.open();
         this.#video.el.play();
     }
@@ -368,8 +377,8 @@ class RiddleManager {
         this.#time = localStorage.getItem('riddle-time');
         this.#unlockedRiddles = parseInt(localStorage.getItem('unlocked-riddles'));
 
-        this.#video.el.style.zIndex = '3';
-        this.#swap.el.style.zIndex = '2';
+        this.#video.el.style.zIndex = '5';
+        this.#swap.el.style.zIndex = '1';
 
         let ridnum = this.#currentRiddle - 1;
         this.#video.src.setAttribute('src', '/assets/video/riddle/' + ridnum + '.mp4');
@@ -382,6 +391,7 @@ class RiddleManager {
         let track   = riddlesList[ridnum].helper.track;
         this.#audio = callersList[helper].audio[track];
 
+        unlockRiddles(this.#unlockedRiddles);
         this.resume();
     }
 

@@ -234,7 +234,8 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
 }
 
-.clean-video-frame video {
+.clean-video-frame video,
+.clean-video-frame img {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
@@ -242,6 +243,9 @@
     border-radius: 1.5vh !important;
     overflow: hidden !important;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.clean-video-frame img {
+    background-color: var(--chat-gray);
 }
 
 :root {
