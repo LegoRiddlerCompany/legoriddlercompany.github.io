@@ -34,7 +34,7 @@ const callersList = {
         ]
     },
     friz: {
-        fullname: "Wiktor",
+        fullname: "Mr Freeze",
         img: callerImageDir + "friz.png",
         audio: [
             new Audio(callerAudioDir + "friz/0.mp3")
@@ -91,7 +91,7 @@ const callersList = {
         ]
     },
     poisonivy: {
-        fullname: "Poison Ivy",
+        fullname: "Pamela",
         img: callerImageDir + "poisonivy.png",
         audio: [
             new Audio(callerAudioDir + "poisonivy/0.mp3")
@@ -111,7 +111,7 @@ const callersList = {
         audio: []
     },
     robin: {
-        fullname: "Robin",
+        fullname: "Rysiek",
         img: callerImageDir + "robin.png",
         audio: [
             new Audio(callerAudioDir + "robin/0.mp3"),

@@ -8,7 +8,7 @@ const riddlesList = [
             track: 0
         },
         rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        losetrack: [0, 2, 1],
         wintrack: 0
     },
     {
@@ -20,8 +20,8 @@ const riddlesList = [
             track: 0
         },
         rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        losetrack: [1, 3, 0],
+        wintrack: 4
     },
     {
         riddle: "Jak mnie złapiesz to źle się poczujesz, \njesienią czy zimą was poszukuję.",
@@ -31,9 +31,9 @@ const riddlesList = [
             name: "robin",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [6, 0, 3],
+        losetrack: [2, 3, 2],
+        wintrack: 1
     },
     {
         riddle: "Im bardziej Ty jesteś suchy, \ntym bardziej ja staję się mokry.",
@@ -43,9 +43,9 @@ const riddlesList = [
             name: "barbara",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [9, 3, 0],
+        losetrack: [3, 0, 3],
+        wintrack: 4
     },
     {
         riddle: "Co chodzi na czterech nogach, \npotem na dwóch i w końcu na trzech?",
@@ -55,9 +55,9 @@ const riddlesList = [
             name: "penguin",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [4, 6, 7],
+        losetrack: [2, 0, 1],
+        wintrack: 1
     },
     {
         riddle: "Dzięki mnie załatwisz ważne sprawy, \nale sam nic za Ciebie nie zrobię.",
@@ -67,9 +67,9 @@ const riddlesList = [
             name: "barbara",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [2, 1, 7],
+        losetrack: [0, 3, 4],
+        wintrack: 2
     },
     {
         riddle: "Mam rzeki, ale nie mam wody, \nmam miasta, ale nie mam domów, \nmam lasy, ale nie mam drzew.",
@@ -79,9 +79,9 @@ const riddlesList = [
             name: "npc",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [7, 4, 0],
+        losetrack: [1, 2, 2],
+        wintrack: 2
     },
     {
         riddle: "Raz się toczy, a raz sprzyja. \nDobrze jest mnie mieć, \nw sejfie mnie trzymać.",
@@ -91,9 +91,9 @@ const riddlesList = [
             name: "jim",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [5, 4, 0],
+        losetrack: [1, 2, 0],
+        wintrack: 3
     },
     {
         riddle: "Ten, kto mnie robi, nie potrzebuje mnie. \nTen, kto mnie kupuje, sam ze mnie nie korzysta. \nTen, kto ze mnie korzysta, nawet o tym nie wie.",
@@ -103,9 +103,9 @@ const riddlesList = [
             name: "alfred",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [5, 3, 2],
+        losetrack: [0, 1, 0],
+        wintrack: 3
     },
     {
         riddle: "Mówię we wszystkich językach świata, \nale własnego nie posiadam.",
@@ -115,9 +115,9 @@ const riddlesList = [
             name: "rasalghul",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [8, 1, 0],
+        losetrack: [2, 1, 3],
+        wintrack: 3
     },
     {
         riddle: "Co widzi inaczej, niż samo jest widziane, \npoluje na ludzi lecz ich wcale nie zjada, \nma cztery łapy piękne, wspaniałe, \nod czasu do czasu z pingwinami gada.",
@@ -127,9 +127,9 @@ const riddlesList = [
             name: "penguin",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [9, 7, 0],
+        losetrack: [4, 3, 1],
+        wintrack: 4
     },
     {
         riddle: "Możesz mnie uzyskać drobno krusząc kamień, \njak zapytasz o mnie kota, prawdy ci nie powie, \nale też nie skłamie.",
@@ -139,9 +139,9 @@ const riddlesList = [
             name: "catwoman",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [2, 1, 3],
+        losetrack: [3, 0, 1],
+        wintrack: 4
     },
     {
         riddle: "Mówią, żem matką, choć ciągle mnie ranią. \nWiele znieść mogę, ale jak nie przestaną, \nbez jedzenia i tlenu na świecie zostaną.",
@@ -151,8 +151,8 @@ const riddlesList = [
             name: "poisonivy",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [1, 0, 8],
+        losetrack: [3, 1, 2],
         wintrack: 0
     },
     {
@@ -163,8 +163,8 @@ const riddlesList = [
             name: "lucius",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [7, 6, 9],
+        losetrack: [0, 3, 2],
         wintrack: 0
     },
     {
@@ -175,9 +175,9 @@ const riddlesList = [
             name: "joker",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [0, 1, 6],
+        losetrack: [2, 3, 4],
+        wintrack: 2
     },
     {
         riddle: "Jeśli mnie zjesz, \nten który mnie posłał zje ciebie.",
@@ -187,9 +187,9 @@ const riddlesList = [
             name: "robin",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [0, 6, 4],
+        losetrack: [2, 2, 3],
+        wintrack: 1
     },
     {
         riddle: "Nie mam wpływu na to czy rosnę, czy maleję.",
@@ -200,8 +200,8 @@ const riddlesList = [
             track: 2
         },
         rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        losetrack: [1, 3, 4],
+        wintrack: 2
     },
     {
         riddle: "Możesz mnie trzymać w prawej ręce, \nale nigdy w lewej.",
@@ -212,9 +212,9 @@ const riddlesList = [
             name: "robin",
             track: 3
         },
-        rushingtrack: [0, 1, 2],
+        rushingtrack: [5, 6, 7],
         losetrack: [0, 0, 0],
-        wintrack: 0
+        wintrack: 3
     },
     {
         riddle: "Mimo że mam szyję, \nto nie mam głowy.",
@@ -224,9 +224,9 @@ const riddlesList = [
             name: "harley",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [4, 5, 7],
+        losetrack: [1, 2, 0],
+        wintrack: 1
     },
     {
         riddle: "Co byś nie zrobił to idzie w górę \ni nawet jak chciałbyś to w dół w ogóle.",
@@ -236,9 +236,9 @@ const riddlesList = [
             name: "rasalghul",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [1, 0, 3],
+        losetrack: [2, 1, 2],
+        wintrack: 3
     },
     {
         riddle: "Dla jednej chwili zatrzymasz świat cały, \ndla jednej osoby porzucisz ideały. \nPotrafię przetrwać nawet w lodzie i mroku \ni nigdy nie znikam z pamięci i wzroku.",
@@ -248,9 +248,9 @@ const riddlesList = [
             name: "friz",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [9, 0, 3],
+        losetrack: [4, 0, 1],
+        wintrack: 4
     },
     {
         riddle: "Kiedy nimi rzucasz, a ja nie łapie, to nie dzieje się nic, \njednak gdy pomożesz mi je łapać, to łatwo możemy je zepsuć.",
@@ -261,9 +261,9 @@ const riddlesList = [
             name: "joker",
             track: 2
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [8, 4, 9],
+        losetrack: [3, 0, 1],
+        wintrack: 4
     },
     {
         riddle: "Zawsze biegnę za Tobą, krok w krok, choć nie mam nóg. \nZnikam, gdy robi się zupełnie ciemno, i uciekam, gdy próbujesz mnie złapać.",
@@ -274,9 +274,9 @@ const riddlesList = [
             name: "jim",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [4, 1, 10],
+        losetrack: [3, 3, 2],
+        wintrack: 4
     },
     {
         riddle: "Część ludzi mnie pragnie, nawet kiedy jestem gorzka, \nchociaż czasem ciężko mnie przełknąć.",
@@ -286,8 +286,8 @@ const riddlesList = [
             name: "lucius",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [5, 0, 7],
+        losetrack: [1, 3, 2],
         wintrack: 0
     },
     {
@@ -298,9 +298,9 @@ const riddlesList = [
             name: "catwoman",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [9, 1, 5],
+        losetrack: [2, 3, 4],
+        wintrack: 1
     },
     {
         riddle: "Mam dwie twarze, jedną wybierz mądrze. \nGdy inną pokażę, dla ciebie los zły stworzę.",
@@ -310,8 +310,8 @@ const riddlesList = [
             name: "twoface",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [3, 1, 2],
+        losetrack: [0, 2, 3],
         wintrack: 0
     },
     {
@@ -323,8 +323,8 @@ const riddlesList = [
             track: 2
         },
         rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        losetrack: [1, 1, 0],
+        wintrack: 2
     },
     {
         riddle: "Choć mam duże wymagania, to nie oczekuje nic, \nktoś tam o mnie śpiewał na jednej ze swych płyt.",
@@ -334,8 +334,8 @@ const riddlesList = [
             name: "unknown",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [7, 1, 5],
+        losetrack: [1, 0, 0],
         wintrack: 0
     },
     {
@@ -346,9 +346,9 @@ const riddlesList = [
             name: "alfred",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [2, 1, 3],
+        losetrack: [0, 0, 1],
+        wintrack: 3
     },
     {
         riddle: "Zwiąże ci język, choć nie mam dłoni. \nSparaliżuję ciało, bez jadu, bez broni. \nMym bratem jest ciemność, a siostrą cisza. \nNajgłośniej przemawiam, gdy nikt się nie zbliża.",
@@ -358,9 +358,9 @@ const riddlesList = [
             name: "scarecrow",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [7, 6, 9],
+        losetrack: [2, 1, 3],
+        wintrack: 1
     },
     {
         riddle: "Nie mam oczu, ale kiedyś widziałam wszystko. \nMiałam dużo na głowie, lecz teraz jest tam czysto.",
@@ -370,9 +370,9 @@ const riddlesList = [
             name: "unknown",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [7, 5, 2],
+        losetrack: [4, 2, 0],
+        wintrack: 4
     },
     {
         riddle: "Nikt nas się nie spodziewa, a zawsze na Ciebie czyhamy. \nDuże nie jesteśmy, lecz hałas robimy spory Co by nie mówić, \nstraszymy lepiej niż największe potwory.",
@@ -383,8 +383,8 @@ const riddlesList = [
             name: "joker",
             track: 3
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
+        rushingtrack: [10, 9, 0],
+        losetrack: [3, 0, 2],
         wintrack: 0
     },
     {
@@ -395,9 +395,9 @@ const riddlesList = [
             name: "twoface",
             track: 1
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [8, 2, 4],
+        losetrack: [3, 2, 1],
+        wintrack: 2
     },
     {
         riddle: "Jak wilk, nieswoją skórę przywdziewa. \nW lesie nie mieszka, choć nie jest mu daleko. \nOgon wychodzi, choć ogona nie ma.",
@@ -407,9 +407,9 @@ const riddlesList = [
             name: "unknown",
             track: 2
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [3, 1, 5],
+        losetrack: [2, 0, 3],
+        wintrack: 1
     },
     {
         riddle: "Jestem czymś czego nikt nie widział, \nnigdy nie byłem, ale będę.",
@@ -419,9 +419,9 @@ const riddlesList = [
             name: "superman",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [2, 1, 5],
+        losetrack: [3, 3, 4],
+        wintrack: 3
     },
     {
         riddle: "Gdy jestem potrzebna, nikt o mnie nie dba, \nrzucają mną w przepaść, gdzie ciemność bezwzględna. \nGdy jednak przestaje być już pożyteczna - czyszczą mnie, \ndają dostęp do powietrza.",
@@ -431,8 +431,8 @@ const riddlesList = [
             name: "aquaman",
             track: 0
         },
-        rushingtrack: [0, 1, 2],
-        losetrack: [0, 0, 0],
-        wintrack: 0
+        rushingtrack: [6, 4, 5],
+        losetrack: [1, 3, 4],
+        wintrack: 4
     },
 ]

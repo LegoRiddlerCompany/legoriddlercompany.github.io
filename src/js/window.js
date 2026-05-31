@@ -75,10 +75,14 @@ function whatsappOpenAction(who) {
 }
 
 function riddleOpenAction(riddleNumber) {
+    if(riddleNumber > 1 && riddleNumber === riddleManager.unlockedRiddles) {
+        riddleManager.hideRiddleContent();
+    }
     riddleManager.openRiddle(riddleNumber);
 }
 
 function riddleCloseAction() {
+    riddle.allowOpening();
     // stopCounting();
 }
 

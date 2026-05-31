@@ -46,10 +46,12 @@ cheatsForm.addEventListener('submit', (event) => {
 
     switch(command) {
         case 'odblokuj':
-            let ridnum = parseInt(argument);
-            if(isNaN(ridnum)) { ridnum = 100; }
-            let ur = unlockRiddles(ridnum);
-            result = "Liczba odblokowanych zagadek: " + ur;
+            let rnum = parseInt(argument);
+            if(isNaN(rnum)) { rnum = 100; }
+            if(rnum > riddlesNumber) { rnum = riddlesNumber; }
+            localStorage.setItem('unlocked-riddles', rnum);
+            riddleManager.load();
+            result = "Wczytano " + rnum + " zagadek";
             break;
         case 'crt':
             if(argument === 'on') {
@@ -76,7 +78,7 @@ cheatsForm.addEventListener('submit', (event) => {
         case 'aktywuj':
             const bingos = document.getElementById('background').children[0];
             bingos.hidden = 'hidden';
-            result = "System Riddlosoft Bingos został pomyślnie aktywowany."
+            result = "System Riddlosoft Nygmos został pomyślnie aktywowany."
             break;
         case 'reset':
             if(argument === 'totalny') {
@@ -85,13 +87,6 @@ cheatsForm.addEventListener('submit', (event) => {
             } else {
                 result = "Reset aktywowany. Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
             }
-            break;
-        case 'load':
-            let rnum = parseInt(argument);
-            if(rnum > riddlesNumber) { rnum = riddlesNumber; }
-            localStorage.setItem('unlocked-riddles', rnum);
-            riddleManager.load();
-            result = "Wczytano " + rnum + " zagadek";
             break;
         case 'pomoc':
         case 'pomocy':

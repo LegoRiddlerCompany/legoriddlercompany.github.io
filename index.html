@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿?</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/icon/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="/assets/img/background/0.png">
     <link rel="preload" as="image" href="/assets/img/background/1.png">
     <link rel="preload" as="image" href="/assets/img/background/2.png">
@@ -19,6 +22,7 @@
     <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Regular.ttf">
     <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-SemiBold.ttf">
     <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Thin.ttf">-->
+    <link rel="stylesheet" href="/src/css/bootloader.css">
     <link rel="stylesheet" href="/src/css/fonts.css">
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/footer.css">
@@ -32,6 +36,7 @@
     <link rel="stylesheet" href="/src/css/window/note.css">
     <link rel="stylesheet" href="/src/css/icon.css">
     <link rel="stylesheet" href="/src/css/crt.css">
+    <script defer src="/src/js/bootloader.js"></script>
     <script defer src="/src/js/global.js"></script>
     <script defer src="/src/js/riddlesList.js"></script>
     <script defer src="/src/js/callersList.js"></script>
@@ -46,11 +51,32 @@
 </head>
 
 <body ><!--class="crt"-->
+    <div id="boot-overlay" class="boot-hidden">
+        <div id="boot-bg-matrix"></div>
+
+        <div class="boot-center-content">
+        <div id="preloader">
+            <div id="loader"></div>
+            <span class="center-static-mark">?</span>
+        </div>
+
+        <h1 class="boot-system-name">Riddlosoft Nygmos</h1>
+        <h2 class="boot-system-version">[Version 3.6.26]</h2>
+        <h4 class="boot-system-copyright">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</h4>
+        </div>
+
+        <div class="boot-footer">
+        <div class="boot-progress-track">
+            <div id="boot-progress-fill"></div>
+        </div>
+        <div id="boot-percentage">0%</div>
+        </div>
+    </div>
     <main>
         <div id="background">
             <div class="bingos-container">
-                <span class="aktywuj-bingos">Aktywuj system Bingos</span>
-                <span class="ustaw-bingos">Przejdź do ustawień aby aktywować system Bingos</span>
+                <span class="aktywuj-bingos">Aktywuj system Nygmos</span>
+                <span class="ustaw-bingos">Przejdź do ustawień aby aktywować system Nygmos</span>
             </div>
         </div>
         <div id="witam" class="icon-container">
@@ -157,7 +183,7 @@
                     <button id="ext-button" aria-label="Close"    onclick="riddle.close()"></button>
                 </div>
             </div>
-            <div class="window-body">
+            <div id="riddle-window-body" class="window-body">
                 <div class="riddle-top">
                     <p id="riddle-text"></p>
                 </div>
@@ -225,7 +251,7 @@
             </div>
             <div class="window-body">
                 <form id="cheats-form" method="post">
-                    <label for="cheats-input">Riddlosoft Bingos [Version 3.6.26]</label>
+                    <label for="cheats-input">Riddlosoft Nygmos [Version 3.6.26]</label>
                     <label for="cheats-input">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</label>
                     <span><br></span>
                     <label id="cheats-input-label" for="cheats-input">C:\Users\Batman>

@@ -71,7 +71,7 @@ const ssrc = document.getElementById('source-swap');
 // src="/assets/video/riddle/0.mp4"
 // src="/assets/video/waiting/0.mp4"
 
-const batmanContacts = ["alfred", "harley"];
+const batmanContacts = ["alfred", "aquaman", "barbara", "penguin", "jim", "superman", "twoface", "joker", "lucius", "harley", "rasalghul", "robin"];
 const maxTime = 600;
 
 const riddleStage = {
@@ -82,6 +82,7 @@ const riddleStage = {
 
 class RiddleManager {
     #form = null;
+    #riddleWindowBody = null;
 
     #unlockedRiddles = 1;
     #currentRiddle = 1;
@@ -109,6 +110,7 @@ class RiddleManager {
             el:  document.getElementById('video-swap'),
             src: document.getElementById('source-swap')
         };
+        this.#riddleWindowBody = document.getElementById('riddle-window-body');
     }
 
     init() {
@@ -130,6 +132,7 @@ class RiddleManager {
 
         this.#video.el.addEventListener('ended', () => {
             this.resume();
+            this.showRiddleContent();
             this.#video.el.pause();
 
             this.#video.el.style.zIndex = '2';
@@ -150,6 +153,7 @@ class RiddleManager {
                 riddle.allowOpening();
                 riddle.allowClosing();
                 this.videoReset();
+                this.colorIcon(this.#currentRiddle, this.#currentTry);
                 this.#time = maxTime;
                 this.#stage = riddleStage.INTRO;
                 this.save();
@@ -164,6 +168,7 @@ class RiddleManager {
         });
 
         this.#form.addEventListener('submit', (event) => {
+            console.log(this.#currentTry);
             if(!this.#paused) {
                 let answer = this.#form.answer.value;
 
@@ -221,6 +226,11 @@ class RiddleManager {
                 this.startSkypeCall();
                 riddle.forbidOpening();
             }
+        }
+        if(this.#currentRiddle < this.#unlockedRiddles) {
+            this.load();
+            this.#stage = riddleStage.RIDDLE;
+            riddle.forbidOpening();
         }
     }
 
@@ -408,6 +418,7 @@ class RiddleManager {
 
     save() {
         localStorage.setItem('unlocked-riddles', this.#unlockedRiddles);
+        localStorage.setItem('rid-' + this.#currentRiddle, this.#currentTry);
         this.saveTime();
     }
     saveTime() {
@@ -415,8 +426,47 @@ class RiddleManager {
     }
 
     unlockNextRiddle() {
-        this.#unlockedRiddles += 1;
-        showRiddle(this.#currentRiddle + 1);
+        if(this.#currentRiddle === this.#unlockedRiddles) {
+            this.#unlockedRiddles += 1;
+            showRiddle(this.#currentRiddle + 1);
+        }
+    }
+
+    hideRiddleContent() {
+        this.#riddleWindowBody.children[0].hidden = "hidden";
+        this.#riddleWindowBody.children[1].hidden = "hidden";
+    }
+    showRiddleContent() {
+        this.#riddleWindowBody.children[0].removeAttribute('hidden');
+        this.#riddleWindowBody.children[1].removeAttribute('hidden');
+    }
+
+    colorIcon(id, level) {
+        let ridid = "rid-" + id;
+        let icon = document.getElementById(ridid).children[0];
+        let iconimg = icon.children[0];
+        if(level === 1) {
+            icon.style.background = "linear-gradient(to bottom, var(--top) 0%, #ffdd00 100%)";
+            iconimg.style.filter = "hue-rotate(305deg) saturate(200%) brightness(160%) drop-shadow(0 0.3vh 0.6vh rgb(255 224 0))";
+        } else if(level === 2) {
+            icon.style.background = "linear-gradient(to bottom, var(--top) 0%, #dfdfdf 100%)";
+            iconimg.style.filter = "saturate(0%) brightness(160%) drop-shadow(0 0.3vh 0.6vh rgb(223 223 223))";
+        } else if(level === 3) {
+            icon.style.background = "linear-gradient(to bottom, var(--top) 0%, #bb8354 100%)";
+            iconimg.style.filter = "hue-rotate(285deg) saturate(80%) drop-shadow(0 0.3vh 0.6vh rgb(186 130 83))";
+        } else {
+            icon.style.background = "linear-gradient(to bottom, var(--top) 0%, var(--mid) 100%)";
+            iconimg.style.filter = "saturate(0%) drop-shadow(0 0.3vh 0.6vh rgba(4, 80, 50, 0.3))";
+        }
+    }
+
+    loadIconsColors() {
+        for(let i = 1; i <= this.#unlockedRiddles; i++) {
+            let lvl = parseInt(localStorage.getItem('rid-' + i));
+            if(!isNaN(lvl)) {
+                this.colorIcon(i, lvl);
+            }
+        }
     }
 
     get unlockedRiddles() {
@@ -463,5 +513,6 @@ class RiddleManager {
             }
             folder.appendChildElement(row);
         }
+        this.loadIconsColors();
     }
 }
