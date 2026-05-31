@@ -16,10 +16,6 @@ const folderRowNumber = Math.ceil(riddlesNumber / riddlesInRow);
 loadBackground();
 loadCRTEffect();
 
-for(let i = 0; i < backgroundsNumber; i++) {
-    nextBackground();
-}
-
 setInterval(updateTime, 1000);
 
 body.addEventListener("click", () => {

@@ -71,6 +71,9 @@ const ssrc = document.getElementById('source-swap');
 // src="/assets/video/riddle/0.mp4"
 // src="/assets/video/waiting/0.mp4"
 
+const batmanContacts = ["alfred", "harley"];
+const maxTime = 600;
+
 const riddleStage = {
     INTRO: 0,
     RIDDLE: 1,
@@ -81,7 +84,7 @@ class RiddleManager {
     #form = null;
 
     #unlockedRiddles = 1;
-    #currentRiddle = 0;
+    #currentRiddle = 1;
     #currentTry = 1;
 
     #video = null;
@@ -91,6 +94,7 @@ class RiddleManager {
 
     #timerInterval = null;
     #rushingTime = [30, 60, 90]; // w sekundach
+    #time = maxTime;
     #paused = false;
 
     #stage = riddleStage.INTRO;
@@ -109,6 +113,7 @@ class RiddleManager {
 
     init() {
         this.#stage = riddleStage.INTRO;
+        this.#currentRiddle = 1;
 
         this.#video.el.style.zIndex = '3';
         this.#swap.el.style.zIndex = '2';
@@ -124,21 +129,27 @@ class RiddleManager {
         this.#audio = callersList[helper].audio[track];
 
         this.#video.el.addEventListener('ended', () => {
+            this.resume();
             this.#video.el.pause();
 
             this.#video.el.style.zIndex = '1';
 
             if(this.#stage === riddleStage.INTRO) {
-                riddle.forceOpen(1);
+                riddle.forceOpen(this.#currentRiddle);
                 riddle.getMeInFront();
                 this.#stage = riddleStage.RIDDLE;
             } else if(this.#stage === riddleStage.RIDDLE) {
                 this.resume();
             } else if(this.#stage === riddleStage.OUTRO) {
                 skype.close();
+                callendaudio.play();
                 riddle.forceClose();
                 riddle.allowOpening();
                 riddle.allowClosing();
+                this.videoReset();
+                this.#time = maxTime;
+                this.#stage = riddleStage.INTRO;
+                this.save();
             }
 
             this.#swap.el.play();
@@ -194,10 +205,16 @@ class RiddleManager {
 
         document.getElementById('riddle-window-name').innerText = "zagadka " + riddleNumber;
         document.getElementById('riddle-text').innerText = riddleEntry.riddle;
-        console.log(this.#currentRiddle, this.#unlockedRiddles, this.#currentRiddle === this.#unlockedRiddles);
+
         if(this.#currentRiddle === this.#unlockedRiddles) {
             riddle.forbidClosing();
             this.startCounting();
+
+            if(this.#currentRiddle > 1) {
+                this.load();
+                this.pause();
+                this.startSkypeCall();
+            }
         }
     }
 
@@ -205,8 +222,10 @@ class RiddleManager {
         clearInterval(this.#timerInterval);
         timer.innerText = "10:00";
 
-        let time = 600;
+        let time = this.#time;
         let rushingT = this.#rushingTime;
+        let who   = riddlesList[this.#currentRiddle - 1].who;
+        let track = riddlesList[this.#currentRiddle - 1].rushingtrack;
 
         this.#timerInterval = setInterval(() => {
             if(!this.#paused) {
@@ -223,14 +242,12 @@ class RiddleManager {
 
                 timer.innerText = min + ':' + sec;
 
-                if(time === 600 - rushingT[0]) {
-                    this.playRushingVideo('m', 0);
-                } else if(time === 600 - rushingT[1]) {
-                    this.playRushingVideo('m', 1);
-                } else if(time === 600 - rushingT[2]) {
-                    this.playRushingVideo('m', 2);
-                }
+                if(time      === maxTime - rushingT[0]) { this.playRushingVideo(who, track[0]); }
+                else if(time === maxTime - rushingT[1]) { this.playRushingVideo(who, track[1]); }
+                else if(time === maxTime - rushingT[2]) { this.playRushingVideo(who, track[2]); }
+
                 clockSound(time % 2);
+                this.#time = time;
             }
         }, 1000);
     }
@@ -266,21 +283,29 @@ class RiddleManager {
 
     startWhatsappCall() {
         whatsappCall.removeAttribute('hidden');
+        let helper = riddlesList[this.#currentRiddle - 1].helper.name;
+        if(batmanContacts.includes(helper)) {
+            whatsappCallName.innerText = "Whatsbatt - " + callersList[helper].fullname;
+            whatsappCallText.innerText = "Dzwoni " + callersList[helper].fullname;
+            whatsappCallProf.src = callersList[helper].img;
+        } else {
+            whatsappCallName.innerText = "Whatsbatt";
+            whatsappCallText.innerText = "Dzwoni nieznany numer..."
+            whatsappCallProf.src = callersList["unknown"].img;
+        }
         this.startWhatsappCallSound();
     }
     startWhatsappCallSound() {
         whatsappcallaudio.play();
     }
     answerWhatsappCall() {
-        // TODO
         this.stopWhatsappCallSound();
         this.closeWhatsappCall();
         whatsapp.open(riddlesList[this.#currentRiddle - 1].helper.name);
         answeraudio.play();
         answeraudio.addEventListener('ended', () => {
             this.#audio.play();
-        });
-        answeraudio.removeEventListener('ended');
+        }, { once: true });
     }
     stopWhatsappCallSound() {
         whatsappcallaudio.pause();
@@ -304,8 +329,9 @@ class RiddleManager {
     }
     playWrongAnswerVideo() {
         this.pause();
-        let ridnum = this.#currentRiddle - 1;
-        this.#video.src.setAttribute('src', '/assets/video/wrong/' + this.#currentTry + '/' + ridnum + '.mp4');
+        let who = riddlesList[this.#currentRiddle - 1].who;
+        let losetrack = riddlesList[this.#currentRiddle - 1].losetrack[this.#currentTry - 1];
+        this.#video.src.setAttribute('src', '/assets/video/wrong/' + this.#currentTry + '/' + who + '/' + losetrack + '.mp4');
         this.#video.el.load();
         this.#video.el.style.zIndex = '3';
         skype.open();
@@ -315,12 +341,19 @@ class RiddleManager {
     }
     playCorrectAnswerVideo() {
         this.pause();
-        let ridnum = this.#currentRiddle - 1;
-        this.#video.src.setAttribute('src', '/assets/video/correct/' + ridnum + '.mp4');
+        let who = riddlesList[this.#currentRiddle - 1].who;
+        let wintrack = riddlesList[this.#currentRiddle - 1].wintrack;
+        this.#video.src.setAttribute('src', '/assets/video/correct/' + who + '/' + wintrack + '.mp4');
         this.#video.el.load();
         this.#video.el.style.zIndex = '3';
         skype.open();
         this.#video.el.play();
+    }
+    videoReset() {
+        this.#video.el.pause();
+        this.#video.el.currentTime = 0;
+        this.#swap.el.pause();
+        this.#swap.el.currentTime = 0;
     }
 
     pause() {
@@ -331,11 +364,33 @@ class RiddleManager {
     }
 
     load() {
-        this.#paused = false;
+        this.#stage = riddleStage.INTRO;
+        this.#time = localStorage.getItem('riddle-time');
+        this.#unlockedRiddles = localStorage.getItem('unlocked-riddles');
+
+        this.#video.el.style.zIndex = '3';
+        this.#swap.el.style.zIndex = '2';
+
+        let ridnum = this.#currentRiddle - 1;
+        this.#video.src.setAttribute('src', '/assets/video/riddle/' + ridnum + '.mp4');
+        this.#swap.src.setAttribute('src', '/assets/video/waiting/0.mp4');
+
+        this.#video.el.load();
+        this.#swap.el.load();
+
+        let helper  = riddlesList[ridnum].helper.name;
+        let track   = riddlesList[ridnum].helper.track;
+        this.#audio = callersList[helper].audio[track];
+
+        this.resume();
     }
 
     save() {
-
+        localStorage.setItem('unlocked-riddles', this.#unlockedRiddles);
+        this.saveTime();
+    }
+    saveTime() {
+        localStorage.setItem('riddle-time', this.#time);
     }
 
     unlockNextRiddle() {

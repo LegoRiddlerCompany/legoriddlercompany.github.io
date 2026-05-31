@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿?</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/icon/favicon.ico">
+    <link rel="preload" as="image" href="/assets/img/background/0.png">
+    <link rel="preload" as="image" href="/assets/img/background/1.png">
+    <link rel="preload" as="image" href="/assets/img/background/2.png">
+    <link rel="preload" as="image" href="/assets/img/background/3.png">
+    <link rel="preload" as="image" href="/assets/img/background/4.png">
+    <link rel="preload" as="image" href="/assets/img/background/5.png">
+    <link rel="preload" as="image" href="/assets/img/background/6.png">
+    <link rel="preload" as="image" href="/assets/img/background/7.png">
+    <link rel="preload" as="image" href="/assets/img/background/8.png">
+    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Light.ttf">
+    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Regular.ttf">
+    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-SemiBold.ttf">
+    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Thin.ttf">
     <link rel="stylesheet" href="/src/css/fonts.css">
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/footer.css">
@@ -310,23 +323,6 @@ Przydatne komendy:
             <input id="volume-value" type="range" min="0" max="9" step="1" value="9" />
         </div>
 
-        <!--<div id="skype-call" class="skype-call-container" hidden>
-            <div class="skype-call-top">
-                <span>Skype</span>
-                <a href="javascript:void(0)"><span>x</span></a>
-            </div>
-            <div class="skype-call-bottom">
-                <img src="/assets/img/riddler/skype-calling.webp">
-                <div class="skype-call-text"><span>Dzwoni nieznany numer...</span></div>
-                <div class="skype-call-right">
-                    <div class="skype-call-space"></div>
-                    <div class="skype-call-buttons-container">
-                        <a class="skype-call-button" href="javascript:void(0)" onclick="answerCall(0)"><img src="/assets/img/window/answer.png"></a>
-                        <a class="skype-call-button" href="javascript:void(0)" onclick="answerCall(1)"><img id="skype-call-decline-img" src="/assets/img/window/decline.png"></a>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div id="skype-call" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
@@ -366,14 +362,14 @@ Przydatne komendy:
             <div class="title-bar">
                 <div class="title-bar-name">
                     <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
-                    <div class="title-bar-text">Whatsbatt</div>
+                    <div id="whatsapp-call-name" class="title-bar-text">Whatsbatt</div>
                 </div>
                 <div class="title-bar-controls">
                 </div>
             </div>
             <div class="audio-call-row">
                 <div class="profile-avatar">
-                    <img src="/assets/img/prof/unknown.png" alt="Avatar">
+                    <img id="whatsapp-call-prof" src="/assets/img/prof/unknown.png" alt="Avatar">
                 </div>
                 <div id="whatsapp-call-text" class="timer-center-zone">
                     <span class="call-timer">Dzwoni nieznany numer...</span>

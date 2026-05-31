@@ -1,5 +1,8 @@
 const skypeCall             = document.getElementById('skype-call');
 const whatsappCall          = document.getElementById('whatsapp-call');
+const whatsappCallName      = document.getElementById('whatsapp-call-name');
+const whatsappCallText      = document.getElementById('whatsapp-call-text').children[0];
+const whatsappCallProf      = document.getElementById('whatsapp-call-prof');
 // const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 
 const footer                = document.getElementsByTagName('footer')[0];
@@ -71,34 +74,8 @@ function whatsappOpenAction(who) {
     document.getElementById('whatsapp-avatar').src = callersList[who].img;
 }
 
-
-// function answerCall(declined) {
-//     if(declined) {
-//         skypeCallDeclineImg.src = "/assets/img/window/decline-blocked.png";
-//     } else {
-//         // Połączenie itd
-//         skype.open();
-//         stopSkypeCallSound();
-//         closeCall();
-//         initialOpen = true;
-//         startRiddlerCallAudio();
-//     }
-// }
-
 function riddleOpenAction(riddleNumber) {
     riddleManager.openRiddle(riddleNumber);
-    // currentRiddle = riddleNumber;
-    // currentTry = 1;
-    //
-    // hideHint();
-    //
-    // let riddle = getRiddle(riddleNumber - 1);
-    //
-    // document.getElementById('riddle-window-name').innerText = "zagadka " + currentRiddle;
-    // document.getElementById('riddle-text').innerText = riddle.riddle;
-    // document.getElementById('riddle-hint').innerText = riddle.hint;
-    //
-    // startCounting();
 }
 
 function riddleCloseAction() {
