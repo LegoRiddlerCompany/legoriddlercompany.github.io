@@ -201,7 +201,7 @@ class RiddleManager {
         this.startSkypeCall();
     }
 
-    openRiddle(riddleNumber) {
+    async openRiddle(riddleNumber) {
         this.#currentRiddle = riddleNumber;
         this.#currentTry = 1;
 
@@ -217,7 +217,9 @@ class RiddleManager {
             if(this.#currentRiddle > 1) {
                 this.load();
                 this.pause();
+                await delay(callDelay);
                 this.startSkypeCall();
+                riddle.forbidOpening();
             }
         }
     }
@@ -269,7 +271,6 @@ class RiddleManager {
     answerSkypeCall(declined) {
         if(declined) {
         } else {
-            // Połączenie itd
             skype.open();
             this.stopSkypeCallSound();
             this.closeSkypeCall();
@@ -374,8 +375,18 @@ class RiddleManager {
 
     load() {
         this.#stage = riddleStage.INTRO;
-        this.#time = localStorage.getItem('riddle-time');
+        this.#time = parseInt(localStorage.getItem('riddle-time'));
         this.#unlockedRiddles = parseInt(localStorage.getItem('unlocked-riddles'));
+        if(isNaN(this.#time)) {
+            this.#time = maxTime;
+        }
+        if(isNaN(this.#unlockedRiddles)) {
+            this.#unlockedRiddles = 1;
+        }
+        if(this.#unlockedRiddles > 1) {
+            initialOpen = true;
+            riddle.allowOpening();
+        }
 
         this.#video.el.style.zIndex = '5';
         this.#swap.el.style.zIndex = '1';
@@ -410,5 +421,47 @@ class RiddleManager {
 
     get unlockedRiddles() {
         return this.#unlockedRiddles;
+    }
+
+    generateFolderRiddles() {
+        for(let r = 0; r < folderRowNumber; r++) {
+            const row = document.createElement('div');
+            row.className = 'files-row';
+
+            for(let f = 0; f < riddlesInRow; f++) {
+                let fileNum     = (riddlesInRow * r) + f + 1;
+                let fileNumText = '' + fileNum;
+                if(fileNum >= riddlesNumber + 1) { break; }
+                if(fileNum < 10) { fileNumText = '0' + fileNum; }
+
+                const container = document.createElement('div');
+                container.className = 'icon-container';
+                container.id = 'rid-' + fileNum;
+                if(fileNum > riddleManager.unlockedRiddles) {
+                    container.hidden = 'hidden';
+                }
+
+                const a = document.createElement('a');
+                a.className = 'icon';
+                a.href = 'javascript:void(0)';
+                // a.onclick = openRiddle(fileNum);
+                a.setAttribute('onclick', 'riddle.open(' + fileNum + ')');
+
+                const img = document.createElement('img');
+                img.src = '/assets/img/icon/desktop/riddle.png';
+
+                a.appendChild(img);
+
+                const span = document.createElement('span');
+                span.className = 'icon-name';
+                span.innerText = "zagadka" + fileNumText /*+ ".exe"*/;
+
+                container.appendChild(a);
+                container.appendChild(span);
+
+                row.appendChild(container);
+            }
+            folder.appendChildElement(row);
+        }
     }
 }

@@ -14,10 +14,11 @@
     <link rel="preload" as="image" href="/assets/img/background/6.png">
     <link rel="preload" as="image" href="/assets/img/background/7.png">
     <link rel="preload" as="image" href="/assets/img/background/8.png">
-    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Light.ttf">
+    <link rel="preload" as="image" href="/assets/img/window/callbg.png">
+    <!--<link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Light.ttf">
     <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Regular.ttf">
     <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-SemiBold.ttf">
-    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Thin.ttf">
+    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Thin.ttf">-->
     <link rel="stylesheet" href="/src/css/fonts.css">
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="/src/css/footer.css">
@@ -64,10 +65,6 @@
             <a class="icon" href="javascript:void(0)" onclick="chat.open()"><img src="/assets/img/icon/desktop/chat.png"></a>
             <span class="icon-name">RobinGPT</span>
         </div>
-        <!--<div id="bgChange-icon" class="icon-container">
-            <a class="icon" href="javascript:void(0)" onclick="bgChange.open()"><img src="/assets/img/icon/desktop/wallpaper.png"></a>
-            <span class="icon-name">Tapeta</span>
-        </div>-->
         <div id="wallpaper-icon" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="wallpaper.open()"><img src="/assets/img/icon/desktop/wallpaper.png"></a>
             <span class="icon-name">Tapeta</span>
@@ -77,28 +74,6 @@
             <span class="icon-name">komendy.txt</span>
         </div>
 
-        <!--<div id="skype" class="window" hidden>
-            <div class="title-bar">
-                <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/skype.png"></div>
-                    <div class="title-bar-text">Skyppler</div>
-                </div>
-                <div class="title-bar-controls">
-                    <button id="min-button" aria-label="Minimize" onclick="skype.minimize()"></button>
-                    <button id="max-button" aria-label="Maximize" onclick="skype.maximize()"></button>
-                    <button id="ext-button" aria-label="Close"    onclick="skype.close()"></button>
-                </div>
-            </div>
-            <div class="window-body">
-                <p>Tutaj bedzie rozmowa</p>
-                <video id="video" controls preload="auto" style="z-index: 3; position: absolute;">
-                    <source id="source" src="/assets/video/riddle/0.mp4" type="video/mp4"/>
-                </video>
-                <video id="video2" preload="auto" style="z-index: 2; position: absolute;" loop>
-                    <source id="source2" src="/assets/video/waiting/0.mp4" type="video/mp4"/>
-                </video>
-            </div>
-        </div>-->
         <div id="skype" class="window" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
@@ -115,11 +90,11 @@
             <div class="window-sandbox-wrapper">
                 <div class="clean-video-frame">
                     <video id="video" preload="auto" style="position: absolute;">
-                        <source id="source" type="video/mp4"/><!--src="/assets/video/riddle/0.mp4"-->
+                        <source id="source" type="video/mp4"/>
                     </video>
                     <img src="/assets/img/window/callbg.png" style="position: absolute; z-index: 3;">
                     <video id="video-swap" preload="auto" style="position: absolute;" loop>
-                        <source id="source-swap" type="video/mp4"/><!--src="/assets/video/waiting/0.mp4"-->
+                        <source id="source-swap" type="video/mp4"/>
                     </video>
                 </div>
                 <div class="video-container-layer">
@@ -249,7 +224,7 @@
                 </div>
             </div>
             <div class="window-body">
-                <form id="cheats-form" method="post"><!--pattern="\d*" min="1" minlength="1" maxlength="3"-->
+                <form id="cheats-form" method="post">
                     <label for="cheats-input">Riddlosoft Bingos [Version 3.6.26]</label>
                     <label for="cheats-input">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</label>
                     <span><br></span>
@@ -449,7 +424,6 @@ Przydatne komendy:
     <footer>
         <div class="bar-left">
             <a id="bar-witamcie" class="bar-icon" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/bar/home.png"></a>
-<!--             <div class="divider"></div> -->
             <a id="bar-folder" class="bar-icon bar-app" href="javascript:void(0)" onclick="folder.toggle()" hidden>
                 <img src="/assets/img/icon/bar/folder.png">
                 <div class="app-light" hidden></div>

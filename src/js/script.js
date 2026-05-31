@@ -24,48 +24,10 @@ body.addEventListener("click", () => {
 
 const riddleManager = new RiddleManager();
 
+riddleManager.generateFolderRiddles();
 riddleManager.init();
+riddleManager.load();
 
-
-for(let r = 0; r < folderRowNumber; r++) {
-    const row = document.createElement('div');
-    row.className = 'files-row';
-
-    for(let f = 0; f < riddlesInRow; f++) {
-        let fileNum     = (riddlesInRow * r) + f + 1;
-        let fileNumText = '' + fileNum;
-        if(fileNum >= riddlesNumber + 1) { break; }
-        if(fileNum < 10) { fileNumText = '0' + fileNum; }
-
-        const container = document.createElement('div');
-        container.className = 'icon-container';
-        container.id = 'rid-' + fileNum;
-        if(fileNum > riddleManager.unlockedRiddles) {
-            container.hidden = 'hidden';
-        }
-
-        const a = document.createElement('a');
-        a.className = 'icon';
-        a.href = 'javascript:void(0)';
-        // a.onclick = openRiddle(fileNum);
-        a.setAttribute('onclick', 'riddle.open(' + fileNum + ')');
-
-        const img = document.createElement('img');
-        img.src = '/assets/img/icon/desktop/riddle.png';
-
-        a.appendChild(img);
-
-        const span = document.createElement('span');
-        span.className = 'icon-name';
-        span.innerText = "zagadka" + fileNumText /*+ ".exe"*/;
-
-        container.appendChild(a);
-        container.appendChild(span);
-
-        row.appendChild(container);
-    }
-    folder.appendChildElement(row);
-}
 
 ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
     eventType => document.addEventListener(eventType, () => {
@@ -123,6 +85,13 @@ cheatsForm.addEventListener('submit', (event) => {
             } else {
                 result = "Reset aktywowany. Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
             }
+            break;
+        case 'load':
+            let rnum = parseInt(argument);
+            if(rnum > riddlesNumber) { rnum = riddlesNumber; }
+            localStorage.setItem('unlocked-riddles', rnum);
+            riddleManager.load();
+            result = "Wczytano " + rnum + " zagadek";
             break;
         case 'pomoc':
         case 'pomocy':

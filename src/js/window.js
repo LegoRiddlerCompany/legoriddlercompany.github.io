@@ -63,7 +63,7 @@ function focusCheatsInput() {
 
 async function folderOpenAction() {
     if(!initialOpen) {
-        await delay(2000);
+        await delay(callDelay);
         //startCall();
         riddleManager.start();
     }
