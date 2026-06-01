@@ -9,11 +9,13 @@ class WindowManager {
     }
 
     getMeInFront(app) {
-        let index = this.#appList.indexOf(app);
-        if(index > -1) {
-            this.#appList.splice(index, 1);
-            this.#appList.push(app);
-            this.assignZIndexes();
+        if(app !== volume) {
+            let index = this.#appList.indexOf(app);
+            if(index > -1) {
+                this.#appList.splice(index, 1);
+                this.#appList.push(app);
+                this.assignZIndexes();
+            }
         }
     }
 

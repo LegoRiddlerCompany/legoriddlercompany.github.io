@@ -143,7 +143,7 @@ class App {
     }
 
     getMeInFront() {
-        this.#windowManager.getMeInFront(this);
+        windowManager.getMeInFront(this);
     }
 
     setZIndex(index) {

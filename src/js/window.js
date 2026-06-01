@@ -3,6 +3,7 @@ const whatsappCall          = document.getElementById('whatsapp-call');
 const whatsappCallName      = document.getElementById('whatsapp-call-name');
 const whatsappCallText      = document.getElementById('whatsapp-call-text').children[0];
 const whatsappCallProf      = document.getElementById('whatsapp-call-prof');
+const whatsappTimer         = document.getElementById('whatsapp-timer');
 // const skypeCallDeclineImg   = document.getElementById('skype-call-decline-img');
 
 const footer                = document.getElementsByTagName('footer')[0];
@@ -43,14 +44,15 @@ cheats.additionalOpenAction   = focusCheatsInput;
 whatsapp.additionalOpenAction = whatsappOpenAction;
 
 
-skypeCall.style.zIndex    = windowManager.getListLength();
-whatsappCall.style.zIndex = windowManager.getListLength();
-footer.style.zIndex       = windowManager.getListLength() + 1;
-volume.style.zIndex       = windowManager.getListLength() + 1;
+skypeCall.style.zIndex     = windowManager.getListLength();
+whatsappCall.style.zIndex  = windowManager.getListLength();
+footer.style.zIndex        = windowManager.getListLength() + 1;
+volume.window.style.zIndex = windowManager.getListLength() + 1;
 
 cheats.window.addEventListener("click", focusCheatsInput);
 
 function focusCheatsInput() {
+    console.log("click");
     if(cheats.status === windowStatus.OPEN) {
         const input = document.getElementById('cheats-input');
         input.focus();
@@ -66,14 +68,31 @@ function focusCheatsInput() {
 async function folderOpenAction() {
     if(!initialOpen) {
         await delay(callDelay);
-        //startCall();
         riddleManager.start();
     }
 }
 
+let whatsappInterval = null;
+
 function whatsappOpenAction(who) {
     document.getElementById('whatsapp-title').innerText = "Whatsbatt - " + callersList[who].fullname;
     document.getElementById('whatsapp-avatar').src = callersList[who].img;
+
+    let whatsappTime = 0;
+    whatsappInterval = setInterval(() => {
+        whatsappTime += 1;
+
+        let min = Math.floor(whatsappTime / 60);
+        let sec = whatsappTime - (min * 60);
+
+        if(min < 10){ min = '0' + min; }
+        if(sec < 10){ sec = '0' + sec; }
+
+        whatsappTimer.innerText = min + ':' + sec;
+    }, 1000);
+}
+function whatsappCloseAction() {
+    clearInterval(whatsappInterval);
 }
 
 function riddleOpenAction(riddleNumber) {
@@ -85,7 +104,6 @@ function riddleOpenAction(riddleNumber) {
 
 function riddleCloseAction() {
     riddle.allowOpening();
-    // stopCounting();
 }
 
 function chatOpenAction() {

@@ -28,6 +28,7 @@ riddleManager = new RiddleManager();
 riddleManager.generateFolderRiddles();
 riddleManager.init();
 riddleManager.load();
+riddleManager.loadIconsColors();
 
 
 ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
