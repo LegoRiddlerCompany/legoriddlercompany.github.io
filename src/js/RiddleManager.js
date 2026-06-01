@@ -405,8 +405,8 @@ class RiddleManager {
     }
     updateVolume() {
         this.#audio.volume = this.#volume;
-        this.#video.colume = this.#volume;
-        this.#swap.volume  = this.#volume;
+        this.#video.el.volume = this.#volume;
+        this.#swap.el.volume  = this.#volume;
     }
 
     get unlockedRiddles() {
