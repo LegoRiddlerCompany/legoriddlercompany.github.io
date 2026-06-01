@@ -1,5 +1,5 @@
 const batmanContacts = ["alfred", "aquaman", "barbara", "penguin", "jim", "superman", "twoface", "joker", "lucius", "harley", "rasalghul", "robin"];
-const maxTime = 20;
+const maxTime = 120;
 
 const riddleStage = {
     INTRO: 0,
