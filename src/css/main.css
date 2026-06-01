@@ -99,40 +99,7 @@ main {
     height: 0px;
     display: inline;
 /* icon bar */
-    background-image: url('/assets/img/icon/bar/chat.png');
-    background-image: url('/assets/img/icon/bar/riddle.png');
-    background-image: url('/assets/img/icon/bar/cheats.png');
-    background-image: url('/assets/img/icon/bar/skype.png');
-    background-image: url('/assets/img/icon/bar/folder.png');
-    background-image: url('/assets/img/icon/bar/trash.png');
-    background-image: url('/assets/img/icon/bar/vol.png');
-    background-image: url('/assets/img/icon/bar/home.png');
-    background-image: url('/assets/img/icon/bar/wallpaper.png');
-    background-image: url('/assets/img/icon/bar/mute.png');
-    background-image: url('/assets/img/icon/bar/whatsapp.png');
-    background-image: url('/assets/img/icon/bar/note.png');
 /********************************************************/
 /* prof */
-    background-image: url('/assets/img/prof/alfred.png');
-    background-image: url('/assets/img/prof/penguin.png');
-    background-image: url('/assets/img/prof/aquaman.png');
-    background-image: url('/assets/img/prof/poisonivy.png');
-    background-image: url('/assets/img/prof/barbara.png');
-    background-image: url('/assets/img/prof/rasalghul.png');
-    background-image: url('/assets/img/prof/batman.png');
-    background-image: url('/assets/img/prof/robingpt.png');
-    background-image: url('/assets/img/prof/riddler.png');
-    background-image: url('/assets/img/prof/catwoman.png');
-    background-image: url('/assets/img/prof/friz.png');
-    background-image: url('/assets/img/prof/robin.png');
-    background-image: url('/assets/img/prof/harley.png');
-    background-image: url('/assets/img/prof/scarecrow.png');
-    background-image: url('/assets/img/prof/jim.png ');
-    background-image: url('/assets/img/prof/superman.png');
-    background-image: url('/assets/img/prof/joker.png');
-    background-image: url('/assets/img/prof/twoface.png');
-    background-image: url('/assets/img/prof/lucius.png');
-    background-image: url('/assets/img/prof/unknown.png');
-    background-image: url('/assets/img/prof/npc.png');
 /********************************************************/
 }

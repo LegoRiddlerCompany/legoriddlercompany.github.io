@@ -155,6 +155,7 @@ class RiddleManager {
                 await delay(callDelay);
                 this.startSkypeCall();
                 riddle.forbidOpening();
+                this.saveRiddlerToContacts();
             }
         }
         if(this.#currentRiddle < this.#unlockedRiddles) {
@@ -162,6 +163,7 @@ class RiddleManager {
             this.#stage = riddleStage.RIDDLE;
             timer.innerText = "10:00";
             riddle.forbidOpening();
+            this.saveRiddlerToContacts();
         }
     }
 
@@ -220,7 +222,6 @@ class RiddleManager {
             this.closeSkypeCall();
             initialOpen = true;
             this.playRiddleVideo();
-            this.saveRiddlerToContacts();
         }
     }
     stopSkypeCallSound() {
