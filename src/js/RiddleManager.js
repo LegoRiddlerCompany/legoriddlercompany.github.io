@@ -1,78 +1,5 @@
-// stage: 0
-//
-//
-
-// const stages = [
-//     {
-//         name: "start",
-//         unlocks: 0,
-//         caller: "riddler",
-//     },
-//     {
-//         name: "riddle",
-//         unlocks: 1,
-//         caller: "harley",
-//     }
-// ]
-//
-//
-// function getCallFrom(who) {
-//
-// }
-//
-// function answerCall() {
-//
-// }
-/*
-const vid = document.getElementById('video');
-const src = document.getElementById('source');
-
-const svid = document.getElementById('video-swap');
-const ssrc = document.getElementById('source-swap');
-*/
-
-// vid.style.zIndex = '3';
-// svid.style.zIndex = '2';
-
-// vid.addEventListener('ended', () => {
-//     vid.pause();
-//
-//     vid.style.zIndex = '1';
-//     vid.removeAttribute('controls');
-//
-//     src.setAttribute('src', '/assets/video/rushing/0.mp4');
-//     vid.load();
-//
-//     // vid.hidden = 'hidden';
-//     //
-//     // svid.removeAttribute('hidden');
-//     // svid.load();
-//
-//
-//     svid.play();
-//
-//     // vid.play();
-// });
-
-// svid.addEventListener('ended', () => {
-//     svid.pause();
-//
-//     // svid.hidden = 'hidden';
-//     //
-//     // vid.removeAttribute('hidden');
-//
-//     vid.style.zIndex = '3';
-//
-//
-//     vid.play();
-// });
-
-
-// src="/assets/video/riddle/0.mp4"
-// src="/assets/video/waiting/0.mp4"
-
 const batmanContacts = ["alfred", "aquaman", "barbara", "penguin", "jim", "superman", "twoface", "joker", "lucius", "harley", "rasalghul", "robin"];
-const maxTime = 600;
+const maxTime = 20;
 
 const riddleStage = {
     INTRO: 0,
@@ -88,9 +15,10 @@ class RiddleManager {
     #currentRiddle = 1;
     #currentTry = 1;
 
+    #volume = 1;
+
     #video = null;
     #swap  = null;
-
     #audio = null;
 
     #timerInterval = null;
@@ -168,7 +96,6 @@ class RiddleManager {
         });
 
         this.#form.addEventListener('submit', (event) => {
-            console.log(this.#currentTry);
             if(!this.#paused) {
                 let answer = this.#form.answer.value;
 
@@ -247,6 +174,9 @@ class RiddleManager {
             if(!this.#paused) {
                 time -= 1;
                 if(time <= 0) {
+                    this.#currentTry = 3;
+                    this.#form.answer.value = "Czas się skończył batmanie";
+                    this.#form.requestSubmit();
                     clearInterval(this.#timerInterval);
                 }
 
@@ -469,9 +399,15 @@ class RiddleManager {
         }
     }
 
-//     setVolume(vol) {
-//
-//     }
+    setVolume(vol) {
+        this.#volume = vol;
+        this.updateVolume();
+    }
+    updateVolume() {
+        this.#audio.volume = this.#volume;
+        this.#video.colume = this.#volume;
+        this.#swap.volume  = this.#volume;
+    }
 
     get unlockedRiddles() {
         return this.#unlockedRiddles;

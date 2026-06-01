@@ -32,7 +32,7 @@ chat.alwaysOnBar(true);
 
 riddle.forbidOpening();
 
-const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, volume, wallpaper, note, whatsapp]);
+const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, wallpaper, note, whatsapp]);
 
 volume.status = windowStatus.MINIMIZED;
 folder.additionalOpenAction   = folderOpenAction;
@@ -46,6 +46,7 @@ whatsapp.additionalOpenAction = whatsappOpenAction;
 skypeCall.style.zIndex    = windowManager.getListLength();
 whatsappCall.style.zIndex = windowManager.getListLength();
 footer.style.zIndex       = windowManager.getListLength() + 1;
+volume.style.zIndex       = windowManager.getListLength() + 1;
 
 cheats.window.addEventListener("click", focusCheatsInput);
 

@@ -25,7 +25,7 @@ input[type=range] {
     direction: rtl !important;
     appearance: slider-vertical !important;
 
-    background-color: #444444 !important;
+    background-color: var(--mid) !important;
     border-radius: 1.2vh !important;
     box-shadow: 0 0.1vh 0px rgba(255, 255, 255, 0.15) inset,
     0 0.4vh 1.6vh rgba(0, 0, 0, 0.5) !important;
@@ -72,7 +72,7 @@ input[type=range] {
     appearance: none !important;
     width: 1.6vw !important;
     height: 100% !important;
-    background-color: #222222 !important;
+    background-color: var(--top) !important;
 
     border-radius: 0.4vh !important;
     overflow: hidden !important;
@@ -89,7 +89,7 @@ input[type=range] {
     width: 1.6vw !important;
     height: 0.8vh !important;
 
-    background: #ffffff !important;
+    background: #44a240 !important;
     border-radius: 0px !important;
     border: none !important;
     cursor: pointer !important;

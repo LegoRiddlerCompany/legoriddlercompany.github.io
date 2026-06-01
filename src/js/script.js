@@ -23,7 +23,7 @@ body.addEventListener("click", () => {
     clickSound();
 });
 
-const riddleManager = new RiddleManager();
+riddleManager = new RiddleManager();
 
 riddleManager.generateFolderRiddles();
 riddleManager.init();

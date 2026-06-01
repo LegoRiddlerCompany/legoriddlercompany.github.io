@@ -256,6 +256,16 @@
     --btn-danger-hover: #444444;
     --text-gray: #ffffff;
     --disabled-opacity: 0.35;
+
+    --widget-height: 9.5vh;
+    --btn-dark: #333333;
+    --btn-dark-hover: #444444;
+    --btn-danger: #cc3333;
+    --btn-danger-hover: #e63939;
+    --btn-answer: #44a140;
+    --btn-answer-hover: #8cbe65;
+    --text-gray: #b3b3b3;
+    --disabled-opacity: 0.35;
 }
 
 .facetime-controls {
@@ -343,6 +353,14 @@
 
     &:hover:not(:disabled) {
         background-color: var(--btn-danger-hover);
+    }
+}
+
+.btn-answer {
+    background-color: var(--btn-answer);
+
+    &:hover:not(:disabled) {
+        background-color: var(--btn-answer-hover);
     }
 }
 

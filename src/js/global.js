@@ -10,6 +10,8 @@ const callDelay = 2000; //ms
 
 const welcomeMessage = "Szefie, melduję się na stanowisku! Tu RoboRobin - Twoje osobiste wsparcie techniczne, system operacyjny Bat-komputera i cyfrowe ramię w walce z przestępczością w Gotham. Jestem gotów do przetwarzania danych, łamania szyfrów i zabezpieczeń oraz analizy taktycznej, kiedy tylko będziesz tego potrzebował. Czekam na Twoje rozkazy! Co planujemy na dzisiejszą noc?";
 
+let riddleManager = null;
+
 let initialOpen = false;
 
 let apiKey = "";

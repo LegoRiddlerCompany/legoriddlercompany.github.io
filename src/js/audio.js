@@ -31,7 +31,6 @@ function clockSound(tiktak) {
 
 volumevalue.addEventListener('input', () => {
     let vol = volumevalue.value / 10;
-    console.log(vol);
     setVolume(vol);
     saveVolume(vol);
 });
@@ -47,17 +46,16 @@ function setVolume(vol) {
     whatsappcallaudio.volume = vol;
     answeraudio.volume = vol;
     callendaudio.volume = vol;
+    if(riddleManager) {
+        riddleManager.setVolume(vol);
+    }
 }
 
 function mute() {
-    // volume.window.style.maskImage = "/assets/img/icon/bar/mute.png !important";
     volume.window.className = "volume-container mute";
-    volume.bar.children[0].src = "/assets/img/icon/bar/mute.png";
 }
 function unmute() {
-    // volume.window.style.maskImage = "/assets/img/icon/bar/vol.png !important";
     volume.window.className = "volume-container unmute";
-    volume.bar.children[0].src = "/assets/img/icon/bar/vol.png";
 }
 
 function saveVolume(vol) {
