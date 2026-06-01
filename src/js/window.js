@@ -37,12 +37,13 @@ riddle.forbidOpening();
 const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, wallpaper, note, whatsapp]);
 
 volume.status = windowStatus.MINIMIZED;
-folder.additionalOpenAction   = folderOpenAction;
-riddle.additionalOpenAction   = riddleOpenAction;
-riddle.additionalCloseAction  = riddleCloseAction;
-chat.additionalOpenAction     = chatOpenAction;
-cheats.additionalOpenAction   = focusCheatsInput;
-whatsapp.additionalOpenAction = whatsappOpenAction;
+folder.additionalOpenAction    = folderOpenAction;
+riddle.additionalOpenAction    = riddleOpenAction;
+riddle.additionalCloseAction   = riddleCloseAction;
+chat.additionalOpenAction      = chatOpenAction;
+cheats.additionalOpenAction    = focusCheatsInput;
+whatsapp.additionalOpenAction  = whatsappOpenAction;
+whatsapp.additionalCloseAction = whatsappCloseAction;
 
 
 skypeCall.style.zIndex     = windowManager.getListLength();
@@ -94,6 +95,7 @@ function whatsappOpenAction(who) {
 }
 function whatsappCloseAction() {
     clearInterval(whatsappInterval);
+    whatsappTimer.innerText = '00:00';
 }
 
 function riddleOpenAction(riddleNumber) {
