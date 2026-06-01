@@ -31,7 +31,11 @@ function clockSound(tiktak) {
 
 volumevalue.addEventListener('input', () => {
     let vol = volumevalue.value / 10;
+    setVolume(vol);
+    saveVolume(vol);
+});
 
+function setVolume(vol) {
     clickaudio.volume = vol;
     witamcie.volume = vol;
     clocktikaudio.volume = vol;
@@ -40,4 +44,16 @@ volumevalue.addEventListener('input', () => {
     whatsappcallaudio.volume = vol;
     answeraudio.volume = vol;
     callendaudio.volume = vol;
-});
+}
+
+function saveVolume(vol) {
+    localStorage.setItem('vol', vol);
+}
+
+function loadVolume() {
+    let vol = parseFloat(localStorage.getItem('vol'));
+    if(!isNaN(vol)) {
+        setVolume(vol);
+        volumevalue.value = vol * 10;
+    }
+}

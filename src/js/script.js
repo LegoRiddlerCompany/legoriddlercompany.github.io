@@ -15,6 +15,7 @@ const folderRowNumber = Math.ceil(riddlesNumber / riddlesInRow);
 
 loadBackground();
 loadCRTEffect();
+loadVolume();
 
 setInterval(updateTime, 1000);
 
@@ -157,6 +158,8 @@ function switchToChat() {
     keyForm.hidden = "hidden";
     chatForm.removeAttribute('hidden');
     chatContainer.removeAttribute('hidden');
+
+    addMessage(welcomeMessage, "robin");
 }
 
 function resetKey() {

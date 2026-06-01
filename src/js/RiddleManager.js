@@ -469,6 +469,10 @@ class RiddleManager {
         }
     }
 
+//     setVolume(vol) {
+//
+//     }
+
     get unlockedRiddles() {
         return this.#unlockedRiddles;
     }
