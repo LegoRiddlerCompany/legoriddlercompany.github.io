@@ -86,7 +86,7 @@ async function folderOpenAction() {
 let whatsappInterval = null;
 
 function whatsappOpenAction(who) {
-    document.getElementById('whatsapp-title').innerText = "Whatsbatt - " + callersList[who].fullname;
+    document.getElementById('whatsapp-title').innerText = "WhatsBatt - " + callersList[who].fullname;
     document.getElementById('whatsapp-avatar').src = callersList[who].img;
 
     let whatsappTime = 0;

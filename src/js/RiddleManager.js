@@ -75,12 +75,12 @@ class RiddleManager {
             } else if(this.#stage === riddleStage.RIDDLE) {
                 this.resume();
             } else if(this.#stage === riddleStage.OUTRO) {
+                skype.allowClosing();
                 skype.close();
                 callendaudio.play();
                 riddle.forceClose();
                 riddle.allowOpening();
                 riddle.allowClosing();
-                skype.allowClosing();
                 this.videoReset();
                 this.colorIcon(this.#currentRiddle, this.#currentTry);
                 this.#time = maxTime;
@@ -235,11 +235,11 @@ class RiddleManager {
         whatsappCall.removeAttribute('hidden');
         let helper = riddlesList[this.#currentRiddle - 1].helper.name;
         if(batmanContacts.includes(helper)) {
-            whatsappCallName.innerText = "Whatsbatt - " + callersList[helper].fullname;
+            whatsappCallName.innerText = "WhatsBatt - " + callersList[helper].fullname;
             whatsappCallText.innerText = "Dzwoni " + callersList[helper].fullname;
             whatsappCallProf.src = callersList[helper].img;
         } else {
-            whatsappCallName.innerText = "Whatsbatt";
+            whatsappCallName.innerText = "WhatsBatt";
             whatsappCallText.innerText = "Dzwoni nieznany numer..."
             whatsappCallProf.src = callersList["unknown"].img;
         }
