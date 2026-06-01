@@ -164,6 +164,10 @@ class App {
         return this.#windowElement;
     }
 
+    get bar() {
+        return this.#barElement;
+    }
+
     set windowManager(windowManager) {
         this.#windowManager = windowManager;
     }

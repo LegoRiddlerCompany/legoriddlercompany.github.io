@@ -24,6 +24,7 @@ const note      = new App(document.getElementById('note'),              document
 const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null);
 
 
+volume.alwaysOnTop(true);
 skype.alwaysOnTop(true);
 skype.alwaysOnBar(true);
 // chat.alwaysOnTop(true);

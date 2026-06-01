@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const powerScreen = document.getElementById("power-screen");
+    const powerBtn = document.getElementById("power-btn");
     const overlay = document.getElementById("boot-overlay");
     const bgMatrix = document.getElementById("boot-bg-matrix");
     const progressFill = document.getElementById("boot-progress-fill");
     const percentageText = document.getElementById("boot-percentage");
+    const hintsContainer = document.getElementById("boot-hints");
 
-    if (!overlay || !progressFill || !percentageText || !bgMatrix) {
+    if (!overlay || !progressFill || !percentageText || !bgMatrix || !powerScreen || !powerBtn || !hintsContainer) {
         console.error("Bootloader Error: Required layout wrappers are missing from DOM tree.");
         return;
     }
@@ -13,16 +16,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // COMMENT THESE LINES OUT FOR TESTING:
     // if (hasBootedBefore === "true") {
-    //   overlay.remove();
+      powerScreen.remove();
+      overlay.remove();
     //   return;
     // }
 
-    // First run confirmed: Render the wrapper blocks visible
+    // Initial Visibility configurations
     overlay.classList.remove("boot-hidden");
 
-    // COMMENT THIS LINE OUT FOR TESTING AS WELL:
-    // localStorage.setItem("riddlosoft_booted_successfully", "true");
-    // localStorage.setItem("riddlosoft_booted_successfully", "true");
+    // ==========================================================================
+    // DYNAMIC TELEMETRY TOOLTIPS ENGINE (7.5s CYCLES)
+    // ==========================================================================
+    const systemHints = [
+        "[Ładowanie zasobów...]",
+        "Nie zapomnij o notatniku!",
+        "RobinGPT może pomóc nawet najlepszemu detektywowi.",
+        "Powodzenia Batmanie!"
+    ];
+    let hintIndex = 0;
+    let hintInterval;
+
+    function cycleSystemHints() {
+        // 1. Fade out current hint
+        hintsContainer.classList.remove("hint-visible");
+
+        setTimeout(() => {
+            // 2. Swap text string once hidden
+            hintsContainer.innerText = systemHints[hintIndex];
+
+            // 3. Fade back in
+            hintsContainer.classList.add("hint-visible");
+
+            // 4. Advance internal pointer loop for the NEXT cycle
+            hintIndex = (hintIndex + 1) % systemHints.length;
+        }, 500); // Syncs perfectly with CSS opacity transition duration
+    }
+
+    // ==========================================================================
+    // POWER ON INTERACTION ENGINE & FULLSCREEN TRIGGER
+    // ==========================================================================
+    powerBtn.addEventListener("click", () => {
+        // Play tactile click sound effect instantly at 0.0s
+        const clickAudio = new Audio("https://mp3tourl.com/audio/1780284976980-778ac5d0-321c-4263-b305-0d8f5eb203ff.mp3");
+        clickAudio.volume = 0.6;
+        clickAudio.play().catch(e => console.error("Click audio blocked:", e));
+
+        // Force Device Fullscreen Engine Mode
+        const docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+            docEl.requestFullscreen().catch(err => console.log("Fullscreen request declined:", err));
+        } else if (docEl.mozRequestFullScreen) { /* Firefox */
+            docEl.mozRequestFullScreen();
+        } else if (docEl.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            docEl.webkitRequestFullscreen();
+        } else if (docEl.msRequestFullscreen) { /* IE/Edge */
+            docEl.msRequestFullscreen();
+        }
+
+        // Clear out the power interface seamlessly
+        powerScreen.style.opacity = "0";
+        setTimeout(() => {
+            powerScreen.remove();
+        }, 600);
+
+        // Mark initialization validation token
+        localStorage.setItem("riddlosoft_booted_successfully", "true");
+
+        // Ambient Main Track: Starts instantly at 0.0s alongside the click
+        const startupAudio = new Audio("https://mp3tourl.com/audio/1780283058810-19191e5d-ecda-42ff-a385-d328cb7c7f43.mp3");
+        startupAudio.volume = 0.7;
+        startupAudio.play().catch(e => console.error("Startup audio execution blocked:", e));
+
+        // Execute 2-second audio fade out starting at 28.0s
+        setTimeout(() => {
+            const fadeInterval = setInterval(() => {
+                if (startupAudio.volume > 0.035) {
+                    startupAudio.volume -= 0.035;
+                } else {
+                    startupAudio.volume = 0;
+                    startupAudio.pause();
+                    clearInterval(fadeInterval);
+                }
+            }, 100);
+        }, 28000);
+
+        // Fire core asset engines and tooltip cycler up
+        runBootSequence();
+        cycleSystemHints(); // Fire first tooltip immediately
+
+        // FIXED: Synced loop timer threshold down to 7.5 seconds (7500ms)
+        hintInterval = setInterval(cycleSystemHints, 7500);
+        const matrixInterval = setInterval(createFloatingQuestionMark, 750);
+
+        // Register final execution timeout at exactly 30 seconds
+        setTimeout(() => {
+            clearInterval(matrixInterval);
+            clearInterval(hintInterval); // Clear telemetry tracker cleanly
+
+            progressFill.style.width = "100%";
+            percentageText.innerText = "100%";
+
+            overlay.classList.add("boot-fade-out");
+
+            // SUCCESS SOUND: Plays perfectly since interaction is guaranteed
+            const successAudio = new Audio("https://mp3tourl.com/audio/1780282074501-364cab8c-6151-4057-8637-7549a02407fa.mp3");
+            successAudio.volume = 0.8;
+            successAudio.play().catch(error => console.error("Success audio blocked:", error));
+
+            setTimeout(() => {
+                overlay.remove();
+            }, 1000);
+
+        }, 30000);
+    });
 
 
     // ==========================================================================
@@ -75,13 +181,14 @@ document.addEventListener("DOMContentLoaded", () => {
         qMark.className = "matrix-question-mark";
         qMark.innerText = "?";
 
-        const randomSize = Math.floor(Math.random() * 97) + 45;
         const randomRotation = Math.floor(Math.random() * 360);
         const randomDuration = Math.random() * 3000 + 3000;
 
         qMark.style.left = `${randomX}%`;
         qMark.style.top = `${randomY}%`;
-        qMark.style.fontSize = `${randomSize}px`;
+
+        // FIXED: Shifted from absolute pixel assignments to fluid dimensions for your responsive CSS
+        qMark.style.fontSize = `${Math.floor(Math.random() * 5) + 3}vh`;
         qMark.style.transform = `rotate(${randomRotation}deg)`;
         qMark.style.animationDuration = `${randomDuration}ms`;
 
@@ -92,17 +199,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }, randomDuration);
     }
 
-    const matrixInterval = setInterval(createFloatingQuestionMark, 750);
-
 
     // ==========================================================================
     // PROGRESS BAR TIMELINE TRACKER
     // ==========================================================================
     let currentProgress = 0;
-    const totalDuration = 13000;
-    const startTime = Date.now();
+    const totalDuration = 28000;
+    let startTime;
 
     function runBootSequence() {
+        if (!startTime) startTime = Date.now();
         const elapsed = Date.now() - startTime;
 
         if (elapsed >= totalDuration || currentProgress >= 100) {
@@ -134,20 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextTickDelay = Math.floor(Math.random() * 830) + 120;
         setTimeout(runBootSequence, nextTickDelay);
     }
-
-    runBootSequence();
-
-
-    // ==========================================================================
-    // GLOBAL DESTROY CLOSURE TIMER (EXECUTES AT EXACTLY 20 SECONDS)
-    // ==========================================================================
-    setTimeout(() => {
-        clearInterval(matrixInterval);
-        overlay.classList.add("boot-fade-out");
-
-        setTimeout(() => {
-            overlay.remove();
-        }, 1000);
-
-    }, 15000);
 });

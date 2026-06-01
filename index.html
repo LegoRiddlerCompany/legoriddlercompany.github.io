@@ -8,20 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="/assets/img/background/0.png">
-    <link rel="preload" as="image" href="/assets/img/background/1.png">
-    <link rel="preload" as="image" href="/assets/img/background/2.png">
-    <link rel="preload" as="image" href="/assets/img/background/3.png">
-    <link rel="preload" as="image" href="/assets/img/background/4.png">
-    <link rel="preload" as="image" href="/assets/img/background/5.png">
-    <link rel="preload" as="image" href="/assets/img/background/6.png">
-    <link rel="preload" as="image" href="/assets/img/background/7.png">
-    <link rel="preload" as="image" href="/assets/img/background/8.png">
-    <link rel="preload" as="image" href="/assets/img/window/callbg.png">
-    <!--<link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Light.ttf">
-    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Regular.ttf">
-    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-SemiBold.ttf">
-    <link rel="preload" as="font" href="/assets/fonts/ScienceGothic-Thin.ttf">-->
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/0.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/1.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/2.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/3.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/4.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/5.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/6.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/7.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/background/8.png">
+    <link rel="preload" as="image" type="image/png" href="/assets/img/window/callbg.png">
+    <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/ScienceGothic-Light.ttf" crossorigin>
+    <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/ScienceGothic-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/ScienceGothic-SemiBold.ttf" crossorigin>
+    <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/ScienceGothic-Thin.ttf" crossorigin>
     <link rel="stylesheet" href="/src/css/bootloader.css">
     <link rel="stylesheet" href="/src/css/fonts.css">
     <link rel="stylesheet" href="/src/css/main.css">
@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="/src/css/window/note.css">
     <link rel="stylesheet" href="/src/css/icon.css">
     <link rel="stylesheet" href="/src/css/crt.css">
+    <link rel="stylesheet" href="/src/css/volume.css">
     <script defer src="/src/js/bootloader.js"></script>
     <script defer src="/src/js/global.js"></script>
     <script defer src="/src/js/riddlesList.js"></script>
@@ -51,27 +52,33 @@
 </head>
 
 <body ><!--class="crt"-->
-    <div id="boot-overlay" class="boot-hidden">
-        <div id="boot-bg-matrix"></div>
-
-        <div class="boot-center-content">
-        <div id="preloader">
-            <div id="loader"></div>
-            <span class="center-static-mark">?</span>
-        </div>
-
-        <h1 class="boot-system-name">Riddlosoft Nygmos</h1>
-        <h2 class="boot-system-version">[Version 3.6.26]</h2>
-        <h4 class="boot-system-copyright">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</h4>
-        </div>
-
-        <div class="boot-footer">
-        <div class="boot-progress-track">
-            <div id="boot-progress-fill"></div>
-        </div>
-        <div id="boot-percentage">0%</div>
-        </div>
+    <div id="power-screen">
+    <button id="power-btn" aria-label="Power On System">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+        <line x1="12" y1="2" x2="12" y2="12"></line>
+      </svg>
+    </button>
+  </div>
+  <div id="boot-overlay" class="boot-hidden">
+    <div id="boot-bg-matrix"></div>
+    <div class="boot-center-content">
+      <div id="preloader">
+        <div id="loader"></div>
+        <span class="center-static-mark">?</span>
+      </div>
+      <h1 class="boot-system-name">Riddlosoft Nygmos</h1>
+      <h2 class="boot-system-version">[Version 3.6.26]</h2>
+      <h4 class="boot-system-copyright">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</h4>
     </div>
+    <div class="boot-footer">
+      <div class="boot-progress-track">
+        <div id="boot-progress-fill"></div>
+      </div>
+      <div id="boot-percentage">0%</div>
+    </div>
+    <div id="boot-hints"></div>
+  </div>
     <main>
         <div id="background">
             <div class="bingos-container">
@@ -321,8 +328,8 @@ Przydatne komendy:
             </div>
         </div>
 
-        <div id="volume" class="volume-container" hidden>
-            <input id="volume-value" type="range" min="0" max="9" step="1" value="9" />
+        <div id="volume" class="volume-container" style="z-index: 20;" hidden>
+            <input id="volume-value" type="range" min="0" max="9" step="1" value="9">
         </div>
 
         <div id="skype-call" class="window call" hidden>
@@ -351,7 +358,7 @@ Przydatne komendy:
                         </div>
                         <div class="control-item">
                             <button class="control-btn btn-danger">
-                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                                <img src="/assets/img/window/decline.png" alt="end icon" class="btn-icon"><!--https://i.ibb.co/VY0c2HRj/end-call.png-->
                             </button>
                             <span class="control-label">Odrzuć</span>
                         </div>
