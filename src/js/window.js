@@ -24,6 +24,7 @@ const wallpaper = new App(document.getElementById('background-change'), document
 const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null);
 const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null);
 
+folder.setThisToFolder();
 
 volume.alwaysOnTop(true);
 skype.alwaysOnTop(true);

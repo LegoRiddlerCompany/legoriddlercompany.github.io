@@ -51,7 +51,7 @@
     <script defer src="/src/js/script.js"></script>
 </head>
 
-<body ><!--class="crt"-->
+<body class="crt">
     <div id="power-screen">
     <button id="power-btn" aria-label="Power On System">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -129,6 +129,8 @@
                     <video id="video-swap" preload="auto" style="position: absolute;" loop>
                         <source id="source-swap" type="video/mp4"/>
                     </video>
+                    <div class="video-frame">
+                    </div>
                 </div>
                 <div class="video-container-layer">
 
@@ -174,8 +176,9 @@
                     <button id="ext-button" aria-label="Close"    onclick="folder.close()"></button>
                 </div>
             </div>
-            <div id="folder-body" class="window-body">
-            </div>
+            <table id="folder-body" class="window-body"  cellspacing="0" cellpadding="0">
+                <tbody></tbody>
+            </table>
         </div>
 
         <div id="riddle" class="window" hidden>
@@ -338,7 +341,7 @@ Przydatne komendy:
                 <div class="profile-avatar">
                     <img src="/assets/img/prof/riddler.png" alt="Avatar">
                 </div>
-                <div class="timer-center-zone">
+                <div class="timer-center-zone call-text">
                     <span class="call-timer">Dzwoni Riddler</span>
                 </div>
                 <div class="facetime-controls-widget">
@@ -373,7 +376,7 @@ Przydatne komendy:
                 <div class="profile-avatar">
                     <img id="whatsapp-call-prof" src="/assets/img/prof/unknown.png" alt="Avatar">
                 </div>
-                <div id="whatsapp-call-text" class="timer-center-zone">
+                <div id="whatsapp-call-text" class="timer-center-zone call-text">
                     <span class="call-timer">Dzwoni nieznany numer...</span>
                 </div>
                 <div class="facetime-controls-widget">

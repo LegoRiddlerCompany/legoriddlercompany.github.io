@@ -219,6 +219,17 @@
     pointer-events: none !important;
 }
 
+.video-frame {
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5vh !important;
+    z-index: 100 !important;
+    box-shadow: inset 0 0.3vh 0.3vh rgba(255, 255, 255, 0.5),
+    inset 0 0.8vh 1.2vh rgba(0, 0, 0, 0.15),
+    inset 0 0 0 0.1vh rgba(255, 255, 255, 0.1) !important;
+}
+
 .clean-video-frame::after {
     content: '' !important;
     position: absolute !important;
@@ -229,9 +240,9 @@
     border-radius: 1.5vh !important;
     pointer-events: none !important;
     z-index: 3 !important;
-    box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.5),
-    inset 0 8px 12px rgba(0, 0, 0, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    box-shadow: inset 0 0.3vh 0.3vh rgba(255, 255, 255, 0.5),
+    inset 0 0.8vh 1.2vh rgba(0, 0, 0, 0.15),
+    inset 0 0 0 0.1vh rgba(255, 255, 255, 0.1) !important;
 }
 
 .clean-video-frame video,
@@ -277,7 +288,7 @@
     padding: 1.5vh 2.5vw 2.2vh 2.5vw;
     border-radius: 2.2vh;
     box-shadow: 0 0.22vh 2vh rgb(0 0 0 / 50%),
-    inset 0 1px 0 rgb(255 255 255 / 45%);
+    inset 0 0.1vh 0 rgb(255 255 255 / 45%);
     opacity: 97.5%;
     display: flex;
     flex-direction: column;
@@ -312,8 +323,8 @@
 }
 
 .control-btn {
-    width: 5vmin;
-    height: 5vmin;
+    width: 5vh;
+    height: 5vh;
     border-radius: 50%;
     border: none;
     display: flex;
@@ -368,7 +379,7 @@
     color: var(--text-gray);
     font-family: "GothicBold";
     src: url(/assets/fonts/ScienceGothic-SemiBold.ttf);
-    font-size: 1.6vmin;
+    font-size: 1.6vh;
     letter-spacing: -0.01vw;
 }
 
@@ -400,16 +411,16 @@
     width: calc(var(--skype-width) * 0.87) !important;
 }
 
-#whatsapp-call-text {
-    height: 100%;
-    margin-top: 10%;
-    padding-left: 0.7vw;
+.call-text {
+    height: 90% !important;
+    margin-top: 10% !important;
+    padding-left: 0.7vw !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: start !important;
     align-items: start !important;
     span {
-        font-size: 1.6vh;
+        font-size: 1.6vh !important;
     }
 }
 
@@ -436,7 +447,7 @@ overflow: hidden;
 .audio-call-row {
     /* FIX 2: Absolute pinning anchors the row below the title bar, preventing click offset glitches */
     position: absolute !important;
-    top: 32px !important; /* Adjust this value if your title-bar has a different custom native height */
+    top: 3.2vh !important; /* Adjust this value if your title-bar has a different custom native height */
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
@@ -477,7 +488,7 @@ overflow: hidden;
 .timer-center-zone {
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: center;
     flex-grow: 1 !important;
     text-align: center;
     padding: 0 0.5vh;
@@ -502,7 +513,7 @@ overflow: hidden;
     background-color: #222222;
     padding: 0 1.2vw;
     border-radius: 2vh;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0.1vh 0 rgba(255, 255, 255, 0.15), 0 0.2vh 0.8vh rgba(0,0,0,0.3);
     width: max-content;
     user-select: none;
     box-sizing: border-box;
@@ -526,8 +537,11 @@ overflow: hidden;
 }
 
 .control-btn {
-    width: 4.2vmin !important;
-    height: 4.2vmin !important;
+    width: 4.2vh !important;
+    height: 4.2vh !important;
+    padding: 0.1vh;
+    padding-left: 0.6vh;
+    padding-right: 0.6vh;
     border-radius: 50%;
     border: none;
     display: flex;
@@ -535,7 +549,7 @@ overflow: hidden;
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.15s ease, transform 0.1s ease, opacity 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 0.2vh 0.4vh rgba(0,0,0,0.4);
 
     &:active:not(:disabled) {
         transform: scale(0.94);
@@ -556,20 +570,20 @@ overflow: hidden;
 
 .btn-dark {
     background-color: var(--btn-dark);
-    border: 1px solid #444444;
+    border: 0.1vh solid #444444;
     &:hover:not(:disabled) { background-color: var(--btn-dark-hover); }
 }
 
 .btn-danger {
     background-color: var(--btn-danger);
-    border: 1px solid #992222;
+    border: 0.1vh solid #992222;
     &:hover:not(:disabled) { background-color: var(--btn-danger-hover); }
 }
 
 .control-label {
     color: var(--text-gray);
     font-family: "GothicBold";
-    font-size: 1.2vmin;
+    font-size: 1.2vh;
     font-weight: 600;
 }
 

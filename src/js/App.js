@@ -7,6 +7,7 @@ class App {
     #bodyElement     = null;
 
     #status          = windowStatus.CLOSED;
+    #isFolder        = true;
 
     #closingAllowed  = true;
     #openingAllowed  = true;
@@ -122,7 +123,11 @@ class App {
 
     appendChildElement(element) {
         if(this.#bodyElement !== null) {
-            this.#bodyElement.appendChild(element);
+            if(this.#isFolder) {
+                this.#bodyElement.tBodies[0].appendChild(element);
+            } else {
+                this.#bodyElement.appendChild(element);
+            }
         }
     }
 
@@ -186,6 +191,10 @@ class App {
 
     set additionalCloseAction(func) {
         this.#additionalCloseAction = func;
+    }
+
+    setThisToFolder() {
+        this.#isFolder = true;
     }
 
     updateDesktopSize() {

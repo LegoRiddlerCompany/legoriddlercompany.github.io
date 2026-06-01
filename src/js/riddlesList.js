@@ -117,7 +117,7 @@ const riddlesList = [
         },
         rushingtrack: [8, 1, 0],
         losetrack: [2, 1, 3],
-        wintrack: 3
+        wintrack: 1
     },
     {
         riddle: "Co widzi inaczej, niż samo jest widziane, \npoluje na ludzi lecz ich wcale nie zjada, \nma cztery łapy piękne, wspaniałe, \nod czasu do czasu z pingwinami gada.",
@@ -212,7 +212,7 @@ const riddlesList = [
             name: "robin",
             track: 3
         },
-        rushingtrack: [5, 6, 7],
+        rushingtrack: [10, 6, 7],
         losetrack: [0, 0, 0],
         wintrack: 3
     },

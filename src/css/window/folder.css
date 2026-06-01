@@ -24,9 +24,17 @@
         .files-row {
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: space-between;
             .icon-name {
                 width: var(--icon-name-width);
+            }
+        }
+        border: none;
+        tr {
+            width: 100%;
+            td {
+                width: calc(var(--folder-width) / 4);
+                padding: 0;
             }
         }
     }

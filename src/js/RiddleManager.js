@@ -415,7 +415,7 @@ class RiddleManager {
 
     generateFolderRiddles() {
         for(let r = 0; r < folderRowNumber; r++) {
-            const row = document.createElement('div');
+            const row = document.createElement('tr');
             row.className = 'files-row';
 
             for(let f = 0; f < riddlesInRow; f++) {
@@ -424,6 +424,7 @@ class RiddleManager {
                 if(fileNum >= riddlesNumber + 1) { break; }
                 if(fileNum < 10) { fileNumText = '0' + fileNum; }
 
+                const col = document.createElement('tr');
                 const container = document.createElement('div');
                 container.className = 'icon-container';
                 container.id = 'rid-' + fileNum;
@@ -449,10 +450,26 @@ class RiddleManager {
                 container.appendChild(a);
                 container.appendChild(span);
 
-                row.appendChild(container);
+                col.appendChild(container);
+                row.appendChild(col);
             }
             folder.appendChildElement(row);
         }
         this.loadIconsColors();
     }
+    /*
+     < tr> *
+     <td>
+        <div class="icon-container" id="rid-5"><a class="icon" href="javascript:void(0)" onclick="riddle.open(5)"><img src="/assets/img/icon/desktop/riddle.png"></a><span class="icon-name">zagadka05</span></div>
+     </td>
+     <td>
+        <div class="icon-container" id="rid-5" hidden><a class="icon" href="javascript:void(0)" onclick="riddle.open(5)"><img src="/assets/img/icon/desktop/riddle.png"></a><span class="icon-name">zagadka05</span></div>
+     </td>
+     <td>
+        <div class="icon-container" id="rid-5" hidden><a class="icon" href="javascript:void(0)" onclick="riddle.open(5)"><img src="/assets/img/icon/desktop/riddle.png"></a><span class="icon-name">zagadka05</span></div>
+     </td>
+     <td>
+        <div class="icon-container" id="rid-5" hidden><a class="icon" href="javascript:void(0)" onclick="riddle.open(5)"><img src="/assets/img/icon/desktop/riddle.png"></a><span class="icon-name">zagadka05</span></div>
+     </td>
+     </tr>*/
 }
