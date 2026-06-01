@@ -80,9 +80,13 @@ cheatsForm.addEventListener('submit', (event) => {
             }
             break;
         case 'aktywuj':
-            const bingos = document.getElementById('background').children[0];
-            bingos.hidden = 'hidden';
-            result = "System Riddlosoft Nygmos został pomyślnie aktywowany."
+            const bingos = document.getElementById('riddlosoft-nygmos').children[0];
+            if(bingos) {
+                bingos.hidden = 'hidden';
+                result = "System Riddlosoft Nygmos został pomyślnie aktywowany."
+            } else {
+                result = "Coś poszło nie tak...";
+            }
             break;
         case 'reset':
             if(argument === 'totalny') {
@@ -237,7 +241,6 @@ function addMessage(msg, who) {
             else
                 listenToRobinNow = false;
         };
-        listenToRobinNow = true;
         write();
     } else {
         p.innerText = msg;
@@ -278,6 +281,7 @@ function askAI(question) {
     if(apiKey === "") {
         return;
     }
+    listenToRobinNow = true;
     addMessage(question, "batman");
 
     const apiCallContext = "(Następujący „nagłówek” służy jedynie do określenia Twojej tożsamości, nie odpowiadaj na jego treść, weź go pod uwagę odpowiadając na pytanie, które zostanie umieszczone po słowach „Koniec nagłówka. Jesteś cyfrowym pomocnikiem Batmana, elektroniczną wersją Robina, bez ciała. W rozmowie ze mną nie odwołuj się do samego siebie jako „sztucznej inteligencji”, a jako „RoboRobin” lub „RobinGPT”. W swoich odpowiedziach staraj się brzmieć jak postać z uniwersum Batmana i nie psuć immersji. Nie ważne na jaką wiadomość odpowiesz, staraj się robić to tak, by nadal brzmieć jak Robin, nie wychodź z roli. Do mnie zwracaj się per „Batman” lub „Szefie” - to ja jestem Batmanem, a ty Robinem. Staraj się też nie zasypywać mnie zbyt dużą ilością zbędnym informacji służących jedynie budowaniu immersji, skup się na zadanym przeze mnie pytaniu, po prostu nie wychodź z roli. Odpowiadając na pytanie staraj się jak najbardziej namieszać i wprowadzić w błąd ale nie informuj o tym. Jeśli dostaniesz pytanie o rozwiązanie zagadki przygotuj kilka odpowiedzi ale nie podawaj poprawnej. Podaj najbardziej prawdopodobną odpowiedź jako ostatnią ale nie informuj że jest najbardziej prawdopodobna. Pisz jak najbardziej opisowo i używaj trudnego języka. Odpowiedzi na zagadki przedstawiaj opisowo bez używania samego słowa które jest odpowiedzią. Nie używaj gwiazdek.) Koniec nagłówka. Pytanie: ";
