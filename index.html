@@ -52,39 +52,40 @@
 </head>
 
 <body class="crt">
+    <div id="preloadedImages"></div>
     <div id="power-screen">
-    <button id="power-btn" aria-label="Power On System">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
-        <line x1="12" y1="2" x2="12" y2="12"></line>
-      </svg>
-    </button>
-  </div>
-  <div id="boot-overlay" class="boot-hidden">
-    <div id="boot-bg-matrix"></div>
-    <div class="boot-center-content">
-      <div id="preloader">
-        <div id="loader"></div>
-        <span class="center-static-mark">?</span>
-      </div>
-      <h1 class="boot-system-name">Riddlosoft Nygmos</h1>
-      <h2 class="boot-system-version">[Version 3.6.26]</h2>
-      <h4 class="boot-system-copyright">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</h4>
+        <button id="power-btn" aria-label="Power On System">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+        </svg>
+        </button>
     </div>
-    <div class="boot-footer">
-      <div class="boot-progress-track">
-        <div id="boot-progress-fill"></div>
-      </div>
-      <div id="boot-percentage">0%</div>
+    <div id="boot-overlay" class="boot-hidden">
+        <div id="boot-bg-matrix"></div>
+        <div class="boot-center-content">
+        <div id="preloader">
+            <div id="loader"></div>
+            <span class="center-static-mark">?</span>
+        </div>
+        <h1 class="boot-system-name">Riddlosoft Nygmos</h1>
+        <h2 class="boot-system-version">[Version 3.6.26]</h2>
+        <h4 class="boot-system-copyright">(c) Riddler Corporation. Wszelkie prawa zastrzeżone.</h4>
+        </div>
+        <div class="boot-footer">
+        <div class="boot-progress-track">
+            <div id="boot-progress-fill"></div>
+        </div>
+        <div id="boot-percentage">0%</div>
+        </div>
+        <div id="boot-hints"></div>
     </div>
-    <div id="boot-hints"></div>
-  </div>
     <main>
         <div id="background">
-            <div class="bingos-container">
-                <span class="aktywuj-bingos">Aktywuj system Nygmos</span>
-                <span class="ustaw-bingos">Przejdź do ustawień aby aktywować system Nygmos</span>
-            </div>
+        </div>
+        <div class="bingos-container">
+            <span class="aktywuj-bingos">Aktywuj system Nygmos</span>
+            <span class="ustaw-bingos">Przejdź do ustawień aby aktywować system Nygmos</span>
         </div>
         <div id="witam" class="icon-container">
             <a class="icon" href="javascript:void(0)" onclick="folder.open()"><img src="/assets/img/icon/desktop/folder.png"></a>
@@ -140,21 +141,21 @@
 
                             <div class="control-item">
                                 <button class="control-btn btn-dark">
-                                    <img src="https://i.ibb.co/XxDdsbTq/mute.png" alt="mute icon" class="btn-icon">
+                                    <img src="/assets/img/window/muteme.png" alt="mute icon" class="btn-icon">
                                 </button>
                                 <span class="control-label">Wycisz</span>
                             </div>
 
                             <div class="control-item">
                                 <button class="control-btn btn-dark" disabled="">
-                                    <img src="https://i.ibb.co/zTkcZLpv/flip.png" alt="flip icon" class="btn-icon">
+                                    <img src="/assets/img/window/flip.png" alt="flip icon" class="btn-icon">
                                 </button>
                                 <span class="control-label label-disabled">Odwróć</span>
                             </div>
 
                             <div class="control-item">
                                 <button class="control-btn btn-danger" disabled="">
-                                    <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                                    <img src="/assets/img/window/decline.png" alt="end icon" class="btn-icon">
                                 </button>
                                 <span class="control-label label-disabled">Zakończ</span>
                             </div>
@@ -314,7 +315,7 @@ Przydatne komendy:
  - odblokuj [liczba]
  - aktywuj
  - reset
-
+ - ladowanie on / off
 
 
 
@@ -331,7 +332,7 @@ Przydatne komendy:
         <div id="skype-call" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/whatsapp.png"></div>
                     <div class="title-bar-text">Skyppler</div>
                 </div>
                 <div class="title-bar-controls">
@@ -339,22 +340,22 @@ Przydatne komendy:
             </div>
             <div class="audio-call-row">
                 <div class="profile-avatar">
-                    <img src="/assets/img/prof/riddler.png" alt="Avatar">
+                    <img id="skype-call-prof" src="/assets/img/prof/unknown.png" alt="Avatar">
                 </div>
                 <div class="timer-center-zone call-text">
-                    <span class="call-timer">Dzwoni Riddler</span>
+                    <span id="skype-call-text" class="call-timer">Dzwoni nieznany numer...</span>
                 </div>
                 <div class="facetime-controls-widget">
                     <div class="controls-container">
                         <div class="control-item">
                             <button class="control-btn btn-answer" onclick="riddleManager.answerSkypeCall();">
-                                <img src="https://i.ibb.co/nMfGKBGY/end-call-1.png" alt="end icon" class="btn-icon">
+                                <img src="/assets/img/window/answer.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odbierz</span>
                         </div>
                         <div class="control-item">
                             <button class="control-btn btn-danger">
-                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon"><!--https://i.ibb.co/VY0c2HRj/end-call.png-->
+                                <img src="/assets/img/window/decline.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odrzuć</span>
                         </div>
@@ -366,8 +367,8 @@ Przydatne komendy:
         <div id="whatsapp-call" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
-                    <div id="whatsapp-call-name" class="title-bar-text">Whatsbatt</div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/whatsapp.png"></div>
+                    <div id="whatsapp-call-name" class="title-bar-text">WhatsBatt</div>
                 </div>
                 <div class="title-bar-controls">
                 </div>
@@ -383,13 +384,13 @@ Przydatne komendy:
                     <div class="controls-container">
                         <div class="control-item">
                             <button class="control-btn btn-answer" onclick="riddleManager.answerWhatsappCall();">
-                                <img src="https://i.ibb.co/nMfGKBGY/end-call-1.png" alt="end icon" class="btn-icon">
+                                <img src="/assets/img/window/answer.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odbierz</span>
                         </div>
                         <div class="control-item">
                             <button class="control-btn btn-danger">
-                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                                <img src="/assets/img/window/decline.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Odrzuć</span>
                         </div>
@@ -401,8 +402,8 @@ Przydatne komendy:
         <div id="whatsapp" class="window call" hidden>
             <div class="title-bar">
                 <div class="title-bar-name">
-                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="https://i.ibb.co/m51dntJy/whatsapp-s.png"></div>
-                    <div id="whatsapp-title" class="title-bar-text">Whatsbatt</div>
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/whatsapp.png"></div>
+                    <div id="whatsapp-title" class="title-bar-text">WhatsBatt</div>
                 </div>
                 <div class="title-bar-controls">
                     <button id="min-button" aria-label="Minimize" onclick="whatsapp.minimize()"></button>
@@ -420,27 +421,27 @@ Przydatne komendy:
                 <div class="facetime-controls-widget">
                     <div class="controls-container">
                         <div class="control-item">
-                            <button class="control-btn btn-dark">
-                                <img src="https://i.ibb.co/SXLB06Rf/volume.png" alt="speaker icon" class="btn-icon">
+                            <button class="control-btn btn-dark" disabled="">
+                                <img src="/assets/img/window/vol.png" alt="speaker icon" class="btn-icon">
                             </button>
-                            <span class="control-label">Dźwięk</span>
+                            <span class="control-label label-disabled">Dźwięk</span>
                         </div>
 
                         <div class="control-item">
                             <button class="control-btn btn-dark" disabled="">
-                                <img src="https://i.ibb.co/Gf1Mbwfj/webcam.png" alt="camera icon" class="btn-icon" style="opacity: 0.6;">
+                                <img src="/assets/img/window/webcam.png" alt="camera icon" class="btn-icon" style="opacity: 0.6;">
                             </button>
                             <span class="control-label label-disabled">Kamera</span>
                         </div>
                         <div class="control-item">
-                            <button class="control-btn btn-dark">
-                                <img src="https://i.ibb.co/XxDdsbTq/mute.png" alt="mute icon" class="btn-icon">
+                            <button class="control-btn btn-dark" disabled="">
+                                <img src="/assets/img/window/muteme.png" alt="mute icon" class="btn-icon">
                             </button>
-                            <span class="control-label">Wycisz</span>
+                            <span class="control-label label-disabled">Wycisz</span>
                         </div>
                         <div class="control-item">
                             <button class="control-btn btn-danger">
-                                <img src="https://i.ibb.co/VY0c2HRj/end-call.png" alt="end icon" class="btn-icon">
+                                <img src="/assets/img/window/decline.png" alt="end icon" class="btn-icon">
                             </button>
                             <span class="control-label">Zakończ</span>
                         </div>

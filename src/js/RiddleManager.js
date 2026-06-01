@@ -80,6 +80,7 @@ class RiddleManager {
                 riddle.forceClose();
                 riddle.allowOpening();
                 riddle.allowClosing();
+                skype.allowClosing();
                 this.videoReset();
                 this.colorIcon(this.#currentRiddle, this.#currentTry);
                 this.#time = maxTime;
@@ -130,6 +131,7 @@ class RiddleManager {
     }
 
     start() {
+        skype.forbidClosing();
         this.startSkypeCall();
     }
 
@@ -142,6 +144,7 @@ class RiddleManager {
         document.getElementById('riddle-window-name').innerText = "zagadka " + riddleNumber;
         document.getElementById('riddle-text').innerText = riddleEntry.riddle;
 
+        skype.forbidClosing();
         if(this.#currentRiddle === this.#unlockedRiddles) {
             riddle.forbidClosing();
             this.startCounting();
@@ -157,6 +160,7 @@ class RiddleManager {
         if(this.#currentRiddle < this.#unlockedRiddles) {
             this.load();
             this.#stage = riddleStage.RIDDLE;
+            timer.innerText = "10:00";
             riddle.forbidOpening();
         }
     }
@@ -216,6 +220,7 @@ class RiddleManager {
             this.closeSkypeCall();
             initialOpen = true;
             this.playRiddleVideo();
+            this.saveRiddlerToContacts();
         }
     }
     stopSkypeCallSound() {
@@ -411,6 +416,11 @@ class RiddleManager {
 
     get unlockedRiddles() {
         return this.#unlockedRiddles;
+    }
+
+    saveRiddlerToContacts() {
+        document.getElementById('skype-call-prof').src = "/assets/img/prof/riddler.png";
+        document.getElementById('skype-call-text').innerText = "Dzwoni Riddler";
     }
 
     generateFolderRiddles() {

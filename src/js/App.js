@@ -1,5 +1,7 @@
 class App {
     #windowManager   = null;
+    #initialPosition = { x: '0', y: '0' };
+    #initialPlacementDone = false;
 
     #windowElement   = null;
     #barElement      = null;
@@ -18,11 +20,13 @@ class App {
     #additionalOpenAction  = () => {};
     #additionalCloseAction = () => {};
 
-    constructor(windowElement, barElement, bodyElement) {
+    constructor(windowElement, barElement, bodyElement, position) {
         this.#windowElement   = windowElement;
         this.#barElement      = barElement;
         this.#bodyElement     = bodyElement;
         this.#barLightElement = barElement.children[1];
+        this.#initialPosition = position;
+        this.#initialPlacementDone = false;
 
         if(this.#barLightElement === undefined) {
             this.#barLightElement = null;
@@ -39,6 +43,12 @@ class App {
         }
     }
     forceOpen(argAction=null) {
+        if(!this.#initialPlacementDone) {
+            this.#windowElement.style.top = this.#initialPosition.y;
+            this.#windowElement.style.left = this.#initialPosition.x;
+            this.#initialPlacementDone = true;
+        }
+
         this.#windowElement.removeAttribute('hidden');
         this.#barElement.removeAttribute('hidden');
         if(this.#barLightElement) {

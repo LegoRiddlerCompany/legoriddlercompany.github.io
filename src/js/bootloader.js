@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // const hasBootedBefore = localStorage.getItem("riddlosoft_booted_successfully");
-
+    const disableBoot = localStorage.getItem('disable-boot');
     // COMMENT THESE LINES OUT FOR TESTING:
-    // if (hasBootedBefore === "true") {
-      // powerScreen.remove();
-      // overlay.remove();
-    //   return;
-    // }
+    if(disableBoot === "true") {
+      powerScreen.remove();
+      overlay.remove();
+      return;
+    }
 
     // Initial Visibility configurations
     overlay.classList.remove("boot-hidden");
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================================================
     powerBtn.addEventListener("click", () => {
         // Play tactile click sound effect instantly at 0.0s
-        const clickAudio = new Audio("https://mp3tourl.com/audio/1780284976980-778ac5d0-321c-4263-b305-0d8f5eb203ff.mp3");
+        const clickAudio = new Audio("/assets/audio/entryclick.mp3");
         clickAudio.volume = 0.6;
         clickAudio.play().catch(e => console.error("Click audio blocked:", e));
 
@@ -80,10 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600);
 
         // Mark initialization validation token
-        localStorage.setItem("riddlosoft_booted_successfully", "true");
+        // localStorage.setItem("riddlosoft_booted_successfully", "true");
 
         // Ambient Main Track: Starts instantly at 0.0s alongside the click
-        const startupAudio = new Audio("https://mp3tourl.com/audio/1780283058810-19191e5d-ecda-42ff-a385-d328cb7c7f43.mp3");
+        const startupAudio = new Audio("/assets/audio/booting.mp3");
         startupAudio.volume = 0.7;
         startupAudio.play().catch(e => console.error("Startup audio execution blocked:", e));
 
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.add("boot-fade-out");
 
             // SUCCESS SOUND: Plays perfectly since interaction is guaranteed
-            const successAudio = new Audio("https://mp3tourl.com/audio/1780282074501-364cab8c-6151-4057-8637-7549a02407fa.mp3");
+            const successAudio = new Audio("/assets/audio/welcome.mp3");
             successAudio.volume = 0.8;
             successAudio.play().catch(error => console.error("Success audio blocked:", error));
 

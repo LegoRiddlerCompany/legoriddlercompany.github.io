@@ -75,6 +75,8 @@ cheatsForm.addEventListener('submit', (event) => {
             else if(document.fullscreenElement) {
                 document.exitFullscreen();
                 result = "Wyłączono pełny ekran.";
+            } else {
+                result = "Nic się nie zmieniło...";
             }
             break;
         case 'aktywuj':
@@ -88,6 +90,15 @@ cheatsForm.addEventListener('submit', (event) => {
                 result = "Nastąpił kompletny reset. Odśwież stronę.";
             } else {
                 result = "Reset aktywowany. Wpisz 'reset totalny' aby kompletnie usunąć postęp.";
+            }
+            break;
+        case 'ladowanie':
+            if(argument === 'off') {
+                localStorage.setItem('disable-boot', "true");
+                result = "Wyłączono ekran ładowania.";
+            } else {
+                localStorage.setItem('disable-boot', "false");
+                result = "Włączono ekran ładowania.";
             }
             break;
         case 'pomoc':
@@ -121,12 +132,13 @@ keyForm.addEventListener('submit', (event) => {
 });
 
 chatForm.addEventListener('submit', (event) => {
-    let question = chatForm.input.value;
+    if(!listenToRobinNow) {
+        let question = chatForm.input.value;
 
-    askAI(question);
+        askAI(question);
 
-    chatForm.reset();
-
+        chatForm.reset();
+    }
     event.preventDefault();
 });
 
@@ -160,7 +172,10 @@ function switchToChat() {
     chatForm.removeAttribute('hidden');
     chatContainer.removeAttribute('hidden');
 
-    addMessage(welcomeMessage, "robin");
+    if(!robertMessageSent) {
+        addMessage(welcomeMessage, "robin");
+        robertMessageSent = true;
+    }
 }
 
 function resetKey() {
@@ -219,7 +234,10 @@ function addMessage(msg, who) {
             // we have a little (20ms) pause before we write the next character
             if (curr < msg.length)
                 window.setTimeout(write, 52);
+            else
+                listenToRobinNow = false;
         };
+        listenToRobinNow = true;
         write();
     } else {
         p.innerText = msg;
@@ -240,6 +258,7 @@ function robinGada(text) {
     if (!speechSynth.speaking && enteredText.trim().length) {
         // error.textContent = "";
         const newUtter = new SpeechSynthesisUtterance(enteredText);
+        setCurrentSpeachUtter(newUtter);
         newUtter.rate = 1.20;
         newUtter.voice = voices[0];
         speechSynth.speak(newUtter);
@@ -249,6 +268,10 @@ function robinGada(text) {
     // setTimeout(() => {
     //     convertBtn.textContent = "Play Converted Sound"
     // }, 5000);
+}
+
+function setCurrentSpeachUtter(utter) {
+    currentSpeachUtter = utter;
 }
 
 function askAI(question) {

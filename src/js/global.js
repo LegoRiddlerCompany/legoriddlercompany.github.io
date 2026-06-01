@@ -14,7 +14,11 @@ let riddleManager = null;
 
 let initialOpen = false;
 
+let robertMessageSent = false;
+
 let apiKey = "";
+let currentSpeachUtter = null;
+let listenToRobinNow = false;
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 

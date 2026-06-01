@@ -14,15 +14,24 @@ const windowStatus = {
     MINIMIZED: 2
 }
 
-const skype     = new App(document.getElementById('skype'),             document.getElementById('bar-skype'),             null);
-const folder    = new App(document.getElementById('folder'),            document.getElementById('bar-folder'),            document.getElementById('folder-body'));
-const riddle    = new App(document.getElementById('riddle'),            document.getElementById('bar-riddle'),            null);
-const cheats    = new App(document.getElementById('cheats'),            document.getElementById('bar-cheats'),            null);
-const chat      = new App(document.getElementById('chat'),              document.getElementById('bar-chat'),              null);
-const volume    = new App(document.getElementById('volume'),            document.getElementById('bar-volume'),            null);
-const wallpaper = new App(document.getElementById('background-change'), document.getElementById('bar-background-change'), null);
-const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null);
-const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null);
+const skype     = new App(document.getElementById('skype'),             document.getElementById('bar-skype'),             null,
+                          {x: '3%',    y: "2%"});
+const folder    = new App(document.getElementById('folder'),            document.getElementById('bar-folder'),            document.getElementById('folder-body'),
+                          {x: '40%',   y: "20%"});
+const riddle    = new App(document.getElementById('riddle'),            document.getElementById('bar-riddle'),            null,
+                          {x: '37%',   y: "17%"});
+const cheats    = new App(document.getElementById('cheats'),            document.getElementById('bar-cheats'),            null,
+                          {x: '24%',   y: "38%"});
+const chat      = new App(document.getElementById('chat'),              document.getElementById('bar-chat'),              null,
+                          {x: '0.5vh', y: "38.5vh"});
+const volume    = new App(document.getElementById('volume'),            document.getElementById('bar-volume'),            null,
+                          {x: '94vw',  y: "93.2vh"});
+const wallpaper = new App(document.getElementById('background-change'), document.getElementById('bar-background-change'), null,
+                          {x: '87.5vw', y: "0.5vw"});
+const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null,
+                          {x: '32%',   y: "32%"});
+const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null,
+                          {x: 'calc(50% - var(--skype-width) / 2)', y: "calc(90% - 16.5vh)"});
 
 folder.setThisToFolder();
 
@@ -49,7 +58,7 @@ whatsapp.additionalCloseAction = whatsappCloseAction;
 skypeCall.style.zIndex     = windowManager.getListLength();
 whatsappCall.style.zIndex  = windowManager.getListLength();
 footer.style.zIndex        = windowManager.getListLength() + 1;
-volume.window.style.zIndex = windowManager.getListLength() + 1;
+volume.window.style.zIndex = "100";
 
 cheats.window.addEventListener("click", focusCheatsInput);
 

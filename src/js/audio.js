@@ -49,6 +49,9 @@ function setVolume(vol) {
     if(riddleManager) {
         riddleManager.setVolume(vol);
     }
+    if(currentSpeachUtter) {
+        currentSpeachUtter.volume = vol;
+    }
 }
 
 function mute() {
@@ -67,5 +70,8 @@ function loadVolume() {
     if(!isNaN(vol)) {
         setVolume(vol);
         volumevalue.value = vol * 10;
+    } else {
+        setVolume(1);
+        volumevalue.value = 10;
     }
 }

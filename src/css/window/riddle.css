@@ -12,7 +12,14 @@
         justify-content: space-between;
         width: 100%;
         height: var(--riddle-body-height);
+        .riddle-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
         p {
+            height: min-content;
             padding: 0.8vw;
             margin: 2vw;
             margin-top: 2vh;
