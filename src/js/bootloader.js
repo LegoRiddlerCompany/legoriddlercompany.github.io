@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // COMMENT THESE LINES OUT FOR TESTING:
     // if (hasBootedBefore === "true") {
-      powerScreen.remove();
-      overlay.remove();
+      // powerScreen.remove();
+      // overlay.remove();
     //   return;
     // }
 
