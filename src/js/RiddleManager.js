@@ -91,6 +91,7 @@ class RiddleManager {
             this.#swap.el.play();
         });
 
+        this.#audio = this.#audio.cloneNode(true);
         this.#audio.addEventListener('ended', () => {
             whatsapp.close();
             this.playWrongAnswerVideo();
@@ -282,6 +283,7 @@ class RiddleManager {
         this.#video.el.play();
     }
     playWrongAnswerVideo() {
+        console.log("wrong");
         this.pause();
         let who = riddlesList[this.#currentRiddle - 1].who;
         let losetrack = riddlesList[this.#currentRiddle - 1].losetrack[this.#currentTry - 1];
@@ -348,6 +350,7 @@ class RiddleManager {
         let track   = riddlesList[ridnum].helper.track;
         this.#audio = callersList[helper].audio[track];
 
+        this.#audio = this.#audio.cloneNode(true);
         this.#audio.addEventListener('ended', () => {
             whatsapp.close();
             this.playWrongAnswerVideo();

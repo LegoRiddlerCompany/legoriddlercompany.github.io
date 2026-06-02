@@ -80,7 +80,7 @@ cheatsForm.addEventListener('submit', (event) => {
             }
             break;
         case 'aktywuj':
-            const bingos = document.getElementById('riddlosoft-nygmos').children[0];
+            const bingos = document.getElementById('riddlosoft-nygmos');
             if(bingos) {
                 bingos.hidden = 'hidden';
                 result = "System Riddlosoft Nygmos został pomyślnie aktywowany."
@@ -177,6 +177,7 @@ function switchToChat() {
     chatContainer.removeAttribute('hidden');
 
     if(!robertMessageSent) {
+        listenToRobinNow = true;
         addMessage(welcomeMessage, "robin");
         robertMessageSent = true;
     }
