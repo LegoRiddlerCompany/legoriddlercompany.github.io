@@ -1,6 +1,7 @@
 const body                  = document.getElementsByTagName('body')[0];
 const background            = document.getElementById('background');
 const barTime               = document.getElementById('bar-time');
+const barDate               = document.getElementById('bar-date');
 const cheatsForm            = document.getElementById('cheats-form');
 const keyForm               = document.getElementById('key-form');
 const chatForm              = document.getElementById('chat-form');
@@ -155,6 +156,15 @@ function updateTime() {
     if(g < 10) { g = '0' + g; }
 
     barTime.innerText = g + ":" + m;
+
+    let day = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+
+    if(day < 10) { day = '0' + day; }
+    if(month < 10) { month = '0' + month; }
+
+    barDate.innerText = day + "-" + month + "-" + year;
 }
 
 function loadKey() {

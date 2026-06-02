@@ -37,7 +37,7 @@ footer {
     .bar-right {
         display: flex;
         justify-content: end;
-        #bar-time {
+        /*#bar-time {
             width: var(--bar-time-width);
             height: 100%;
             margin: 0;
@@ -47,6 +47,30 @@ footer {
             text-align: center;
             color: white;
             font-size: var(--bar-time-font-size);
+        }*/
+
+        #bar-datetime {
+            width: var(--bar-time-width);
+            height: 100%;
+            margin: 0;
+            margin-left: 0.5vw;
+            margin-right: 0.5vw;
+            align-content: center;
+            text-align: center;
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            p {
+                margin: 0;
+                padding: 0;
+                line-height: 1.2;
+            }
+            #bar-time {
+                font-size: var(--bar-time-font-size);
+            }
+            #bar-date {
+                font-size: calc(var(--bar-time-font-size) * 0.5);
+            }
         }
     }
 }
