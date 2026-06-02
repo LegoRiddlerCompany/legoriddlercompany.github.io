@@ -63,7 +63,6 @@ volume.window.style.zIndex = "100";
 cheats.window.addEventListener("click", focusCheatsInput);
 
 function focusCheatsInput() {
-    console.log("click");
     if(cheats.status === windowStatus.OPEN) {
         const input = document.getElementById('cheats-input');
         input.focus();

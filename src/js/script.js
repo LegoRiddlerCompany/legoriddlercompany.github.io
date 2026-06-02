@@ -262,6 +262,7 @@ function robinGada(text) {
         // error.textContent = "";
         const newUtter = new SpeechSynthesisUtterance(enteredText);
         setCurrentSpeachUtter(newUtter);
+        newUtter.volume = getVolume();
         newUtter.rate = 1.20;
         newUtter.voice = voices[0];
         speechSynth.speak(newUtter);

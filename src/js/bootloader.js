@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================================================
     powerBtn.addEventListener("click", () => {
         // Play tactile click sound effect instantly at 0.0s
-        const clickAudio = new Audio("/assets/audio/entryclick.mp3");
-        clickAudio.volume = 0.6;
-        clickAudio.play().catch(e => console.error("Click audio blocked:", e));
+        // const clickAudio = new Audio("/assets/audio/entryclick.mp3");
+        // clickAudio.volume = 0.6;
+        // clickAudio.play().catch(e => console.error("Click audio blocked:", e));
 
         // Force Device Fullscreen Engine Mode
         const docEl = document.documentElement;

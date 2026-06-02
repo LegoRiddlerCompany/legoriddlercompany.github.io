@@ -116,7 +116,8 @@ const callersList = {
         audio: [
             new Audio(callerAudioDir + "robin/0.mp3"),
             new Audio(callerAudioDir + "robin/1.mp3"),
-            new Audio(callerAudioDir + "robin/2.mp3")
+            new Audio(callerAudioDir + "robin/2.mp3"),
+            new Audio(callerAudioDir + "robin/3.mp3")
         ]
     },
     scarecrow: {

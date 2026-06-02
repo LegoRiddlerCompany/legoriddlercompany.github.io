@@ -50,6 +50,7 @@ function setVolume(vol) {
         riddleManager.setVolume(vol);
     }
     if(currentSpeachUtter) {
+        console.log(currentSpeachUtter);
         currentSpeachUtter.volume = vol;
     }
 }
@@ -73,5 +74,14 @@ function loadVolume() {
     } else {
         setVolume(1);
         volumevalue.value = 10;
+    }
+}
+
+function getVolume() {
+    let vol = parseFloat(localStorage.getItem('vol'));
+    if(vol) {
+        return vol;
+    } else {
+        return 1;
     }
 }

@@ -348,6 +348,11 @@ class RiddleManager {
         let track   = riddlesList[ridnum].helper.track;
         this.#audio = callersList[helper].audio[track];
 
+        this.#audio.addEventListener('ended', () => {
+            whatsapp.close();
+            this.playWrongAnswerVideo();
+        });
+
         unlockRiddles(this.#unlockedRiddles);
         this.resume();
     }

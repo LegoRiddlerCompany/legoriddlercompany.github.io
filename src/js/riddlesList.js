@@ -95,16 +95,16 @@ const riddlesList = [
         losetrack: [1, 2, 0],
         wintrack: 3
     },
-    {
-        riddle: "Ten, kto mnie robi, nie potrzebuje mnie. \nTen, kto mnie kupuje, sam ze mnie nie korzysta. \nTen, kto ze mnie korzysta, nawet o tym nie wie.",
-        answers: ["trumną", "trumna"],
+    {// 28 -> 8
+        riddle: "Mogę przynieść płacz, mogę wywołać śmiech. \nRodzę się w ułamku sekundy, ale potrafię trwać przez całe życie. \nNie mam masy, ale potrafię bardzo ciążyć.",
+        answers: ["wspomnienie", "wspomnieniem", "wspomnienia"],
         who: 'h',
         helper: {
             name: "alfred",
-            track: 0
+            track: 0// 1 -> 0
         },
-        rushingtrack: [5, 3, 2],
-        losetrack: [0, 1, 0],
+        rushingtrack: [2, 1, 3],
+        losetrack: [0, 0, 1],
         wintrack: 3
     },
     {
@@ -338,16 +338,16 @@ const riddlesList = [
         losetrack: [1, 0, 0],
         wintrack: 0
     },
-    {
-        riddle: "Mogę przynieść płacz, mogę wywołać śmiech. \nRodzę się w ułamku sekundy, ale potrafię trwać przez całe życie. \nNie mam masy, ale potrafię bardzo ciążyć.",
-        answers: ["wspomnienie", "wspomnieniem", "wspomnienia"],
+    {///// 8 -> 28
+        riddle: "Ten, kto mnie robi, nie potrzebuje mnie. \nTen, kto mnie kupuje, sam ze mnie nie korzysta. \nTen, kto ze mnie korzysta, nawet o tym nie wie.",
+        answers: ["trumną", "trumna"],
         who: 'h',
         helper: {
             name: "alfred",
-            track: 1
+            track: 1 // 0 -> 1
         },
-        rushingtrack: [2, 1, 3],
-        losetrack: [0, 0, 1],
+        rushingtrack: [5, 3, 2],
+        losetrack: [0, 1, 0],
         wintrack: 3
     },
     {
