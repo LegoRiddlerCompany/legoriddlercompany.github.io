@@ -1,3 +1,4 @@
+#rules,
 #note {
     position: absolute;
     top:    32%;
@@ -43,4 +44,9 @@
             }
         }
     }
+}
+
+#rules {
+    width:  var(--rules-width);
+    height: var(--rules-height);
 }

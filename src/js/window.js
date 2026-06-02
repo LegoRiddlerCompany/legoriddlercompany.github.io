@@ -28,10 +28,12 @@ const volume    = new App(document.getElementById('volume'),            document
                           {x: '94vw',  y: "93.2vh"});
 const wallpaper = new App(document.getElementById('background-change'), document.getElementById('bar-background-change'), null,
                           {x: '87.5vw', y: "0.5vw"});
-const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null,
-                          {x: '32%',   y: "32%"});
 const whatsapp  = new App(document.getElementById('whatsapp'),          document.getElementById('bar-whatsapp'),          null,
                           {x: 'calc(50% - var(--skype-width) / 2)', y: "calc(90% - 16.5vh)"});
+const note      = new App(document.getElementById('note'),              document.getElementById('bar-note'),              null,
+                          {x: '32%',   y: "32%"});
+const rules     = new App(document.getElementById('rules'),             document.getElementById('bar-rules'),             null,
+                          {x: '74.583vw',  y: "49.804vh"});
 
 folder.setThisToFolder();
 
@@ -40,10 +42,11 @@ skype.alwaysOnTop(true);
 skype.alwaysOnBar(true);
 // chat.alwaysOnTop(true);
 chat.alwaysOnBar(true);
+rules.alwaysOnTop(true);
 
 riddle.forbidOpening();
 
-const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, wallpaper, note, whatsapp]);
+const windowManager = new WindowManager([skype, folder, riddle, cheats, chat, wallpaper, note, rules, whatsapp]);
 
 volume.status = windowStatus.MINIMIZED;
 folder.additionalOpenAction    = folderOpenAction;

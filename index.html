@@ -190,6 +190,10 @@
             <a class="icon" href="javascript:void(0)" onclick="note.open()"><img src="/assets/img/icon/desktop/note.png"></a>
             <span class="icon-name">komendy.txt</span>
         </div>
+        <div id="rules-icon" class="icon-container">
+            <a class="icon" href="javascript:void(0)" onclick="rules.open()"><img src="/assets/img/icon/desktop/note.png"></a>
+            <span class="icon-name">zasady.txt</span>
+        </div>
 
         <div id="skype" class="window" hidden>
             <div class="title-bar">
@@ -408,6 +412,36 @@ Przydatne komendy:
             </div>
         </div>
 
+        <div id="rules" class="window" hidden>
+            <div class="title-bar">
+                <div class="title-bar-name">
+                    <div class="title-bar-icon-container"><img class="title-bar-icon" src="/assets/img/icon/window/note.png"></div>
+                    <div class="title-bar-text">zasady.txt</div>
+                </div>
+                <div class="title-bar-controls">
+                    <button id="min-button" aria-label="Minimize" onclick="rules.minimize()"></button>
+                    <button id="max-button" aria-label="Maximize" onclick="rules.maximize()"></button>
+                    <button id="ext-button" aria-label="Close"    onclick="rules.close()"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="note-container">
+                    <span>3 czerwca 2026 o 18:00</span>
+<textarea id="note-text" rows="15" cols="28" readonly>
+Zasady zagadek:
+ - I nieudana próba:
+      x2 boost czasu kary z koła
+ - II nieudana próba:
+      10 min kary z koła
+        + to co wyżej
+ - III nieudana próba:
+      10 min grania z delayem
+        + to co wyżej
+</textarea>
+                </div>
+            </div>
+        </div>
+
         <div id="volume" class="volume-container" style="z-index: 20;" hidden>
             <input id="volume-value" type="range" min="0" max="9" step="1" value="9">
         </div>
@@ -537,16 +571,16 @@ Przydatne komendy:
     <footer>
         <div class="bar-left">
             <a id="bar-witamcie" class="bar-icon bar-icon-home" href="javascript:void(0)" onclick="witamCieBatmanie()"><img src="/assets/img/icon/bar/home.png"></a>
-            <a id="bar-folder" class="bar-icon bar-app" href="javascript:void(0)" onclick="folder.toggle()" hidden>
-                <img src="/assets/img/icon/bar/folder.png">
-                <div class="app-light" hidden></div>
-            </a>
             <a id="bar-chat" class="bar-icon bar-app" href="javascript:void(0)" onclick="chat.toggle()" hidden>
                 <img src="/assets/img/icon/bar/chat.png">
                 <div class="app-light" hidden></div>
             </a>
             <a id="bar-skype" class="bar-icon bar-app" href="javascript:void(0)" onclick="skype.toggle()" hidden>
                 <img src="/assets/img/icon/bar/skype.png">
+                <div class="app-light" hidden></div>
+            </a>
+            <a id="bar-folder" class="bar-icon bar-app" href="javascript:void(0)" onclick="folder.toggle()" hidden>
+                <img src="/assets/img/icon/bar/folder.png">
                 <div class="app-light" hidden></div>
             </a>
             <a id="bar-whatsapp" class="bar-icon bar-app" href="javascript:void(0)" onclick="whatsapp.toggle()" hidden>
@@ -562,6 +596,10 @@ Przydatne komendy:
                 <div class="app-light" hidden></div>
             </a>
             <a id="bar-note" class="bar-icon bar-app" href="javascript:void(0)" onclick="note.toggle()" hidden>
+                <img src="/assets/img/icon/bar/note.png">
+                <div class="app-light" hidden></div>
+            </a>
+            <a id="bar-rules" class="bar-icon bar-app" href="javascript:void(0)" onclick="rules.toggle()" hidden>
                 <img src="/assets/img/icon/bar/note.png">
                 <div class="app-light" hidden></div>
             </a>
