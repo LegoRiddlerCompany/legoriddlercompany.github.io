@@ -1,5 +1,5 @@
 const batmanContacts = ["alfred", "aquaman", "barbara", "penguin", "jim", "superman", "twoface", "joker", "lucius", "harley", "rasalghul", "robin"];
-const maxTime = 120;
+const maxTime = 300;
 
 const riddleStage = {
     INTRO: 0,
@@ -22,7 +22,7 @@ class RiddleManager {
     #audio = null;
 
     #timerInterval = null;
-    #rushingTime = [30, 60, 90]; // w sekundach
+    #rushingTime = [75, 150, 225]; // w sekundach
     #time = maxTime;
     #paused = false;
 
@@ -162,7 +162,7 @@ class RiddleManager {
         if(this.#currentRiddle < this.#unlockedRiddles) {
             this.load();
             this.#stage = riddleStage.RIDDLE;
-            timer.innerText = "10:00";
+            timer.innerText = "5:00";
             riddle.forbidOpening();
             this.saveRiddlerToContacts();
         }
@@ -170,7 +170,7 @@ class RiddleManager {
 
     startCounting() {
         clearInterval(this.#timerInterval);
-        timer.innerText = "10:00";
+        timer.innerText = "5:00";
 
         let time = this.#time;
         let rushingT = this.#rushingTime;
@@ -283,7 +283,6 @@ class RiddleManager {
         this.#video.el.play();
     }
     playWrongAnswerVideo() {
-        console.log("wrong");
         this.pause();
         let who = riddlesList[this.#currentRiddle - 1].who;
         let losetrack = riddlesList[this.#currentRiddle - 1].losetrack[this.#currentTry - 1];

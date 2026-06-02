@@ -9,8 +9,9 @@ function checkAnswer(id, answer) {
     }
 
     let riddle = riddlesList[id];
+    let prepAnswer = answer.trim();
 
-    return riddle.answers.includes(answer.toLowerCase());
+    return riddle.answers.includes(prepAnswer.toLowerCase());
 }
 
 function getRiddle(id) {

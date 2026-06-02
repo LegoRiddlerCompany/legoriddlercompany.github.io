@@ -4,7 +4,7 @@ const robinUnavailable = "Jestem niedostępny, zadzwoń później";
 
 const voices = window.speechSynthesis.getVoices();
 
-const backgroundTime_ms = 1000;
+const backgroundTime_ms = 30000; //ms
 
 const callDelay = 2000; //ms
 
